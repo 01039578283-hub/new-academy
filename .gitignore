@@ -6,3 +6,6 @@ yarn-error.log*
 *.tmp
 *.bak
 __generate_*.py
+
+.vercel
+.env*
