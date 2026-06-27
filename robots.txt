@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-# Sitemap will be added after the production domain is connected.
+Sitemap: https://xn--z92bu9jx8cwzc.com/sitemap.xml
