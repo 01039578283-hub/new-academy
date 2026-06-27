@@ -532,6 +532,77 @@ h3 {
   justify-content: center;
 }
 
+.home-region-shortcuts {
+  margin-top: 86px;
+  padding: clamp(24px, 4.5vw, 42px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(circle at top left, rgba(125, 247, 212, 0.16), transparent 24rem),
+    radial-gradient(circle at bottom right, rgba(189, 166, 255, 0.15), transparent 24rem),
+    rgba(255, 255, 255, 0.05);
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.2);
+}
+
+.shortcut-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: end;
+  margin-bottom: 24px;
+}
+
+.shortcut-head h2 {
+  margin-bottom: 10px;
+}
+
+.shortcut-head p:not(.eyebrow) {
+  max-width: 760px;
+  color: var(--muted);
+  font-weight: 750;
+}
+
+.home-region-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.home-region-grid a {
+  min-height: 72px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.075), rgba(255,255,255,0.026));
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.home-region-grid a:hover {
+  transform: translateY(-2px);
+  border-color: rgba(125, 247, 212, 0.58);
+  background:
+    radial-gradient(circle at top right, rgba(125, 247, 212, 0.18), transparent 10rem),
+    linear-gradient(135deg, rgba(255,255,255,0.095), rgba(255,255,255,0.035));
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.18);
+}
+
+.home-region-grid strong {
+  color: var(--soft);
+  font-size: 1.08rem;
+  letter-spacing: -0.04em;
+}
+
+.home-region-grid span {
+  color: var(--muted);
+  font-size: 0.84rem;
+  font-weight: 850;
+}
+
 .sub-hero {
   padding: 86px 0 28px;
   display: grid;
@@ -1711,6 +1782,19 @@ h3 {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .shortcut-head {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .shortcut-head .btn {
+    width: fit-content;
+  }
+
+  .home-region-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .site-footer {
     align-items: flex-start;
     flex-direction: column;
@@ -1781,6 +1865,27 @@ h3 {
     padding: 0 11px;
     border-radius: 17px;
     font-size: 0.78rem;
+  }
+
+  .home-region-shortcuts {
+    margin-top: 62px;
+    padding: 20px;
+    border-radius: 26px;
+  }
+
+  .shortcut-head .btn,
+  .home-region-grid {
+    width: 100%;
+  }
+
+  .home-region-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-region-grid a {
+    min-height: 64px;
+    padding: 13px 14px;
+    border-radius: 16px;
   }
 
   .csv-center-card {
