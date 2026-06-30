@@ -1067,6 +1067,108 @@ h3 {
   margin-top: 18px;
 }
 
+.seo-geo-enhancement {
+  margin-top: 72px;
+  display: grid;
+  gap: 18px;
+}
+
+.geo-summary-panel,
+.geo-answer-panel,
+.geo-checklist-panel {
+  padding: clamp(24px, 4vw, 38px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(circle at top right, rgba(125, 247, 212, 0.13), transparent 20rem),
+    radial-gradient(circle at bottom left, rgba(189, 166, 255, 0.13), transparent 22rem),
+    linear-gradient(135deg, rgba(255,255,255,0.075), rgba(255,255,255,0.025)),
+    rgba(255, 255, 255, 0.035);
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.18);
+}
+
+.geo-summary-panel h2,
+.geo-answer-panel h2,
+.geo-checklist-panel h2 {
+  margin: 0;
+  color: var(--ink);
+  letter-spacing: -0.06em;
+}
+
+.geo-summary-panel p,
+.geo-answer-panel p,
+.geo-checklist-panel p {
+  color: var(--muted);
+}
+
+.geo-fact-grid,
+.geo-answer-grid,
+.geo-checklist-grid {
+  margin-top: 20px;
+  display: grid;
+  gap: 12px;
+}
+
+.geo-fact-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.geo-answer-grid,
+.geo-checklist-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.geo-fact-card,
+.geo-answer-card,
+.geo-check-card {
+  padding: 18px;
+  border: 1px solid rgba(164, 196, 255, 0.16);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.geo-fact-card span,
+.geo-answer-card span,
+.geo-check-card span {
+  display: inline-flex;
+  margin-bottom: 10px;
+  color: var(--mint);
+  font-size: 0.78rem;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.geo-fact-card strong,
+.geo-answer-card strong,
+.geo-check-card strong {
+  display: block;
+  color: var(--ink);
+  font-size: 1.02rem;
+  letter-spacing: -0.04em;
+}
+
+.geo-mini-faq {
+  margin-top: 18px;
+}
+
+.geo-mini-faq details {
+  padding: 16px 18px;
+  border: 1px solid rgba(125, 247, 212, 0.18);
+  border-radius: 18px;
+  background: rgba(125, 247, 212, 0.055);
+}
+
+.geo-mini-faq summary {
+  cursor: pointer;
+  color: var(--ink);
+  font-weight: 950;
+}
+
+.geo-mini-faq p {
+  margin: 10px 0 0;
+}
+
 .local-proof-section {
   padding-top: 76px;
 }
@@ -1748,6 +1850,9 @@ h3 {
   .article-target-list,
   .article-subject-grid,
   .local-proof-layout,
+  .geo-fact-grid,
+  .geo-answer-grid,
+  .geo-checklist-grid,
   .csv-center-card .wawa-school-grid,
   .csv-center-card .wawa-grade-row,
   .csv-center-card .wawa-map-cta,
