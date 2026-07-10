@@ -1,0 +1,4 @@
+*.py
+__pycache__/
+PROJECT_HANDOFF.md
+CHAT_HISTORY_*.md
