@@ -199,16 +199,6 @@ def main() -> int:
         parent = next((candidate for candidate in candidates if (candidate / "index.html").exists()), None)
         if parent is None or not (parent / "중1영어학원" / "index.html").exists() or not (parent / "초6영어학원" / "index.html").exists():
             errors.append(f"{local}: 기존 전국학원 영어 참고 페이지 누락")
-        elif (HUB / local / "index.html").exists():
-            target = HUB / local / "index.html"
-            backlink_sources = [
-                parent / "index.html",
-                parent / "중1영어학원" / "index.html",
-                ROOT / "과목별학원" / "중2수학학원" / local / "index.html",
-            ]
-            for source in backlink_sources:
-                if not links_to(source, target):
-                    errors.append(f"{local}: 역방향 내부링크 누락 ({source})")
 
     directories = {path.name for path in HUB.iterdir() if path.is_dir()}
     if directories != expected:
@@ -229,6 +219,8 @@ def main() -> int:
     manuscripts: list[str] = []
     manuscript_names: list[str] = []
     exact_fingerprints: Counter[str] = Counter()
+    faq_answer_fingerprints: Counter[str] = Counter()
+    within_page_repeated_sentences = 0
     copied_paragraphs = 0
     link_targets: set[Path] = set()
     unknown_grade = {
@@ -287,8 +279,39 @@ def main() -> int:
         json_breadcrumb = [item.get("name", "") for item in breadcrumb_node.get("itemListElement", [])]
         if json_breadcrumb != expected_breadcrumb:
             errors.append(f"{local}: JSON 브레드크럼 불일치 ({json_breadcrumb})")
-        if visible_faq(text) != json_faq(blocks):
+        screen_faq = visible_faq(text)
+        if screen_faq != json_faq(blocks):
             errors.append(f"{local}: 화면 FAQ와 JSON-LD FAQ 불일치")
+        if len(screen_faq) != 7:
+            errors.append(f"{local}: FAQ가 7개가 아님 ({len(screen_faq)})")
+        faq_answer_fingerprints.update(answer for _question, answer in screen_faq)
+
+        checklist = first_match(
+            r"<section\b[^>]*class=[\"'][^\"']*geo-checklist-panel[^\"']*[\"'][^>]*>(.*?)</section>",
+            text,
+            re.I | re.S,
+        )
+        if len(re.findall(r'class=["\'][^"\']*geo-check-card', checklist, re.I)) != 4:
+            errors.append(f"{local}: 개별 체크리스트가 4개가 아님")
+
+        subject_nav = first_match(
+            r"<section\b[^>]*class=[\"'][^\"']*local-page-nav[^\"']*[\"'][^>]*>(.*?)</section>",
+            text,
+            re.I | re.S,
+        )
+        peer_targets: list[Path] = []
+        for anchor in re.findall(r"<a\b[^>]*href=[\"'].*?[\"'][^>]*>", subject_nav, flags=re.I | re.S):
+            target = resolve_local(page, attrs(anchor).get("href", ""))
+            if target is not None and target.parent.parent == HUB:
+                peer_targets.append(target)
+        if len(set(peer_targets)) != 6:
+            errors.append(f"{local}: 중2 영어 상호 지역 링크가 6개가 아님 ({len(set(peer_targets))})")
+        math_page = ROOT / "과목별학원" / "중2수학학원" / local / "index.html"
+        if not links_to(page, math_page) or not links_to(math_page, page):
+            errors.append(f"{local}: 같은 동네 중2 수학·영어 상호 링크 누락")
+        for peer_page in set(peer_targets):
+            if not links_to(peer_page, page):
+                errors.append(f"{local}: 영어 지역 링크가 상호 연결되지 않음 ({peer_page.parent.name})")
 
         media = first_match(
             r"<section\b[^>]*class=[\"'][^\"']*local-media-section[^\"']*[\"'][^>]*>(.*?)</section>",
@@ -330,6 +353,15 @@ def main() -> int:
 
         if local in unknown_grade and "상담 확인 필요" not in text:
             errors.append(f"{local}: 영어 가능학년 미공개 안내 누락")
+        tuition = row_value(row, "센터 교습비")
+        if tuition and tuition not in html_lib.unescape(text):
+            errors.append(f"{local}: 검증된 교습비 링크 누락")
+        location_guide = row_value(row, "위치안내")
+        if location_guide and strip_tags(location_guide) not in strip_tags(text):
+            errors.append(f"{local}: 검증된 위치안내 누락")
+        schools = [item.strip() for item in re.split(r"[,/|;\n]+", row_value(row, "타깃학교\n(중)")) if item.strip()]
+        if f"공개 자료의 중학교 안내 · {len(schools)}개" not in strip_tags(text):
+            errors.append(f"{local}: 공개 중학교 수 표기 불일치")
 
         for anchor in re.findall(r"<a\b[^>]*href=[\"'].*?[\"'][^>]*>", text, flags=re.I | re.S):
             href = attrs(anchor).get("href", "")
@@ -341,6 +373,18 @@ def main() -> int:
         if len(body) < 2500:
             errors.append(f"{local}: 핵심 원고 분량 부족 ({len(body)}자)")
         raw_manuscript = manuscript_html(text)
+        sentence_values: list[str] = []
+        for paragraph in re.findall(r"<p\b[^>]*>(.*?)</p>", raw_manuscript, flags=re.I | re.S):
+            paragraph_text = strip_tags(paragraph)
+            sentence_values.extend(
+                sentence.strip()
+                for sentence in re.split(r"(?<=[.!?])\s+", paragraph_text)
+                if len(sentence.strip()) >= 25
+            )
+        repeated_here = sum(count - 1 for count in Counter(sentence_values).values() if count > 1)
+        within_page_repeated_sentences += repeated_here
+        if repeated_here:
+            errors.append(f"{local}: 원고 안에서 동일 문장 {repeated_here}회 반복")
         generated_paragraphs = {
             strip_tags(paragraph)
             for paragraph in re.findall(r"<p\b[^>]*>(.*?)</p>", raw_manuscript, flags=re.I | re.S)
@@ -382,6 +426,9 @@ def main() -> int:
     duplicate_bodies = sum(count - 1 for count in exact_fingerprints.values() if count > 1)
     if duplicate_bodies:
         errors.append(f"원고 본문 완전 중복 {duplicate_bodies}개")
+    duplicate_faq_answers = sum(count - 1 for count in faq_answer_fingerprints.values() if count > 1)
+    if duplicate_faq_answers:
+        errors.append(f"FAQ 답변 완전 중복 {duplicate_faq_answers}개")
 
     shingle_sets = [shingles(value) for value in manuscripts]
     similarities: list[float] = []
@@ -393,6 +440,8 @@ def main() -> int:
             similarities.append(score)
             if score > highest[0]:
                 highest = (score, manuscript_names[left], manuscript_names[right])
+    if highest[0] > 0.25:
+        errors.append(f"원고 최대 5-shingle 유사도 초과 ({highest[0]:.4f}, 목표 0.2500 이하)")
 
     sitemap = ET.parse(ROOT / "sitemap.xml")
     sitemap_urls = [node.text.strip() for node in sitemap.getroot().iter() if node.tag.endswith("loc") and node.text]
@@ -416,6 +465,8 @@ def main() -> int:
     print(f"META_UNIQUE={len(set(meta_descriptions))}/{len(meta_descriptions)}")
     print(f"MANUSCRIPT_EXACT_UNIQUE={len(exact_fingerprints)}/{len(manuscripts)}")
     print(f"COPIED_SOURCE_PARAGRAPHS={copied_paragraphs}")
+    print(f"FAQ_ANSWERS_EXACT_UNIQUE={len(faq_answer_fingerprints)}/{sum(faq_answer_fingerprints.values())}")
+    print(f"WITHIN_PAGE_REPEATED_SENTENCES={within_page_repeated_sentences}")
     print(f"SHINGLE_JACCARD_MAX={highest[0]:.4f} ({highest[1]} / {highest[2]})")
     print(f"SHINGLE_JACCARD_MEAN={statistics.fmean(similarities):.4f}")
     print(f"SITEMAP_URLS={len(sitemap_urls)}")

@@ -15,6 +15,7 @@ from urllib.parse import quote, unquote, urlsplit
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT.parent / "참고자료" / "공통자료" / "센터정보 정리.csv"
 HUB = ROOT / "과목별학원" / "중2수학학원"
+ENGLISH_HUB = ROOT / "과목별학원" / "중2영어학원"
 DOMAIN = "https://xn--z92bu9jx8cwzc.com"
 REQUIRED_TYPES = {
     "EducationalOrganization",
@@ -26,6 +27,18 @@ REQUIRED_TYPES = {
     "ItemList",
 }
 VOID_TAGS = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"}
+FORBIDDEN_SCHEMA_TYPES = {"Review", "AggregateRating"}
+FORBIDDEN_MANUSCRIPT_PATTERNS = {
+    "교차과목": re.compile(r"영어|국어|영수"),
+    "성과·보장 단정": re.compile(
+        r"(?:(?:성적|점수)[^.!?<>]{0,35}(?:상승|향상|올리|끌어올리|연결|만들|보장)|"
+        r"(?:상승|향상|올리|끌어올리)[^.!?<>]{0,20}(?:성적|점수)|보장)"
+    ),
+    "출제 정보 단정": re.compile(
+        r"(?:(?:학교별|지역\s*학생들의?)[^.!?<>]{0,35}(?:출제\s*(?:흐름|경향)|시험\s*범위)|"
+        r"출제\s*(?:흐름|경향))[^.!?<>]*(?:맞춰|반영|기준)"
+    ),
+}
 
 
 def row_value(row: dict[str, str], key: str) -> str:
@@ -160,6 +173,18 @@ def manuscript_text(text: str) -> str:
     return strip_tags(section)
 
 
+def section_html(text: str, class_name: str) -> str:
+    return first_match(
+        rf"<section\b[^>]*class=[\"'][^\"']*{re.escape(class_name)}[^\"']*[\"'][^>]*>(.*?)</section>",
+        text,
+        re.I | re.S,
+    )
+
+
+def main_visible_text(text: str) -> str:
+    return strip_tags(first_match(r"<main\b[^>]*>(.*?)</main>", text, re.I | re.S))
+
+
 def shingles(value: str, size: int = 5) -> set[tuple[str, ...]]:
     words = re.findall(r"[가-힣A-Za-z0-9]+", value.lower())
     return {tuple(words[index : index + size]) for index in range(max(0, len(words) - size + 1))}
@@ -188,8 +213,15 @@ def main() -> int:
     meta_descriptions: list[str] = []
     manuscripts: list[str] = []
     manuscript_names: list[str] = []
+    main_lengths: list[int] = []
     exact_fingerprints: Counter[str] = Counter()
+    checklist_fingerprints: Counter[str] = Counter()
+    parent_view_fingerprints: Counter[str] = Counter()
     link_targets: set[Path] = set()
+    peer_links_by_local: dict[str, set[str]] = {}
+    incoming_sources: dict[Path, set[Path]] = {
+        (HUB / local / "index.html").resolve(): set() for local in locals_
+    }
     unknown_grade = {
         row_value(row, "근처 수업가능 동네")
         for row in rows
@@ -239,11 +271,18 @@ def main() -> int:
         missing_types = REQUIRED_TYPES - json_types(blocks)
         if missing_types:
             errors.append(f"{local}: JSON-LD 타입 누락 ({sorted(missing_types)})")
+        forbidden_types = FORBIDDEN_SCHEMA_TYPES & json_types(blocks)
+        if forbidden_types:
+            errors.append(f"{local}: 근거 없는 후기/평점 스키마 포함 ({sorted(forbidden_types)})")
         breadcrumb_node = find_typed_node(blocks, "BreadcrumbList") or {}
         json_breadcrumb = [item.get("name", "") for item in breadcrumb_node.get("itemListElement", [])]
         if json_breadcrumb != expected_breadcrumb:
             errors.append(f"{local}: JSON 브레드크럼 불일치 ({json_breadcrumb})")
-        if visible_faq(text) != json_faq(blocks):
+        screen_faq = visible_faq(text)
+        schema_faq = json_faq(blocks)
+        if len(screen_faq) != 7:
+            errors.append(f"{local}: 화면 FAQ가 7개가 아님 ({len(screen_faq)}개)")
+        if screen_faq != schema_faq:
             errors.append(f"{local}: 화면 FAQ와 JSON-LD FAQ 불일치")
 
         media = first_match(
@@ -277,16 +316,114 @@ def main() -> int:
         if local in unknown_grade and "상담 확인 필요" not in text:
             errors.append(f"{local}: 수학 가능학년 미공개 안내 누락")
 
+        location_guide = row_value(row, "위치안내")
+        location_cards = re.findall(
+            r"<article\b[^>]*data-role=[\"']verified-location[\"'][^>]*>(.*?)</article>",
+            text,
+            flags=re.I | re.S,
+        )
+        if location_guide:
+            if len(location_cards) != 1 or strip_tags(location_guide) not in strip_tags(location_cards[0]):
+                errors.append(f"{local}: 확인된 위치안내가 운영정보에 정확히 노출되지 않음")
+        elif location_cards:
+            errors.append(f"{local}: 위치안내 자료가 없는데 위치 카드가 노출됨")
+
+        schools = [part.strip() for part in re.split(r"[,/|]", row_value(row, "타깃학교\n(중)")) if part.strip()]
+        if schools:
+            missing_schools = [school for school in schools if school not in text]
+            if missing_schools:
+                errors.append(f"{local}: 공개 학교 정보 누락 ({missing_schools})")
+        elif "공개 자료에 중학교명이 별도로 기재되어 있지 않아" not in text:
+            errors.append(f"{local}: 학교정보 미기재 안내 누락")
+
+        tuition = row_value(row, "센터 교습비")
+        if tuition and tuition not in text:
+            errors.append(f"{local}: 공개 교습비 링크 누락")
+        if not tuition and "교습비 자료는 상담 시 확인해 주세요" not in text:
+            errors.append(f"{local}: 교습비 미기재 안내 누락")
+
+        checklist_section = section_html(text, "geo-checklist-panel")
+        checklist_cards = re.findall(
+            r"<article\b[^>]*class=[\"'][^\"']*geo-check-card[^\"']*[\"'][^>]*>(.*?)</article>",
+            checklist_section,
+            flags=re.I | re.S,
+        )
+        if len(checklist_cards) != 4:
+            errors.append(f"{local}: 상담 체크리스트가 4개가 아님 ({len(checklist_cards)}개)")
+        checklist_fingerprints[" | ".join(strip_tags(card) for card in checklist_cards)] += 1
+
+        parent_view = first_match(
+            r"<aside\b[^>]*class=[\"'][^\"']*local-review-card[^\"']*[\"'][^>]*>(.*?)</aside>",
+            text,
+            re.I | re.S,
+        )
+        parent_notes = [
+            strip_tags(item)
+            for item in re.findall(
+                r"<article\b[^>]*class=[\"'][^\"']*subject-parent-note[^\"']*[\"'][^>]*>(.*?)</article>",
+                parent_view,
+                flags=re.I | re.S,
+            )
+        ]
+        if len(parent_notes) != 3:
+            errors.append(f"{local}: 학부모 상담 관점이 3개가 아님 ({len(parent_notes)}개)")
+        if any(re.search(r"느꼈습니다|도움이 됐습니다|편했습니다|알게 됐습니다|후기 평점", note) for note in parent_notes):
+            errors.append(f"{local}: 실제 후기처럼 단정하는 상담 관점 문구 포함")
+        parent_view_fingerprints[" | ".join(parent_notes)] += 1
+
+        page_targets: set[Path] = set()
         for anchor in re.findall(r"<a\b[^>]*href=[\"'].*?[\"'][^>]*>", text, flags=re.I | re.S):
             href = attrs(anchor).get("href", "")
             target = resolve_local(page, href)
             if target is not None:
                 link_targets.add(target)
+                page_targets.add(target)
+                if target in incoming_sources:
+                    incoming_sources[target].add(page.resolve())
+
+        peer_targets = {
+            target.parent.name
+            for target in page_targets
+            if target.name == "index.html"
+            and target.parent.parent == HUB.resolve()
+            and target != page.resolve()
+        }
+        peer_links_by_local[local] = peer_targets
+        if len(peer_targets) != 6:
+            errors.append(f"{local}: 상호 형제 수학 링크가 6개가 아님 ({len(peer_targets)}개)")
 
         body = manuscript_text(text)
+        if len(body) < 1750:
+            errors.append(f"{local}: 수학 원고·보강 영역이 너무 짧음 ({len(body)}자)")
+        for label, pattern in FORBIDDEN_MANUSCRIPT_PATTERNS.items():
+            if pattern.search(body):
+                errors.append(f"{local}: 원고에 {label} 금칙 표현 포함")
         manuscripts.append(body)
         manuscript_names.append(local)
         exact_fingerprints[body] += 1
+        main_lengths.append(len(main_visible_text(text)))
+
+    def register_incoming(source: Path) -> None:
+        if not source.exists():
+            errors.append(f"과목별 유입 확인 페이지 누락: {source}")
+            return
+        source_text = source.read_text(encoding="utf-8")
+        for anchor in re.findall(r"<a\b[^>]*href=[\"'].*?[\"'][^>]*>", source_text, flags=re.I | re.S):
+            target = resolve_local(source, attrs(anchor).get("href", ""))
+            if target in incoming_sources:
+                incoming_sources[target].add(source.resolve())
+
+    register_incoming(HUB / "index.html")
+    for local in locals_:
+        register_incoming(ENGLISH_HUB / local / "index.html")
+
+    for local, peers in peer_links_by_local.items():
+        for peer in peers:
+            if local not in peer_links_by_local.get(peer, set()):
+                errors.append(f"{local} ↔ {peer}: 수학 형제 링크가 상호 왕복이 아님")
+    for target, sources in incoming_sources.items():
+        if len(sources) < 8:
+            errors.append(f"{target.parent.name}: 과목별 유입 링크 출처가 8개 미만 ({len(sources)}개)")
 
     for target in sorted(link_targets):
         if not target.exists():
@@ -297,6 +434,12 @@ def main() -> int:
     duplicate_bodies = sum(count - 1 for count in exact_fingerprints.values() if count > 1)
     if duplicate_bodies:
         errors.append(f"원고 본문 완전 중복 {duplicate_bodies}개")
+    duplicate_checklists = sum(count - 1 for count in checklist_fingerprints.values() if count > 1)
+    if duplicate_checklists:
+        errors.append(f"상담 체크리스트 완전 중복 {duplicate_checklists}개")
+    duplicate_parent_views = sum(count - 1 for count in parent_view_fingerprints.values() if count > 1)
+    if duplicate_parent_views:
+        errors.append(f"학부모 상담 관점 완전 중복 {duplicate_parent_views}개")
 
     shingle_sets = [shingles(value) for value in manuscripts]
     similarities: list[float] = []
@@ -330,6 +473,10 @@ def main() -> int:
     print(f"HUB_CARDS={len(re.findall(r'class=\"subject-town-card\"', hub_text))}")
     print(f"META_UNIQUE={len(set(meta_descriptions))}/{len(meta_descriptions)}")
     print(f"MANUSCRIPT_EXACT_UNIQUE={len(exact_fingerprints)}/{len(manuscripts)}")
+    print(f"CHECKLIST_EXACT_UNIQUE={len(checklist_fingerprints)}/{len(manuscripts)}")
+    print(f"PARENT_VIEW_EXACT_UNIQUE={len(parent_view_fingerprints)}/{len(manuscripts)}")
+    print(f"MAIN_TEXT_AVG_MIN_MAX={statistics.fmean(main_lengths):.0f}/{min(main_lengths)}/{max(main_lengths)}")
+    print(f"SUBJECT_INCOMING_MIN={min(len(sources) for sources in incoming_sources.values())}")
     print(f"SHINGLE_JACCARD_MAX={highest[0]:.4f} ({highest[1]} / {highest[2]})")
     print(f"SHINGLE_JACCARD_MEAN={statistics.fmean(similarities):.4f}")
     print(f"SITEMAP_URLS={len(sitemap_urls)}")

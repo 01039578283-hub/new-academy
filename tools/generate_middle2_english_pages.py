@@ -33,6 +33,133 @@ def choose(local: str, label: str, values: list[str]) -> str:
     return values[base.seed_for(CATEGORY, local, label) % len(values)]
 
 
+def inline_text(value: str) -> str:
+    """화면과 JSON-LD에서 같은 문장으로 쓰도록 줄바꿈을 한 칸으로 정규화합니다."""
+    return re.sub(r"\s+", " ", value or "").strip()
+
+
+def build_distinctive_study_record(row: dict[str, str], profile: dict[str, str]) -> str:
+    """같은 센터를 공유하는 인접 동네도 서로 다른 학습 판단 흐름을 갖게 합니다."""
+    local = row_value(row, "근처 수업가능 동네")
+    center = row_value(row, "센터명") or f"{local} 학습센터"
+    schools = split_items(row_value(row, "타깃학교\n(중)"))
+    evidence = schools[0] if schools else "학생이 가져온 현재 학교 자료"
+    banks = [
+        [
+            "최근 시험지에서 정답 여부와 근거 설명 여부를 따로 표시합니다.",
+            "교과서 본문에서 해석이 멈춘 문장과 시간이 오래 걸린 문장을 구분합니다.",
+            "학교 프린트의 문법 문항을 개념 부족과 적용 실수로 나눕니다.",
+            "단어장을 처음 본 결과와 며칠 뒤 문장 속에서 재현한 결과로 나눕니다.",
+            "서술형 원답안과 수정 답안을 나란히 놓고 달라진 조건을 표시합니다.",
+            "과제 기록에서 미완료 항목과 완료했지만 설명하지 못한 항목을 분리합니다.",
+            "독해 선택지마다 지문 근거를 찾았는지와 추측으로 고른 답인지 구분합니다.",
+            "중1 문장 구조가 필요한 오류와 현재 중2 단원에서 생긴 오류를 따로 적습니다.",
+        ],
+        [
+            "첫 수업에서는 가장 자주 반복된 오류 하나를 골라 짧은 문장에 다시 적용합니다.",
+            "막힌 문장을 바로 설명하기 전에 학생이 주어·동사와 연결어를 먼저 표시하게 합니다.",
+            "암기한 본문은 어순이나 시제를 바꾼 문장에서도 의미를 유지하는지 확인합니다.",
+            "문법 규칙은 이름을 말하는 단계보다 교과서 속 동일 구조를 찾는 단계부터 점검합니다.",
+            "어휘는 대표 뜻을 말한 뒤 현재 본문에서 쓰인 품사와 의미를 다시 고르게 합니다.",
+            "서술형은 정답을 베끼기 전에 문제 조건과 빠진 내용을 학생이 직접 표시합니다.",
+            "독해는 전체 번역보다 문단 역할과 선택지 근거를 한 문장으로 설명하게 합니다.",
+            "현재 진도에 필요한 이전 개념만 짧게 복원하고 곧바로 학교 문장에 연결합니다.",
+        ],
+        [
+            "혼자 같은 기준을 두 번 적용하고 수정 이유까지 설명하면 해당 항목을 완료로 봅니다.",
+            "수업 직후의 정답과 주중 재확인 결과가 모두 남아야 이해가 유지됐는지 판단합니다.",
+            "새 문장에서 근거를 찾고 틀린 선택지의 이유까지 말할 때 다음 단계로 이동합니다.",
+            "해설 없이 서술형을 복원하고 조건표를 스스로 확인해야 재학습을 마칩니다.",
+            "정해진 시간 안 결과와 시간 제한 없이 정확히 푼 결과를 함께 기록합니다.",
+            "단어를 문장 안에서 다시 사용하고 품사 변화까지 구분해야 누적 목록에서 제외합니다.",
+            "같은 실수를 한 문제 수보다 오류가 시작된 지점을 스스로 찾는지를 완료 기준으로 둡니다.",
+            "교과서와 프린트의 남은 범위를 각각 표시하고 빠진 자료가 없어야 주간 계획을 갱신합니다.",
+        ],
+        [
+            "수업 당일에는 표시와 수정, 주중에는 해설 없는 재현, 주말에는 누적 확인을 배치합니다.",
+            "짧은 복습 시간을 여러 날에 나눠 단어·본문·오답이 한꺼번에 밀리지 않게 합니다.",
+            "시험 범위 발표 전에는 누적 공백을, 발표 뒤에는 교과서와 프린트 완료 순서를 우선합니다.",
+            "학교 일정이 바뀌면 새 계획만 쓰지 않고 미룬 항목과 앞당긴 항목을 함께 기록합니다.",
+            "통학과 다른 과목 시간을 뺀 실제 여유 시간을 기준으로 영어 분량을 다시 계산합니다.",
+            "수행평가 준비일과 지필 대비일을 분리해 말하기·쓰기와 본문 복습이 겹치지 않게 합니다.",
+            "어휘 재현일과 서술형 재작성일을 다르게 두어 한 번의 암기에 의존하지 않게 합니다.",
+            "정확도가 자리 잡기 전에는 시간 제한을 늦추고 이후 풀이 시간을 단계적으로 줄입니다.",
+        ],
+        [
+            "상담에서는 오류 기록이 다음 과제의 순서와 분량을 어떻게 바꾸는지 확인합니다.",
+            "사용 교재 이름보다 학생이 설명하고 고치는 시간이 실제 수업에 있는지 질문합니다.",
+            "시험 기간에 교과서·프린트·서술형의 우선순위가 어떤 기준으로 달라지는지 묻습니다.",
+            "결석 뒤 보강 여부와 함께 놓친 복습 날짜를 다시 배치하는 방식도 확인합니다.",
+            "과제량보다 단어·본문·오답마다 다른 완료 기준이 기록되는지 살펴봅니다.",
+            "질문을 해결한 뒤 비슷한 문장을 혼자 처리하는 단계까지 확인하는지 묻습니다.",
+            "학년 진도보다 현재 답안에서 확인된 중1 공백을 어떻게 연결하는지 질문합니다.",
+            "주간 점검 결과를 학생과 학부모에게 어떤 자료로 설명하는지 확인합니다.",
+        ],
+        [
+            "특정 성과를 미리 단정하지 않고 다음 재확인 결과로 계획을 조정합니다.",
+            "학교별 특징을 추정하지 않고 학생이 준비한 실제 범위와 공지를 근거로 삼습니다.",
+            "공개 정보에 없는 반 편성과 시작일은 상담 당시의 운영표에서 다시 확인합니다.",
+            "같은 점수라도 오류 시작점이 다르면 학습 순서를 다르게 정합니다.",
+            "문제 수가 늘어난 사실보다 혼자 설명할 수 있게 된 범위를 기록합니다.",
+            "한 번 맞힌 결과보다 간격을 둔 재현 결과를 다음 계획의 근거로 사용합니다.",
+            "새 자료를 추가하기 전에 이미 받은 학교 자료의 미완료 항목을 먼저 확인합니다.",
+            "수업 설명과 실제 학생 기록이 일치하는지를 상담 비교의 기준으로 둡니다.",
+        ],
+        [
+            "처음 맞힌 문장과 설명 없이 다시 맞힌 문장을 다른 색으로 표시해 이해가 유지됐는지 봅니다.",
+            "오래 걸린 문장은 단어·구조·내용 연결 중 지연이 시작된 지점을 짧게 적습니다.",
+            "질문한 문장은 해결 표시만 하지 않고 비슷한 새 문장을 처리한 결과까지 붙입니다.",
+            "본문 암기 여부와 문장 구조 설명 여부를 두 칸으로 나눠 변형 문제 준비 정도를 확인합니다.",
+            "서술형 수정 횟수보다 같은 오류가 다시 나타난 조건을 찾아 다음 점검에 남깁니다.",
+            "주간 완료율은 계획한 문제 수가 아니라 어휘·본문·오답별 통과 항목으로 계산합니다.",
+            "독해 정답표와 근거 문장 표시표를 분리해 우연히 맞힌 문항이 섞이지 않게 합니다.",
+            "학교 자료별 남은 범위를 교과서·프린트·수행평가로 나눠 누락된 준비를 확인합니다.",
+        ],
+        [
+            "가정 복습은 긴 시간을 한 번 확보하기보다 수업 당일과 주중의 짧은 재현으로 나눕니다.",
+            "학생이 혼자 시작할 수 있도록 첫 문제와 끝낼 기준을 주간표에 함께 적습니다.",
+            "막힌 문장은 답을 찾기 전에 표시하고 다음 수업에서 물을 질문 한 줄을 남깁니다.",
+            "시험 전에는 새 자료를 추가하기보다 이미 표시한 오류의 재현 여부를 먼저 확인합니다.",
+            "단어·본문·서술형의 복습일을 다르게 배치해 한날에 과제가 몰리지 않게 합니다.",
+            "완료한 항목도 주말에 표본을 골라 다시 확인해 일시적인 암기와 이해를 구분합니다.",
+            "학부모 확인은 답을 대신 고치는 방식보다 계획한 복습이 실제로 끝났는지 보는 데 둡니다.",
+            "학교 일정이 바뀐 날에는 남은 분량을 다시 나누고 미룬 이유를 계획표에 기록합니다.",
+        ],
+        [
+            "다음 주에는 해결된 오류를 제외하고 여전히 설명하지 못한 문장부터 분량을 다시 정합니다.",
+            "재확인 결과가 좋아도 새로운 문장에서 같은 구조를 적용하는지 한 번 더 살펴봅니다.",
+            "풀이 시간이 길었다면 문제 수를 늘리기 전에 문장 구조 표시 순서를 다시 점검합니다.",
+            "어휘 재현이 약했다면 새 단어보다 이전 본문의 미완료 표현을 다음 계획 앞에 둡니다.",
+            "서술형 조건 누락이 반복되면 제출 전 확인표를 다음 과제에도 동일하게 적용합니다.",
+            "독해 근거가 흔들리면 다음 지문에서 연결어와 대명사 표시부터 다시 시작합니다.",
+            "학교 프린트 완료가 늦었다면 교과서 복습과 겹치는 항목을 찾아 계획을 압축합니다.",
+            "질문 뒤 유사 문장 해결이 어려웠다면 설명 단계와 독립 풀이 단계를 다시 분리합니다.",
+        ],
+    ]
+    chosen = [
+        bank[base.seed_for(CATEGORY, local, f"distinct-study-record-{index}") % len(bank)]
+        for index, bank in enumerate(banks)
+    ]
+    cards = [
+        ("답안에서 찾을 신호", f"{local} 기록에서는 {chosen[0]} {chosen[5]}"),
+        ("첫 수업의 행동", f"{local} 학생에게는 {chosen[1]} {center} 상담에서는 이 행동이 실제 피드백에 남는지 확인합니다."),
+        ("완료와 재확인", f"{local}의 완료 기준은 다음과 같습니다. {chosen[2]} 다음 확인일의 결과가 달라지면 {local}의 복습 순서부터 다시 조정합니다."),
+        ("주간 일정 배치", f"{local} 주간표에는 {chosen[3]} {evidence}의 현재 일정은 학생이 가져온 자료로 다시 대조합니다."),
+        ("상담에서 물을 질문", f"{center}에 문의할 때는 {chosen[4]} {profile['check']}도 최근 답안과 함께 확인합니다."),
+        ("기록 해석", f"{local}의 영어 기록을 볼 때는 {chosen[6]} {center}에서는 이 기록이 다음 과제에 반영되는지도 확인합니다."),
+        ("가정 복습 연결", f"{local} 학생의 실제 생활 시간에는 {chosen[7]} 실행 여부는 다음 상담에서 계획표와 함께 확인합니다."),
+        ("다음 주 조정", f"{local}의 다음 주 계획은 고정하지 않습니다. {chosen[8]} 조정 결과는 학생 답안으로 다시 확인합니다."),
+    ]
+    card_html = "".join(
+        f'<article class="article-card"><h3>{esc(title)}</h3><p>{esc(body)}</p></article>'
+        for title, body in cards
+    )
+    return f'''<section class="article-section article-local-feature-section english-study-record">
+        <h2>{esc(local)} 중2 영어 학습 기록을 읽는 다섯 기준</h2>
+        <div class="article-card-grid">{card_html}</div>
+      </section>'''
+
+
 def existing_english_pages(row: dict[str, str]) -> list[Path]:
     parent = base.find_parent_page(row)
     if not parent:
@@ -137,7 +264,20 @@ def page_profile(row: dict[str, str]) -> dict[str, str]:
     }
 
 
-def contextual_note(row: dict[str, str], profile: dict[str, str], label: str) -> str:
+def build_subject_peer_network(
+    rows: list[dict[str, str]],
+    degree: int = 6,
+) -> dict[str, list[str]]:
+    """전국학원 파일을 건드리지 않는 상호 왕복형 과목별 지역 링크망."""
+    return base.build_subject_peer_network(rows, degree)
+
+
+def contextual_note(
+    row: dict[str, str],
+    profile: dict[str, str],
+    label: str,
+    used: set[str] | None = None,
+) -> str:
     local = row_value(row, "근처 수업가능 동네")
     region = row_value(row, "지역")
     district = row_value(row, "시or구")
@@ -155,7 +295,7 @@ def contextual_note(row: dict[str, str], profile: dict[str, str], label: str) ->
         f"{local} 학습 계획에는 완료 여부뿐 아니라 며칠 뒤 해설 없이 다시 설명한 결과까지 남겨야 다음 복습량을 조정할 수 있습니다.",
         f"{profile['source_focus']}이 약한 경우에는 이 활동을 한 번에 길게 하기보다 수업 직후와 주중으로 나눠 재현 여부를 확인합니다.",
         f"{center} 상담에서는 이 기준이 평소 수업과 시험 범위 발표 이후에 각각 어떻게 달라지는지 질문해 보는 편이 좋습니다.",
-        f"{evidence}를 포함한 학교 자료는 이름만 나열하지 않고 교과서 본문, 프린트, 수행평가 중 어떤 자료인지 구분해 준비합니다.",
+        f"{base.object_form(evidence)} 포함한 학교 자료는 이름만 나열하지 않고 교과서 본문, 프린트, 수행평가 중 어떤 자료인지 구분해 준비합니다.",
         f"{local} 학생의 최근 답안에서 이 기준에 해당하는 문장을 한두 개 골라 두면 추상적인 수준 설명보다 시작점을 명확히 잡을 수 있습니다.",
         f"이 과정의 완료 기준은 문제 수가 아니라 학생이 근거를 말하고 비슷한 새 문장을 혼자 처리할 수 있는지로 정하는 편이 적절합니다.",
         f"{region} {district}의 통학 시간까지 고려해 수업일과 복습일이 겹치지 않도록 배치해야 계획이 시험 전까지 유지됩니다.",
@@ -170,7 +310,208 @@ def contextual_note(row: dict[str, str], profile: dict[str, str], label: str) ->
         f"공개된 학교명이 없는 경우에도 현재 교과서와 최근 답안을 기준으로 같은 확인 절차를 적용할 수 있으며 학교 정보는 임의로 만들지 않습니다.",
         f"{local} 상담 기록에는 처음 진단한 내용과 다음 확인 날짜를 함께 적어 두어 실제 피드백이 계획에 반영됐는지 비교합니다.",
     ]
-    return choose(local, f"context-{label}", templates)
+    start = base.seed_for(CATEGORY, local, f"context-{label}") % len(templates)
+    for offset in range(len(templates)):
+        candidate = templates[(start + offset) % len(templates)]
+        if local not in candidate:
+            candidate = f"{local}에서 이 기준을 적용할 때에는 {candidate}"
+        candidate_sentences = {
+            sentence.strip()
+            for sentence in re.split(r"(?<=[.!?])\s+", candidate)
+            if sentence.strip()
+        }
+        if used is None or candidate_sentences.isdisjoint(used):
+            if used is not None:
+                used.update(candidate_sentences)
+            return candidate
+    fallback = templates[start].rstrip(". ")
+    return f"{fallback}. 이 항목은 {local}의 현재 답안에 맞춰 별도 기록합니다."
+
+
+def build_english_enrichment(row: dict[str, str], profile: dict[str, str]) -> str:
+    """지역·센터의 확인 가능한 사실과 학생 상황을 연결한 추가 원고."""
+    local = row_value(row, "근처 수업가능 동네")
+    region = row_value(row, "지역")
+    district = row_value(row, "시or구")
+    center = row_value(row, "센터명") or f"{local} 학습센터"
+    schools = split_items(row_value(row, "타깃학교\n(중)"))
+    evidence = (
+        schools[base.seed_for(CATEGORY, local, "enrichment-school") % len(schools)]
+        if schools
+        else "현재 재학 학교의 교과서와 최근 답안"
+    )
+
+    diagnostic_signals = [
+        "문법 문제는 맞히지만 교과서 문장에서 같은 구조를 찾지 못하는지",
+        "단어 뜻은 기억해도 문장 안에서 품사와 의미를 잘못 고르는지",
+        "긴 문장을 읽을 때 주어와 동사보다 익숙한 단어만 이어 붙이는지",
+        "독해 정답을 고른 뒤 지문 속 근거 위치를 다시 찾지 못하는지",
+        "서술형 답안에서 내용보다 어순과 동사 형태가 반복해 흔들리는지",
+        "시험 범위가 정해진 뒤에도 본문·프린트·문법의 우선순위를 못 정하는지",
+        "중1 문법 공백이 중2 교과서 해석을 멈추게 하는 지점이 있는지",
+        "맞힌 문제 중에서도 다른 선택지가 틀린 이유를 설명하지 못하는지",
+        "수업 당일 이해한 문장을 며칠 뒤 해설 없이 다시 쓰지 못하는지",
+        "누적 어휘와 이번 시험 범위 단어를 같은 방식으로 외우고 있는지",
+        "수행평가 준비와 지필평가 복습이 한 일정에서 충돌하는지",
+        "풀이 시간은 충분하지만 질문을 남기지 않아 같은 오류가 이어지는지",
+    ]
+    first_actions = [
+        "최근 시험지를 어휘·문법·독해·쓰기 네 칸으로 나눠 오류 횟수와 수정 가능 여부를 함께 적습니다.",
+        "교과서 한 문단을 해석한 뒤 주어·동사·연결어와 정답 근거를 서로 다른 표시로 남깁니다.",
+        "틀린 서술형 한 문장을 내용 누락·어순·동사 형태·철자로 분리해 먼저 고칠 항목을 정합니다.",
+        "단어장을 가린 채 뜻만 말하지 않고 교과서 문장에서 품사와 함께 재현되는지를 확인합니다.",
+        "중1 개념 중 현재 단원을 읽는 데 필요한 항목만 골라 짧게 복원한 뒤 곧바로 본문에 적용합니다.",
+        "맞힌 독해 문제도 근거 문장을 표시하게 해 이해한 정답과 우연히 고른 정답을 구분합니다.",
+        "시험일까지 남은 날짜를 기준으로 교과서·프린트·어휘·서술형의 완료 시점을 따로 정합니다.",
+        "질문이 생긴 문장을 표시하고 설명을 들은 뒤 비슷한 새 문장을 혼자 해결하는 단계까지 확인합니다.",
+        "본문 암기 전 문장 구조와 핵심 표현을 설명하게 해 외운 문장과 이해한 문장을 나눕니다.",
+        "주중 실제 가능한 시간을 먼저 계산한 뒤 단어와 본문 복습량을 실행 가능한 크기로 줄입니다.",
+        "수행평가 조건표와 지필평가 범위표를 분리해 일정과 제출 기준이 섞이지 않게 정리합니다.",
+        "오답 해설을 덮고 다시 풀 날짜를 적어 당일 수정과 지연 재현을 서로 다른 결과로 기록합니다.",
+    ]
+    completion_rules = [
+        "정답 개수 대신 같은 근거를 새 문장에서 설명할 수 있을 때 해당 항목을 완료로 표시합니다.",
+        "한 번 고친 답안은 끝낸 것으로 보지 않고 며칠 뒤 조건을 바꾼 문장까지 작성해야 완료로 봅니다.",
+        "본문 한 단락을 읽고 핵심 내용을 한 문장으로 요약한 뒤 근거 위치를 짚을 수 있어야 다음 단계로 갑니다.",
+        "어휘는 뜻·품사·교과서 속 쓰임을 가린 상태에서 다시 말할 수 있는지를 완료 기준으로 삼습니다.",
+        "문법 개념을 설명한 뒤 교과서와 변형 문장에서 각각 한 번씩 적용되어야 복습 항목에서 뺍니다.",
+        "오답 이유를 학생 말로 남기고 다음 확인 날짜까지 적어야 학습 기록이 다음 수업으로 이어집니다.",
+        "정해진 분량을 푼 것보다 틀린 선택지를 제외한 이유까지 설명했는지를 먼저 확인합니다.",
+        "시간 제한 안에 푼 결과와 제한 없이 정확히 푼 결과를 나눠 속도와 이해 문제를 구분합니다.",
+        "학교 자료별 완료 표시를 남겨 시험 직전에 처음 보는 프린트가 생기지 않도록 관리합니다.",
+        "질문 표시가 사라진 것이 아니라 유사 문장을 혼자 해결한 기록이 있을 때 이해한 것으로 판단합니다.",
+        "서술형은 핵심 내용, 요구 표현, 문장 수와 문법 조건을 모두 확인한 뒤 완료로 표시합니다.",
+        "복습 간격마다 재현 결과를 비교해 다시 막힌 항목만 다음 주 계획으로 넘깁니다.",
+    ]
+    schedule_rules = [
+        "수업 당일에는 핵심 문장을 확인하고, 주중에는 변형 적용, 주말에는 누적 오답을 다시 봅니다.",
+        "평소에는 어휘와 문장 구조를 누적하고 시험 범위 발표 뒤에는 학교 자료의 우선순위를 높입니다.",
+        "교과서 진도일과 복습일을 분리해 새로운 범위와 이전 오답이 같은 날 몰리지 않게 합니다.",
+        "단어·본문·문법·서술형을 매일 모두 하기보다 학생이 확보한 시간에 맞춰 요일별 역할을 나눕니다.",
+        "시험 전 주차마다 완료 기준을 정하고 남은 범위보다 해설 없이 재현되지 않는 항목을 먼저 봅니다.",
+        "학교 프린트를 받은 날 범위를 갱신하고 기존 계획에서 미룰 항목과 앞당길 항목을 다시 나눕니다.",
+        "수행평가 준비일과 지필평가 복습일을 별도로 표시해 두 일정이 서로 밀어내지 않게 합니다.",
+        "통학과 다른 과목 일정을 제외한 실제 영어 시간을 기준으로 과제 분량과 재확인 날짜를 정합니다.",
+        "짧은 어휘 재현은 자주 배치하고 긴 독해와 서술형 수정은 집중 가능한 날에 묶습니다.",
+        "수업에서 발견한 오류를 다음 과제 첫 항목에 반영해 피드백과 주간 계획 사이의 간격을 줄입니다.",
+        "시험 직전에는 새 문제보다 이미 틀린 문장과 근거를 해설 없이 설명하는 시간을 확보합니다.",
+        "주중 실행 여부를 기록해 계획보다 오래 걸린 영역의 다음 분량을 줄이거나 순서를 바꿉니다.",
+    ]
+    parent_questions = [
+        "설명 뒤 학생이 같은 구조의 문장을 직접 찾아 말하는 시간이 있는지",
+        "오답 기록이 다음 과제와 복습 날짜에 어떤 방식으로 반영되는지",
+        "교과서 진도와 누적 문법 공백을 동시에 다룰 때 우선순위를 어떻게 정하는지",
+        "단어·본문·서술형 과제마다 완료 기준이 서로 다르게 제시되는지",
+        "시험 범위 발표 전후로 수업 자료와 주간 계획이 어떻게 바뀌는지",
+        "맞힌 문제에서도 근거를 설명하지 못한 항목을 따로 확인하는지",
+        "학교 프린트와 교과서 중 어떤 자료를 먼저 복습할지 기록하는지",
+        "중1 공백을 보완한 뒤 현재 중2 단원에 바로 적용하는 단계가 있는지",
+        "질문한 문장을 설명받은 뒤 비슷한 문장을 혼자 해결하게 하는지",
+        "결석이나 일정 변경 때 보강과 과제 완료 기준을 어떻게 조정하는지",
+        "시험 직전 새 문제와 누적 오답 사이의 비중을 어떤 근거로 바꾸는지",
+        "학부모에게 전달되는 기록에 오류 원인과 다음 확인 날짜가 함께 적히는지",
+    ]
+    delayed_checks = [
+        "수업에서 고친 문장을 이틀 뒤 다시 제시해 해설 없이 구조와 뜻을 복원하는지 확인합니다.",
+        "당일에 맞힌 어휘도 주말에 교과서 문장 속 쓰임으로 다시 불러내 일시 암기 여부를 나눕니다.",
+        "문법 설명을 들은 뒤 다음 수업에서 조건이 달라진 문장을 처리하게 해 적용 가능성을 봅니다.",
+        "독해 근거를 표시한 기록을 덮고 같은 문단의 핵심 내용을 다시 요약하게 해 이해를 확인합니다.",
+        "서술형 수정 답안을 며칠 뒤 다른 주어와 시제로 바꾸어 작성하게 해 형태 암기를 구분합니다.",
+        "한 주 뒤에도 같은 오답 이유가 남는지 비교해 다음 복습에서 유지할 항목과 뺄 항목을 정합니다.",
+        "질문했던 문장과 비슷한 예문을 다음 과제 첫 부분에 넣어 혼자 해결되는지를 기록합니다.",
+        "본문을 외운 뒤 문장 순서를 바꾸거나 일부 표현을 가려도 의미 연결을 설명할 수 있는지 봅니다.",
+        "시험 범위 단어를 뜻만 묻지 않고 품사와 함께 문장에 넣어 쓰는 단계까지 재확인합니다.",
+        "시간 제한이 없을 때와 있을 때의 독해 근거 정확도를 비교해 속도 문제와 이해 문제를 나눕니다.",
+        "수행평가 표현을 한 번 말한 결과보다 일정 간격을 두고 다시 재현되는지 확인합니다.",
+        "완료 표시가 있는 학교 자료도 무작위 문장을 골라 해석과 문법 근거가 유지되는지 점검합니다.",
+    ]
+    evidence_records = [
+        "오답표에는 문제 번호보다 막힌 문장, 오류 원인, 고친 이유와 다음 확인 날짜를 함께 남깁니다.",
+        "독해 기록은 풀이 시간과 정답뿐 아니라 선택 근거가 있었던 문장 위치까지 적어 비교합니다.",
+        "어휘 기록을 처음 암기한 수와 재확인 때 문장에서 사용한 수로 나눠 실제 재현을 확인합니다.",
+        "서술형은 원래 답안과 수정 답안을 나란히 두고 내용·어순·동사 형태 중 달라진 부분을 표시합니다.",
+        "교과서와 프린트의 완료 여부를 따로 표시해 어느 자료에서 복습 누락이 생겼는지 확인합니다.",
+        "문법 오답은 개념명보다 정답 형태를 선택한 근거와 다른 형태가 안 되는 이유를 적습니다.",
+        "질문 목록에는 해결 여부와 함께 유사 문장을 스스로 처리한 날짜를 남겨 설명 의존도를 봅니다.",
+        "주간 계획표에는 예정 분량과 실제 완료 분량, 오래 걸린 영역을 구분해 다음 계획을 조정합니다.",
+        "시험 범위가 바뀌면 기존 계획을 지우지 않고 변경 전후 순서를 남겨 남은 분량을 다시 계산합니다.",
+        "맞힌 문제도 근거를 설명하지 못했다면 별도 표시해 다음 독해 점검에 포함합니다.",
+        "본문 학습 기록은 암기 여부와 구조 설명 여부를 나눠 변형 문제 준비 정도를 확인합니다.",
+        "수행평가 준비는 표현 정확성, 전달 순서와 제한 시간 중 막힌 조건을 분리해 남깁니다.",
+    ]
+    comparison_rules = [
+        "수업 설명을 비교할 때 사용하는 교재 이름보다 학생 답안이 다음 계획에 반영되는 과정을 묻습니다.",
+        "과제량의 많고 적음보다 단어·본문·오답마다 완료 기준이 어떻게 다른지 확인합니다.",
+        "진도 속도를 묻기 전에 중1 공백과 현재 단원을 어떤 순서로 연결하는지 살펴봅니다.",
+        "시험 대비 여부만 확인하지 않고 범위 발표 전후에 자료 우선순위가 어떻게 달라지는지 질문합니다.",
+        "피드백이 자세하다는 표현보다 오류 원인과 다음 재확인 날짜가 실제 기록에 있는지 봅니다.",
+        "소수정예 여부만 보지 않고 학생이 설명하고 고치는 시간이 수업 안에 확보되는지 확인합니다.",
+        "교과서 중심이라는 말보다 본문·프린트·서술형을 어떤 완료 기준으로 나누는지 비교합니다.",
+        "오답 관리라는 표현보다 해설 없이 다시 푸는 시점과 통과 기준이 정해져 있는지 묻습니다.",
+        "학교별 대비라는 문구보다 현재 학교 공지와 학생 자료를 실제로 대조하는 절차를 확인합니다.",
+        "상담 결과를 수준 이름으로만 남기지 않고 먼저 바꿀 행동 한 가지가 제시되는지 살펴봅니다.",
+        "정기 점검의 횟수보다 점검 결과가 다음 과제 분량과 순서에 어떻게 반영되는지 확인합니다.",
+        "시험 직전 보충보다 평소 누적 기록에서 다시 봐야 할 문장이 바로 추려지는지 비교합니다.",
+    ]
+
+    signal = choose(local, "enrichment-signal", diagnostic_signals)
+    action = choose(local, "enrichment-action", first_actions)
+    completion = choose(local, "enrichment-completion", completion_rules)
+    schedule = choose(local, "enrichment-schedule", schedule_rules)
+    question = choose(local, "enrichment-question", parent_questions)
+    delayed = choose(local, "enrichment-delayed", delayed_checks)
+    evidence_record = choose(local, "enrichment-record", evidence_records)
+    comparison = choose(local, "enrichment-comparison", comparison_rules)
+    fact_context = (
+        f"공개 자료에 기재된 {evidence}의 실제 교과서와 시험 범위는 상담 시 최신 자료로 대조합니다."
+        if schools
+        else f"{local}은 공개 중학교명이 없어 학교를 추정하지 않고 학생이 가져온 교과서와 시험 범위를 기준으로 확인합니다."
+    )
+    location_context = inline_text(row_value(row, "위치안내"))
+    schedule_context = (
+        f"{center}의 공개 위치 안내인 ‘{location_context}’도 참고해 통학 시간을 계산하되 실제 이동 동선은 상담 전에 다시 확인합니다."
+        if location_context
+        else f"{region} {district} {local}에서 통학과 다른 과목 일정을 제외한 실제 영어 복습 시간을 먼저 계산합니다."
+    )
+
+    return f'''<section class="article-section article-local-feature-section english-decision-map">
+        <h2>{esc(local)} 학생의 답안에서 시작하는 영어 점검 순서</h2>
+        <div class="article-card-grid">
+          <article class="article-card"><h3>진단 신호</h3><p>{esc(local)}에서는 {esc(signal)}부터 살펴봅니다. {esc(profile['student'])}에게 같은 기준을 적용하면 막힌 위치를 진도보다 구체적으로 나눌 수 있습니다.</p></article>
+          <article class="article-card"><h3>첫 학습 행동</h3><p>{esc(action)} {esc(fact_context)}</p></article>
+          <article class="article-card"><h3>완료 판단</h3><p>{esc(completion)} 이 결과는 {esc(center)} 상담에서 다음 주 복습량을 조정하는 질문으로 사용합니다.</p></article>
+          <article class="article-card"><h3>일정 배치</h3><p>{esc(schedule)} {esc(schedule_context)}</p></article>
+          <article class="article-card"><h3>간격을 둔 재확인</h3><p>{esc(local)} 학습 기록에서는 {esc(delayed)} {esc(evidence)} 자료의 현재 범위와 겹치는 문장부터 확인합니다.</p></article>
+          <article class="article-card"><h3>근거 기록</h3><p>{esc(evidence_record)} 이 기록을 {esc(center)}의 다음 수업 계획과 대조해 피드백이 실제 행동으로 이어지는지 봅니다.</p></article>
+          <article class="article-card"><h3>상담 비교 기준</h3><p>{esc(comparison)} {esc(region)} {esc(district)}의 일정과 {esc(local)} 학생이 확보한 복습 시간을 함께 놓고 판단합니다.</p></article>
+        </div>
+        <div class="article-closing"><p>{esc(center)}에 문의할 때는 “{esc(question)}”를 확인하고, {esc(profile['check'])}도 최근 답안과 함께 준비하면 수업 설명을 학생 상황에 맞춰 비교하기 쉽습니다.</p></div>
+      </section>'''
+
+
+def individualize_repeated_copy(markup: str, row: dict[str, str]) -> str:
+    """고정 안내 문장의 의미는 유지하면서 지역별 문장 구조로 바꿉니다."""
+    local = row_value(row, "근처 수업가능 동네")
+    center = row_value(row, "센터명") or f"{local} 학습센터"
+    replacements = {
+        "이 과정의 완료 기준은 문제 수가 아니라 학생이 근거를 말하고 비슷한 새 문장을 혼자 처리할 수 있는지로 정하는 편이 적절합니다.": f"{local}에서는 푼 문제 수로 이 단계를 끝내지 않습니다. 근거 설명과 유사 문장 해결이 모두 확인된 결과를 {center} 상담 기록의 완료 기준으로 삼습니다.",
+        "문장 구조, 단어의 문맥 의미, 지문 근거와 서술형 수정 과정을 함께 기록해야 변형 문제에도 대응할 수 있습니다.": f"{local} 학생의 변형 문제 준비 기록에는 문장 구조와 문맥 속 단어 의미를 먼저 남깁니다. 이어 지문 근거와 서술형 수정 이유를 {center}의 다음 확인 항목으로 연결합니다.",
+        "문법 적용이 약한 경우에는 이 활동을 한 번에 길게 하기보다 수업 직후와 주중으로 나눠 재현 여부를 확인합니다.": f"{local}에서 문법 적용이 막히는 학생은 긴 한 번의 복습보다 두 시점으로 나눕니다. {center} 수업 직후와 주중에 같은 구조를 다시 재현했는지 각각 기록합니다.",
+        "본문 단어뿐 아니라 변형 형태, 숙어, 유의어와 수업 중 추가된 표현까지 포함되는지 확인합니다.": f"{local}의 어휘 범위는 본문 표제어에서 끝내지 않습니다. 변형 형태·숙어·유의어와 {center} 수업에서 추가된 표현까지 포함됐는지 따로 확인합니다.",
+        "문제 수만 정하는지, 단어 재확인·본문 재독·오답 수정까지 완료 기준이 나뉘는지 살펴봅니다.": f"{local} 과제는 문제 수만 제시되는지부터 확인합니다. 단어 재현, 본문 재독과 오답 수정의 완료 조건을 {center}에서 각각 구분하는지도 함께 봅니다.",
+        "개념 설명 뒤 교과서 문장과 변형 문장에서 같은 구조를 찾아 적용하는지 살펴봅니다.": f"{local} 문법 점검에서는 개념 설명 다음의 행동을 봅니다. 교과서 문장과 변형 문장에서 같은 구조를 찾아 적용하는 과정을 {center} 상담에서 확인합니다.",
+        "주중 실제 가능한 시간에 맞춰 단어와 본문을 다시 볼 분량이 조정되는지 확인합니다.": f"{local} 학생이 주중에 실제 확보한 시간을 먼저 계산합니다. 그 범위 안에서 {center}의 단어·본문 재확인 분량이 조정되는지 살펴봅니다.",
+        "문단마다 한 문장으로 요약하고 연결어와 대명사의 관계를 표시합니다.": f"{local} 독해 기록은 문단별 한 문장 요약부터 시작합니다. 연결어와 대명사가 가리키는 대상을 {center} 수업에서 직접 표시하게 합니다.",
+        "수업 횟수와 시작 시각은 상담 시 최신 운영표를 기준으로 살펴봅니다.": f"{local}의 수업 횟수와 시작 시각은 고정값으로 단정하지 않습니다. {center} 상담 당시의 최신 운영표에서 확인합니다.",
+        "선생님의 설명 뒤 학생이 문장 구조와 정답 근거를 자신의 말로 다시 설명하는 시간이 있는지 확인합니다.": f"{local} 상담에서는 선생님 설명 다음에 학생 차례가 있는지 봅니다. 문장 구조와 정답 근거를 자기 말로 되짚는 시간을 {center} 수업에서 확인합니다.",
+        "평소 루틴이 시험 범위 발표 후 교과서·프린트·서술형 중심으로 어떻게 바뀌는지 질문합니다.": f"{local}의 평상시 영어 루틴과 시험 범위 발표 뒤 계획을 나란히 놓습니다. {center}에서 교과서·프린트·서술형의 우선순위를 어떻게 바꾸는지 질문합니다.",
+        "수업에서 발견한 오류가 다음 과제와 복습 날짜에 어떻게 반영되는지 확인합니다.": f"{local} 수업에서 찾은 오류는 그날 설명으로 끝내지 않습니다. {center}의 다음 과제와 재확인 날짜에 어떤 형태로 반영되는지를 기록합니다.",
+        "막힌 문장을 표시하고 질문한 뒤 비슷한 문장을 혼자 해결하는 단계까지 이어지는지 봅니다.": f"{local} 학생은 막힌 문장에 표시를 남기고 질문합니다. 이후 {center}에서 확인한 기준으로 비슷한 문장을 혼자 해결하는 단계까지 이어지는지 봅니다.",
+        "새 문제를 늘리기보다 틀린 문장과 근거를 해설 없이 다시 설명할 수 있는지 확인합니다.": f"{local}의 시험 직전 점검은 새 문제 추가보다 기존 오류의 재현을 먼저 봅니다. 틀린 문장과 근거를 {center}에서 해설 없이 설명할 수 있는지 확인합니다.",
+    }
+    for source, replacement in replacements.items():
+        markup = markup.replace(esc(source), esc(replacement))
+    return markup
 
 
 def build_manuscript(row: dict[str, str], profile: dict[str, str]) -> str:
@@ -183,6 +524,10 @@ def build_manuscript(row: dict[str, str], profile: dict[str, str]) -> str:
     available = "중2" in grades
     school_text = ", ".join(schools[:4]) if schools else "현재 재학 중학교"
     focus = profile["source_focus"]
+    used_notes: set[str] = set()
+
+    def note(label: str) -> str:
+        return contextual_note(row, profile, label, used_notes)
 
     introductions = [
         f"{region} {district} {local}에서 중2 영어학원을 고를 때는 문제집의 난이도보다 학교 진도와 학생의 오류가 어떻게 연결되는지 먼저 확인해야 합니다. {profile['student']}이라면 {focus}부터 점검한 뒤 교과서와 학교 자료에 적용하는 흐름이 필요합니다.",
@@ -236,20 +581,44 @@ def build_manuscript(row: dict[str, str], profile: dict[str, str]) -> str:
     ]
     domains.sort(key=lambda item: base.seed_for(CATEGORY, local, item[0]))
     domain_cards = "".join(
-        f"<article class=\"article-card\"><h3>{esc(title)}</h3><p>{esc(body)} {esc(choose(local, title, [profile['priority'], profile['rhythm']]))} {esc(contextual_note(row, profile, 'domain-' + title))}</p></article>"
+        f"<article class=\"article-card\"><h3>{esc(title)}</h3><p>{esc(body)} {esc(note('domain-' + title))}</p></article>"
         for title, body in domains
     )
 
     if schools:
         school_heading = f"{schools[0]} 등 학교 자료를 확인할 때의 기준"
-        school_intro = (
-            f"공개 센터 자료에는 {', '.join(schools)} 등이 수업 가능 학교로 기재되어 있습니다. "
-            "학교별 실제 교과서, 시험 범위와 일정은 달라질 수 있으므로 특정 출제 경향을 임의로 단정하지 않고 현재 자료를 기준으로 확인합니다."
+        listed_schools = ", ".join(schools)
+        school_intro = choose(
+            local,
+            "school-intro-listed",
+            [
+                f"공개된 {center} 자료에는 {listed_schools} 등이 수업 가능 학교로 적혀 있습니다. 실제 교과서와 시험 범위는 현재 학교 자료로 다시 확인합니다.",
+                f"{local} 센터 안내에서 확인되는 중학교는 {listed_schools} 등입니다. 학교 이름만으로 출제 방식을 예상하지 않고 학생이 가져온 교과서·프린트·시험 일정을 기준으로 계획을 세웁니다.",
+                f"수업 가능 학교 정보에는 {listed_schools} 등이 포함됩니다. 같은 지역 안에서도 교과서와 평가 일정은 다를 수 있어 상담 시 실제 범위표를 함께 확인해야 합니다.",
+                f"{center}의 공개 학교 목록에는 {listed_schools} 등이 기재되어 있습니다. 특정 학교의 출제 경향을 임의로 만들지 않고 최근 답안과 현재 학교 공지를 학습 근거로 사용합니다.",
+                f"{listed_schools} 등은 공개 센터 자료에서 확인되는 학교입니다. {local} 영어 상담에서는 학교명보다 교과서 본문, 추가 프린트와 수행평가 일정을 구분해 준비하는 것이 먼저입니다.",
+                f"공개 자료상 {listed_schools} 등이 안내되어 있지만 실제 시험 준비 범위는 학생마다 다시 확인해야 합니다. 교과서·부교재·프린트 중 무엇이 평가에 포함되는지 상담 자료에 표시합니다.",
+                f"{local}에서 참고할 수 있는 공개 학교명은 {listed_schools} 등입니다. 학교별 사실을 추정하지 않고 현재 사용하는 교재와 시험지를 기준으로 부족 영역을 나눕니다.",
+                f"센터정보에는 {listed_schools} 등이 수업 가능 학교로 기록되어 있습니다. 실제 적용에서는 학교 공지와 학생 답안을 나란히 보고 어휘·문법·독해·서술형의 우선순위를 정합니다.",
+                f"{center} 자료에서 {listed_schools} 등의 학교명을 확인할 수 있습니다. 다만 학교명이 같아도 시험 범위와 일정은 바뀔 수 있으므로 최신 자료를 상담에서 대조합니다.",
+                f"공개된 수업 가능 학교는 {listed_schools} 등이며, 이 정보는 상담 범위를 확인하는 출발점으로 사용합니다. 실제 계획은 학생이 가져온 교과서와 최근 평가 자료를 보고 결정합니다.",
+            ],
         )
     else:
         school_heading = "중학교명이 공개되지 않은 지역의 확인 기준"
-        school_intro = (
-            "공개 센터 자료에는 중학교명이 별도로 기재되어 있지 않습니다. 학교를 임의로 만들지 않고 상담 시 현재 교과서, 시험 범위, 프린트와 수행평가 일정을 확인해야 합니다."
+        school_intro = choose(
+            local,
+            "school-intro-missing",
+            [
+                f"공개된 {center} 자료에는 중학교명이 별도로 기재되어 있지 않습니다. 학교를 임의로 만들지 않고 현재 교과서와 시험 범위를 상담에서 확인합니다.",
+                f"{local} 센터정보만으로는 수업 가능 중학교를 확인할 수 없습니다. 재학 학교, 교과서, 프린트와 수행평가 일정은 상담할 때 학생 자료로 확인해야 합니다.",
+                f"공개 학교 목록이 비어 있는 지역입니다. 특정 학교명을 추정하지 않고 학생이 가져온 교과서와 최근 시험지를 기준으로 영어 학습 순서를 정합니다.",
+                f"{center} 공개 자료에는 중학교 정보가 없어 학교별 특징을 단정할 수 없습니다. 현재 사용하는 교재와 학교 공지를 준비해 실제 범위를 확인하는 것이 안전합니다.",
+                f"{local}의 수업 가능 학교명은 공개 자료에서 확인되지 않습니다. 학교 정보 대신 최근 답안, 교과서 진도와 시험 일정을 상담 근거로 사용합니다.",
+                f"중학교명이 기재되지 않았으므로 임의로 학교를 추가하지 않았습니다. 상담 시 재학 학교와 평가 자료를 확인한 뒤 교과서·문법·독해 계획을 맞춥니다.",
+                f"공개 센터정보에는 대상 중학교가 별도로 적혀 있지 않습니다. 학생의 실제 학교 자료를 바탕으로 범위와 일정, 서술형 조건을 다시 확인합니다.",
+                f"학교 목록을 확인할 수 없는 지역이므로 특정 학교의 시험 방식을 예상하지 않습니다. 현재 교과서와 프린트, 최근 오답을 준비해 시작점을 정합니다.",
+            ],
         )
     school_cards_bank = [
         ("교과서와 부교재", "시험 범위에 포함된 본문, 대화문, 추가 읽기 자료와 학교 프린트의 우선순위를 구분합니다."),
@@ -259,10 +628,12 @@ def build_manuscript(row: dict[str, str], profile: dict[str, str]) -> str:
         ("수행평가 일정", "말하기·쓰기 과제의 일정과 평가 조건은 학교 공지를 기준으로 별도 계획에 반영합니다."),
         ("시험 직전 재확인", "새 문제를 늘리기보다 틀린 문장과 근거를 해설 없이 다시 설명할 수 있는지 확인합니다."),
     ]
-    offset = base.seed_for(CATEGORY, local, "school-cards") % len(school_cards_bank)
-    school_cards = (school_cards_bank[offset:] + school_cards_bank[:offset])[:3]
+    school_cards = sorted(
+        school_cards_bank,
+        key=lambda item: base.seed_for(CATEGORY, local, "school-card", item[0]),
+    )[:3]
     school_card_html = "".join(
-        f"<article class=\"article-target-card\"><h3>{esc(title)}</h3><p>{esc(body)} {esc(contextual_note(row, profile, 'school-' + title))}</p></article>"
+        f"<article class=\"article-target-card\"><h3>{esc(title)}</h3><p>{esc(body)} {esc(note('school-' + title))}</p></article>"
         for title, body in school_cards
     )
 
@@ -292,31 +663,43 @@ def build_manuscript(row: dict[str, str], profile: dict[str, str]) -> str:
             ("04. 시험 전 압축", "단어·본문·문법·서술형의 남은 항목을 한 장의 확인표로 압축합니다."),
         ],
     ]
-    process = choose(local, "process", process_sets)
+    # 네 가지 고정 세트 중 하나를 통째로 재사용하지 않고 단계마다 독립 선택합니다.
+    # 각 단계의 조합은 4^4가지가 되어 지역 간 동일 흐름의 반복을 크게 줄입니다.
+    process = [
+        choose(local, f"process-step-{step_index}", [process_set[step_index] for process_set in process_sets])
+        for step_index in range(4)
+    ]
     process_html = "".join(
-        f"<article class=\"article-target-card\"><h3>{esc(title)}</h3><p>{esc(body)} {esc(contextual_note(row, profile, 'process-' + title))}</p></article>"
+        f"<article class=\"article-target-card\"><h3>{esc(title)}</h3><p>{esc(body)} {esc(note('process-' + title))}</p></article>"
         for title, body in process
     )
 
-    consultation_points = [
-        ("학생 설명 비율", "선생님의 설명 뒤 학생이 문장 구조와 정답 근거를 자신의 말로 다시 설명하는 시간이 있는지 확인합니다."),
-        ("과제의 완료 기준", "문제 수만 정하는지, 단어 재확인·본문 재독·오답 수정까지 완료 기준이 나뉘는지 살펴봅니다."),
-        ("피드백 기록", "수업에서 발견한 오류가 다음 과제와 복습 날짜에 어떻게 반영되는지 확인합니다."),
-        ("시험 기간 조정", "평소 루틴이 시험 범위 발표 후 교과서·프린트·서술형 중심으로 어떻게 바뀌는지 질문합니다."),
-        ("수업 외 복습", "주중 실제 가능한 시간에 맞춰 단어와 본문을 다시 볼 분량이 조정되는지 확인합니다."),
-        ("질문 처리 방식", "막힌 문장을 표시하고 질문한 뒤 비슷한 문장을 혼자 해결하는 단계까지 이어지는지 봅니다."),
-    ]
-    consultation_points.sort(key=lambda item: base.seed_for(CATEGORY, local, "consult", item[0]))
-    consult_html = "".join(
-        f"<article class=\"article-subject-card\"><h3>{esc(title)}</h3><p>{esc(body)} {esc(contextual_note(row, profile, 'consult-' + title))}</p></article>"
-        for title, body in consultation_points[:4]
-    )
-
-    availability = (
-        f"공개된 {center} 영어 가능 학년에 중2가 포함되어 있습니다. 다만 실제 반 편성과 시작일은 상담 시 다시 확인해야 합니다."
-        if available
-        else f"공개된 {center} 자료에는 영어 가능 학년이 비어 있습니다. 중2 영어 개설 여부를 임의로 단정하지 않고 상담에서 확인해야 합니다."
-    )
+    if available:
+        availability = choose(
+            local,
+            "availability-confirmed",
+            [
+                f"{center} 공개 자료의 영어 가능 학년에 중2가 포함됩니다. {local}의 실제 반 편성과 시작일은 상담 시 최신 일정으로 확인합니다.",
+                f"공개된 학년 정보에서 {center}의 중2 영어 대상을 확인할 수 있습니다. 다만 시간표와 수업 시작 가능일은 {local} 상담에서 다시 확인해야 합니다.",
+                f"{local}에 연결된 {center} 자료에는 중2 영어 가능 학년이 기재되어 있습니다. 이 표시는 개설 여부의 참고 자료이며 실제 편성은 현재 일정으로 확인합니다.",
+                f"영어 가능 학년 목록에 중2가 있는 {center}입니다. {district} {local} 학생의 수업 시간과 시작 시점은 상담할 때 별도로 맞춥니다.",
+                f"센터정보상 중2 영어가 확인되지만 반 구성과 운영 시각은 달라질 수 있습니다. {local} 상담에서 가능한 요일과 시작일을 함께 확인하세요.",
+                f"{center}의 공개 학년표에는 중2 영어가 포함되어 있습니다. 실제 수업 가능 여부는 학생 일정과 현재 반 편성을 대조해 확인합니다.",
+                f"공개 자료 기준으로 {local} 중2 영어 상담이 가능한 학년 범위에 들어갑니다. 시간표와 개강 일정은 고정 정보로 단정하지 않고 다시 확인합니다.",
+                f"{local} 페이지에 연결된 센터의 영어 가능 학년에서 중2를 확인했습니다. 수업 횟수와 시작 시각은 상담 시 최신 운영표를 기준으로 살펴봅니다.",
+            ],
+        )
+    else:
+        availability = choose(
+            local,
+            "availability-unconfirmed",
+            [
+                f"공개된 {center} 자료에는 영어 가능 학년이 적혀 있지 않습니다. {local} 중2 영어 개설 여부는 상담에서 확인해야 합니다.",
+                f"{local}에 연결된 센터정보만으로는 중2 영어 가능 학년을 확인할 수 없습니다. 실제 편성과 일정은 임의로 단정하지 않습니다.",
+                f"영어 학년 정보가 비어 있는 지역입니다. {center} 상담에서 중2 수업 여부와 시작 가능일을 먼저 확인하세요.",
+                f"공개 자료에 중2 영어 대상 여부가 기재되지 않았습니다. {district} {local}의 현재 운영 정보는 상담으로 확인해야 합니다.",
+            ],
+        )
     closing = choose(
         local,
         "closing",
@@ -328,11 +711,11 @@ def build_manuscript(row: dict[str, str], profile: dict[str, str]) -> str:
         ],
     )
 
-    return f'''<section class="shell academy-section article-main manuscript-panel">
+    return individualize_repeated_copy(f'''<section class="shell academy-section article-main manuscript-panel">
       <section class="article-hero">
         <p class="article-eyebrow">LOCAL ENGLISH STUDY GUIDE</p>
         <h2>{esc(region)} {esc(district)} {esc(local)} 중2 영어 학습 설계</h2>
-        <p class="article-intro">{esc(intro)} {esc(contextual_note(row, profile, 'opening'))}</p>
+        <p class="article-intro">{esc(intro)} {esc(note('opening'))}</p>
       </section>
       <section class="article-section article-local-feature-section">
         <h2>{esc(local)} 중2 영어에서 함께 관리할 네 영역</h2>
@@ -347,12 +730,10 @@ def build_manuscript(row: dict[str, str], profile: dict[str, str]) -> str:
         <h2>{esc(profile['source_focus'])}을 중심으로 구성한 주간 수업 흐름</h2>
         <div class="article-target-list">{process_html}</div>
       </section>
-      <section class="article-section article-local-feature-section">
-        <h2>{esc(local)} 영어 상담에서 확인할 운영 기준</h2>
-        <div class="article-subject-grid">{consult_html}</div>
-      </section>
+      {build_english_enrichment(row, profile)}
+      {build_distinctive_study_record(row, profile)}
       <section class="article-closing"><p>{esc(closing)}</p></section>
-    </section>'''
+    </section>''', row)
 
 
 def representative_for(row: dict[str, str], fallbacks: list[str]) -> str:
@@ -388,39 +769,92 @@ def body_image_for(row: dict[str, str]) -> str:
 
 def build_faqs(row: dict[str, str], profile: dict[str, str]) -> list[tuple[str, str]]:
     local = row_value(row, "근처 수업가능 동네")
+    region = row_value(row, "지역")
+    district = row_value(row, "시or구")
     title = f"{local} 중2 영어학원"
     center = row_value(row, "센터명") or f"{local} 학습센터"
     schools = split_items(row_value(row, "타깃학교\n(중)"))
     grades = split_items(row_value(row, "가능학년\n(영어)"))
+    tuition = row_value(row, "센터 교습비")
+    location_guide = inline_text(row_value(row, "위치안내"))
+    first_school = schools[0] if schools else "현재 재학 학교"
+    grade_text = ", ".join(grades)
     school_answer = (
-        f"공개 센터 자료에는 {', '.join(schools)} 등이 수업 가능 학교로 기재되어 있습니다. 실제 교과서, 시험 범위와 일정은 상담할 때 현재 학교 자료로 다시 확인해야 합니다."
+        f"공개된 {center} 자료에는 {', '.join(schools)} 등 {len(schools)}개 중학교가 기재되어 있습니다. {first_school}을 포함한 실제 교과서·시험 범위·일정은 상담할 때 최신 학교 자료로 다시 확인합니다."
         if schools
-        else "공개 센터 자료에는 중학교명이 별도로 기재되어 있지 않습니다. 학교명을 임의로 만들지 않고 상담 시 현재 교과서, 시험 범위와 학교 자료를 확인합니다."
+        else f"{local}에 연결된 공개 센터 자료에는 중학교명이 별도로 기재되어 있지 않습니다. 학교명을 임의로 만들지 않고 상담 시 현재 교과서, 시험 범위와 학교 자료를 확인합니다."
     )
     availability_answer = (
-        f"공개된 {center} 가능 학년 정보에 중2 영어가 포함되어 있습니다. 실제 시간표, 반 편성과 시작 가능일은 변동될 수 있어 상담 시 다시 확인해야 합니다."
+        f"공개된 {center} 영어 가능 학년은 {grade_text}이며 중2가 포함되어 있습니다. 실제 시간표, 반 편성과 시작 가능일은 {local} 상담에서 최신 정보로 다시 확인합니다."
         if "중2" in grades
-        else f"공개된 {center} 자료에는 영어 가능 학년이 기재되어 있지 않습니다. 중2 영어 개설 여부와 수업 일정은 상담을 통해 확인해야 합니다."
+        else (
+            f"공개된 {center} 영어 가능 학년은 {grade_text}이지만 중2 포함 여부가 확인되지 않습니다. {local} 중2 영어 개설과 일정은 상담을 통해 확인해야 합니다."
+            if grades
+            else f"공개된 {center} 자료에는 영어 가능 학년이 기재되어 있지 않습니다. {local} 중2 영어 개설 여부와 수업 일정은 상담을 통해 확인해야 합니다."
+        )
     )
-    bank = [
-        (f"{title} 상담 전에 어떤 자료를 준비하면 좋나요?", f"최근 영어 시험지, 교과서와 학교 프린트, 현재 단어장과 틀린 서술형 답안을 준비하면 좋습니다. 특히 {profile['check']}를 메모하면 상담 기준이 구체적해집니다."),
-        (f"{local} 중2 영어학원은 어떤 학생에게 맞는지 어떻게 판단하나요?", f"{profile['student']}이라면 설명 뒤 스스로 해석하고 고치는 과정이 있는지 확인하세요. {profile['priority']}"),
-        ("중2 영어 내신은 무엇부터 준비해야 하나요?", f"어휘·문법·독해·서술형 중 최근 답안에서 가장 흔들린 영역을 먼저 구분해야 합니다. 이후 {profile['rhythm']}의 흐름으로 학교 자료에 연결합니다."),
-        ("교과서 본문을 외우는 것만으로 충분한가요?", "본문을 익히는 것은 필요하지만 문장 구조, 핵심 표현, 문단 흐름과 변형 질문의 근거까지 설명할 수 있어야 합니다. 암기한 문장을 새로운 조건에 맞게 바꾸는 연습도 확인하세요."),
-        ("문법과 독해는 따로 공부해야 하나요?", "개념을 처음 정리할 때는 나눌 수 있지만 실제 내신에서는 문법이 교과서 문장과 독해 선택지에 함께 적용됩니다. 배운 구조를 지문에서 찾고 해석에 반영하는 과정이 필요합니다."),
-        ("학교별 영어 내신 자료도 확인할 수 있나요?", school_answer),
-        ("중2 영어 수강 가능 여부는 어디에서 확인하나요?", availability_answer),
-        ("서술형 오답은 어떻게 관리해야 하나요?", "철자만 다시 쓰기보다 내용 누락, 어순, 동사 형태와 문법 조건을 나눠 수정 이유를 남겨야 합니다. 며칠 뒤 해설 없이 같은 의미의 문장을 다시 작성하는지도 확인하세요."),
-        ("영어 단어는 얼마나 자주 복습해야 하나요?", "한 번에 많은 양을 외우는 기준보다 수업 당일, 주중과 시험 전처럼 간격을 두고 다시 재현할 날짜를 정하는 것이 중요합니다. 문장 속 품사와 쓰임까지 함께 확인하세요."),
-        ("중1 문법이 부족해도 중2 진도를 따라갈 수 있나요?", "현재 중2 문장을 이해하는 데 필요한 중1 개념을 찾아 짧게 복원한 뒤 바로 교과서 문장에 적용하는 방식으로 계획할 수 있습니다. 실제 보완 범위는 진단 결과로 정합니다."),
-        ("상담할 때 시간표와 교습비도 확인해야 하나요?", "네. 공개 교습비 자료와 함께 주당 횟수, 시작·종료 시각, 결석·보강 기준, 시험 기간 일정 변동을 같은 표에 적어 비교하는 것이 좋습니다."),
+
+    tails = [
+        f"이 기준은 {local} 학생의 최근 답안과 학교 일정에 맞춰 확인합니다.",
+        f"{center} 상담에서는 설명보다 실제 교재와 피드백 예시를 함께 확인하는 편이 안전합니다.",
+        f"{region} {district} {local}의 통학·복습 시간을 함께 놓고 실행 가능한 분량인지 계산합니다.",
+        f"{first_school} 자료가 있다면 정답 표시보다 틀린 문장과 수정 흔적을 준비하는 것이 좋습니다.",
+        f"{local}에서는 {profile['check']}도 같은 상담표에 적어 비교 기준을 구체화합니다.",
+        f"{profile['student']}에게 적용할 때는 완료 날짜와 재확인 결과를 함께 기록합니다.",
+        f"공개 정보만으로 단정하지 않고 {center}의 현재 운영 내용과 학생 자료를 대조합니다.",
+        f"{local} 중2 영어에서는 {profile['source_focus']}이 다른 영역과 어떻게 연결되는지도 살펴봅니다.",
     ]
-    order = sorted(bank, key=lambda item: base.seed_for(CATEGORY, local, "faq", item[0]))
-    selected = order[:5]
-    for required in (bank[0], bank[1]):
-        if required not in selected:
-            selected[-1] = required
-    return selected
+
+    def answer(label: str, core: str) -> str:
+        return f"{core} {choose(local, 'faq-tail-' + label, tails)} 이 답변은 {local} 페이지의 공개 정보 범위에서 정리했습니다."
+
+    required = [
+        (
+            f"{title} 상담 전에 어떤 영어 자료를 준비하면 좋나요?",
+            answer("materials", f"최근 영어 시험지, 교과서와 학교 프린트, 현재 단어장, 틀린 서술형 답안을 준비하세요. 특히 {profile['check']}를 메모하면 시작점을 더 구체적으로 설명할 수 있습니다."),
+        ),
+        (
+            f"{local} 중2 영어학원은 어떤 학생에게 맞는지 어떻게 판단하나요?",
+            answer("student", f"{profile['student']}이라면 설명 뒤 문장을 스스로 해석하고 고치는 과정이 있는지 확인해야 합니다. {profile['priority']}"),
+        ),
+        (
+            f"{center}에서 중2 영어 수강이 가능한가요?",
+            answer("availability", availability_answer),
+        ),
+        (
+            f"{local}의 학교별 영어 자료는 어떻게 확인하나요?",
+            answer("school", school_answer),
+        ),
+    ]
+    optional = [
+        (f"{local} 중2 영어 내신은 어느 영역부터 시작하나요?", answer("priority", f"어휘·문법·독해·서술형 중 최근 답안에서 가장 흔들린 영역을 먼저 구분하고 {profile['rhythm']}의 순서로 학교 자료에 연결합니다.")),
+        (f"{title}에서 교과서 본문 암기만 해도 충분한가요?", answer("textbook", "본문 암기는 출발점일 뿐입니다. 문장 구조, 핵심 표현, 문단 흐름과 변형 질문의 근거를 설명하고 조건을 바꾼 문장에도 적용할 수 있어야 합니다.")),
+        (f"{local} 중2 영어는 문법과 독해를 함께 관리하나요?", answer("grammar-reading", "개념을 정리할 때는 나눌 수 있지만 내신에서는 문법이 교과서 문장과 독해 선택지에 함께 쓰입니다. 배운 구조를 지문에서 찾고 해석 근거로 연결하는 과정을 확인합니다.")),
+        (f"{title} 서술형 오답은 어떻게 다시 확인하나요?", answer("writing", "철자만 고치지 않고 내용 누락, 어순, 동사 형태와 문법 조건을 나눠 수정 이유를 남깁니다. 며칠 뒤 해설 없이 같은 의미의 문장을 다시 작성하는지도 봅니다.")),
+        (f"{local} 학생의 영어 단어 복습 간격은 어떻게 정하나요?", answer("vocabulary", "한 번에 외운 양보다 수업 당일·주중·시험 전처럼 간격을 두고 다시 재현할 날짜를 정합니다. 문장 속 품사와 쓰임까지 함께 확인해야 합니다.")),
+        (f"중1 문법이 부족한 {local} 중2 학생도 현재 진도를 이어갈 수 있나요?", answer("prerequisite", "현재 중2 문장을 이해하는 데 필요한 중1 개념만 찾아 짧게 복원한 뒤 바로 교과서 문장에 적용할 수 있습니다. 실제 보완 범위는 최근 답안으로 정합니다.")),
+        (
+            f"{center} 상담에서 시간표와 교습비는 어떻게 확인하나요?",
+            answer(
+                "operation",
+                "공개 교습비 링크와 주당 횟수, 시작·종료 시각, 결석·보강 기준, 시험 기간 일정 변동을 같은 표에 적어 비교합니다."
+                if tuition
+                else "공개 교습비 링크가 확인되지 않아 비용을 임의로 적지 않습니다. 주당 횟수, 수업 시각, 결석·보강 기준과 함께 상담에서 확인합니다.",
+            ),
+        ),
+    ]
+    if location_guide:
+        optional.append(
+            (
+                f"{center} 위치와 통학 시간은 무엇을 참고하면 되나요?",
+                answer("location", f"공개 위치 안내는 ‘{location_guide}’입니다. 실제 출입구와 이동 시간은 방문 전 다시 확인하고 주중 복습 가능 시간과 함께 계산하세요."),
+            )
+        )
+    selected_optional = sorted(
+        optional,
+        key=lambda item: base.seed_for(CATEGORY, local, "faq-select", item[0]),
+    )[:3]
+    return required + selected_optional
 
 
 def build_parent_notes(row: dict[str, str], profile: dict[str, str]) -> list[str]:
@@ -440,6 +874,42 @@ def build_parent_notes(row: dict[str, str], profile: dict[str, str]) -> list[str
     ]
     notes.sort(key=lambda value: base.seed_for(CATEGORY, local, "parent", value))
     return notes[:3]
+
+
+def build_checklist(row: dict[str, str], profile: dict[str, str]) -> list[tuple[str, str]]:
+    """페이지별 사실과 학생 상황을 사용한 4개 상담 준비 항목."""
+    local = row_value(row, "근처 수업가능 동네")
+    center = row_value(row, "센터명") or f"{local} 학습센터"
+    schools = split_items(row_value(row, "타깃학교\n(중)"))
+    grades = split_items(row_value(row, "가능학년\n(영어)"))
+    tuition = row_value(row, "센터 교습비")
+    location_guide = inline_text(row_value(row, "위치안내"))
+    evidence = schools[base.seed_for(CATEGORY, local, "checklist-school") % len(schools)] if schools else "현재 재학 학교"
+
+    required = [
+        (
+            "최근 답안",
+            f"{local} 학생의 시험지에서 {profile['check']}를 확인할 수 있는 문장과 수정 흔적을 한두 개 표시합니다.",
+        ),
+        (
+            "영역 우선순위",
+            f"{profile['student']}에게 어휘·문법·독해·서술형 중 먼저 바꿀 영역을 하나 정하고 {profile['source_focus']}과의 연결을 메모합니다.",
+        ),
+    ]
+    optional = [
+        ("학교 자료", f"{evidence}의 최신 교과서, 프린트와 시험 범위를 준비하되 공개 학교 정보만으로 출제 방식을 단정하지 않습니다."),
+        ("복습 간격", f"{profile['rhythm']}이 {local} 학생의 실제 주중 일정에 들어가는지 완료 날짜까지 적어 계산합니다."),
+        ("질문 기록", f"막힌 문장을 표시해 {center} 상담에서 확인하고 비슷한 문장을 혼자 다시 풀 날짜도 정합니다."),
+        ("시험 전 전환", f"평소 누적 복습이 {local} 학교 범위 발표 뒤 교과서·프린트·서술형 중심으로 어떻게 바뀌는지 질문합니다."),
+    ]
+    if grades:
+        optional.append(("가능 학년", f"공개 영어 가능 학년 ‘{', '.join(grades)}’에 중2가 포함되는지와 현재 반 편성·시작일을 함께 확인합니다."))
+    if tuition:
+        optional.append(("교습비·시간표", f"{center}의 공개 교습비 자료와 주당 횟수, 수업 시각, 결석·보강 기준을 같은 표에서 비교합니다."))
+    if location_guide:
+        optional.append(("통학 동선", f"공개 위치 안내 ‘{location_guide}’를 참고해 이동 시간을 계산하고 실제 출입구는 방문 전에 다시 확인합니다."))
+    optional.sort(key=lambda item: base.seed_for(CATEGORY, local, "checklist", item[0]))
+    return required + optional[:2]
 
 
 def page_json_ld(
@@ -520,6 +990,7 @@ def detail_html(
     map_name: str,
     index: int,
     rows: list[dict[str, str]],
+    peer_locals: list[str],
 ) -> str:
     local = row_value(row, "근처 수업가능 동네")
     region = row_value(row, "지역")
@@ -529,6 +1000,7 @@ def detail_html(
     registration_name = row_value(row, "교육지원청명칭")
     registration_number = row_value(row, "교육지원청 등록번호")
     tuition = row_value(row, "센터 교습비")
+    location_guide = inline_text(row_value(row, "위치안내"))
     grades = split_items(row_value(row, "가능학년\n(영어)"))
     schools = split_items(row_value(row, "타깃학교\n(중)"))
     available = "중2" in grades
@@ -542,15 +1014,6 @@ def detail_html(
     parent_link = base.parent_relative_url(row)
     middle1_link = base.parent_relative_url(row, "중1영어학원")
     elementary6_link = base.parent_relative_url(row, "초6영어학원")
-    district_rows = [candidate for candidate in rows if row_value(candidate, "지역") == region and row_value(candidate, "시or구") == district]
-    if len(district_rows) > 1:
-        sibling_index = next(position for position, candidate in enumerate(district_rows) if row_value(candidate, "근처 수업가능 동네") == local)
-        previous_local = row_value(district_rows[sibling_index - 1], "근처 수업가능 동네")
-        next_local = row_value(district_rows[(sibling_index + 1) % len(district_rows)], "근처 수업가능 동네")
-    else:
-        previous_local = row_value(rows[index - 1], "근처 수업가능 동네") if index else row_value(rows[-1], "근처 수업가능 동네")
-        next_local = row_value(rows[(index + 1) % len(rows)], "근처 수업가능 동네")
-    neighbor_locals = list(dict.fromkeys([previous_local, next_local]))
     related = [
         (CATEGORY_LABEL, canonical(PARENT, CATEGORY)),
         (f"{local} 중2 수학학원", canonical(PARENT, "중2수학학원", local)),
@@ -558,12 +1021,13 @@ def detail_html(
         (f"{local} 중1 영어학원", base.parent_canonical_url(row, "중1영어학원")),
         (f"{local} 초6 영어학원", base.parent_canonical_url(row, "초6영어학원")),
     ]
-    related.extend((f"{neighbor} 중2 영어학원", canonical(PARENT, CATEGORY, neighbor)) for neighbor in neighbor_locals)
+    related.extend((f"{peer} 중2 영어학원", canonical(PARENT, CATEGORY, peer)) for peer in peer_locals)
     faqs = build_faqs(row, profile)
+    checklist = build_checklist(row, profile)
     notes = build_parent_notes(row, profile)
     schema = page_json_ld(row, description, page_url, rep_image, body_url, map_url, faqs, related)
     school_html = "".join(f"<span>{esc(school)}</span>" for school in schools) if schools else '<p class="subject-empty-note">공개 자료에 중학교명이 별도로 기재되어 있지 않아 상담 시 현재 학교와 시험 범위를 확인합니다.</p>'
-    grade_html = "".join(f"<span>{esc(grade)}</span>" for grade in grades) if grades else "<span>상담 확인</span>"
+    grade_html = "".join(f"<span>{esc(grade)}</span>" for grade in grades) if grades else "<span>상담 확인 필요</span>"
     availability_text = (
         f"공개 센터 자료의 영어 가능 학년에 중2가 포함되어 있습니다. 실제 반 편성과 일정은 {center} 상담에서 확인해야 합니다."
         if available
@@ -571,11 +1035,32 @@ def detail_html(
     )
     faq_html = "".join(f"<details><summary>{esc(question)}</summary><p>{esc(answer)}</p></details>" for question, answer in faqs)
     notes_html = "".join(f'<article class="subject-parent-note"><p>{esc(note)}</p></article>' for note in notes)
-    neighbor_links_html = "".join(
-        f'<a class="child-page-button" href="../{quote(neighbor, safe="")}/index.html">{esc(neighbor)} 중2 영어학원</a>'
-        for neighbor in neighbor_locals
+    peer_links_html = "".join(
+        f'<a class="child-page-button" href="../{quote(peer, safe="")}/index.html">{esc(peer)} 중2 영어학원</a>'
+        for peer in peer_locals
     )
     tuition_html = f'<a class="btn ghost" href="{esc(tuition)}" target="_blank" rel="noopener noreferrer">센터 교습비 자료 확인</a>' if tuition else '<span class="subject-empty-note">교습비 자료는 상담 시 확인해 주세요.</span>'
+    checklist_html = "".join(
+        f'<article class="geo-check-card"><b>{number:02d}</b><strong>{esc(label)}</strong><p>{esc(body)}</p></article>'
+        for number, (label, body) in enumerate(checklist, 1)
+    )
+    operation_cards = [
+        f'<article><span>센터</span><strong>{esc(center)}</strong><p>{esc(address) if address else "주소는 상담 시 확인해 주세요."}</p></article>',
+        f'<article><span>교육지원청 등록 정보</span><strong>{esc(registration_name) if registration_name else "상담 확인"}</strong><p>{esc(registration_number) if registration_number else "공개 자료에 등록번호가 별도로 기재되어 있지 않습니다."}</p></article>',
+    ]
+    if grades:
+        operation_cards.append(
+            f'<article><span>공개 영어 가능 학년</span><strong>{esc(", ".join(grades))}</strong><p>{esc(availability_text)}</p></article>'
+        )
+    if tuition:
+        operation_cards.append(
+            '<article><span>교습비 자료</span><strong>공개 링크 확인 가능</strong><p>수업 횟수·시간표·보강 기준과 함께 비교합니다.</p></article>'
+        )
+    if location_guide:
+        operation_cards.append(
+            f'<article><span>공개 위치 안내</span><strong>{esc(local)} 이동 기준</strong><p>{esc(location_guide)}</p></article>'
+        )
+    operation_cards_html = "".join(operation_cards)
     manuscript = build_manuscript(row, profile)
 
     return f'''{base.head_html(title, description, page_url, rep_image, schema, "../../../")}
@@ -600,21 +1085,21 @@ def detail_html(
     {manuscript}
     <section class="shell academy-section subject-local-facts reveal" aria-labelledby="local-facts-title">
       <div class="section-heading"><p class="eyebrow">VERIFIED LOCAL FACTS</p><h2 id="local-facts-title">{esc(local)} 센터 정보와 수업 확인 항목</h2><p>기존 전국학원 페이지와 공개 센터 자료에 있는 사실만 사용했으며, 기재되지 않은 학교나 운영 조건은 임의로 만들지 않았습니다.</p></div>
-      <div class="subject-fact-grid"><article><span>센터</span><strong>{esc(center)}</strong><p>{esc(address) if address else '주소는 상담 시 확인해 주세요.'}</p></article><article><span>중2 영어 가능 학년</span><strong>{'자료에 기재됨' if available else '상담 확인 필요'}</strong><p>{esc(availability_text)}</p></article><article><span>교육지원청 등록 정보</span><strong>{esc(registration_name) if registration_name else '상담 확인'}</strong><p>{esc(registration_number) if registration_number else '공개 자료에 등록번호가 별도로 기재되어 있지 않습니다.'}</p></article></div>
-      <div class="subject-school-panel"><h3>공개 자료의 중학교 안내</h3><div class="subject-school-tags">{school_html}</div></div>
+      <div class="subject-fact-grid">{operation_cards_html}</div>
+      <div class="subject-school-panel"><h3>공개 자료의 중학교 안내 · {len(schools)}개</h3><div class="subject-school-tags">{school_html}</div></div>
       <div class="subject-grade-panel"><h3>공개 자료의 영어 가능 학년</h3><div class="subject-school-tags">{grade_html}</div>{tuition_html}</div>
     </section>
     <section class="shell geo-checklist-panel reveal" aria-labelledby="checklist-title">
       <p class="eyebrow">상담 전 체크리스트</p><h2 id="checklist-title">{esc(title)} 비교 전에 적어둘 내용</h2>
-      <div class="geo-checklist-grid"><article class="geo-check-card"><b>01</b><strong>학교 자료</strong><p>최근 시험지, 교과서, 학교 프린트와 수행평가 일정을 준비합니다.</p></article><article class="geo-check-card"><b>02</b><strong>영역별 오류</strong><p>{esc(profile['check'])}를 확인합니다.</p></article><article class="geo-check-card"><b>03</b><strong>복습 간격</strong><p>{esc(profile['rhythm'])}이 실제 주간 일정에 가능한지 계산합니다.</p></article><article class="geo-check-card"><b>04</b><strong>운영 조건</strong><p>반 편성, 시간표, 결석·보강 기준과 교습비를 확인합니다.</p></article></div>
+      <div class="geo-checklist-grid">{checklist_html}</div>
     </section>
     <section class="shell academy-section local-proof-section" aria-labelledby="faq-title">
       <div class="section-heading"><p class="eyebrow">FAQ & PARENT VIEW</p><h2 id="faq-title">{esc(title)} 자주 묻는 질문과 학부모 상담 관점</h2><p>화면 질문과 답변은 JSON-LD에도 동일하게 반영했습니다. 상담 관점은 특정 성과를 보장하는 후기가 아니라 비교에 참고할 수 있도록 재구성한 예시입니다.</p></div>
       <div class="local-proof-layout"><section class="local-faq-card" aria-label="{esc(title)} 자주 묻는 질문"><div class="faq-list">{faq_html}</div></section><aside class="local-review-card" aria-label="{esc(title)} 학부모 상담 관점"><div class="review-list">{notes_html}</div></aside></div>
     </section>
     <section class="shell local-page-nav reveal" aria-labelledby="related-title">
-      <div class="section-heading"><p class="eyebrow">RELATED GUIDES</p><h2 id="related-title">{esc(local)} 및 인접 학습 페이지</h2><p>중2 과목 안내와 기존 전국학원 영어 페이지를 함께 비교할 수 있습니다.</p></div>
-      <div class="child-button-grid"><a class="child-page-button" href="../index.html">중2 영어학원 지역 목록</a><a class="child-page-button" href="../../중2수학학원/{quote(local, safe='')}/index.html">{esc(local)} 중2 수학학원</a><a class="child-page-button" href="{parent_link}">{esc(local)}학원</a><a class="child-page-button" href="{middle1_link}">{esc(local)} 중1 영어학원</a><a class="child-page-button" href="{elementary6_link}">{esc(local)} 초6 영어학원</a>{neighbor_links_html}</div>
+      <div class="section-heading"><p class="eyebrow">RELATED GUIDES</p><h2 id="related-title">{esc(local)} 중2 과목과 다른 지역 비교</h2><p>같은 동네 수학 안내와 시군구·광역권을 우선한 영어 페이지를 상호 연결했습니다.</p></div>
+      <div class="child-button-grid"><a class="child-page-button" href="../index.html">중2 영어학원 지역 목록</a><a class="child-page-button" href="../../중2수학학원/{quote(local, safe='')}/index.html">{esc(local)} 중2 수학학원</a><a class="child-page-button" href="{parent_link}">{esc(local)}학원</a><a class="child-page-button" href="{middle1_link}">{esc(local)} 중1 영어학원</a><a class="child-page-button" href="{elementary6_link}">{esc(local)} 초6 영어학원</a>{peer_links_html}</div>
     </section>
   </main>
 {base.footer_html("../../../")}
@@ -682,6 +1167,7 @@ def main() -> None:
         raise ValueError("기존 전국학원 영어 참고 페이지가 누락된 지역이 있습니다.")
     output = SITE / PARENT / CATEGORY
     output.mkdir(parents=True, exist_ok=True)
+    peer_network = build_subject_peer_network(rows)
     for index, row in enumerate(rows):
         local = row_value(row, "근처 수업가능 동네")
         image_row = image_rows.get(local, {})
@@ -689,7 +1175,16 @@ def main() -> None:
         map_name = base.map_filename(row, image_row)
         target = output / local
         target.mkdir(parents=True, exist_ok=True)
-        (target / "index.html").write_text(detail_html(row, image_row, representative, map_name, index, rows), encoding="utf-8")
+        page = detail_html(
+            row,
+            image_row,
+            representative,
+            map_name,
+            index,
+            rows,
+            peer_network[local],
+        )
+        (target / "index.html").write_text(base.clean_markup(page), encoding="utf-8")
     (output / "index.html").write_text(hub_page(rows), encoding="utf-8")
     (SITE / PARENT / "index.html").write_text(base.category_page(), encoding="utf-8")
     sitemap_urls = [(canonical(PARENT, CATEGORY), "weekly", "0.9")]
