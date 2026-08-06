@@ -1259,6 +1259,8 @@ def category_page() -> str:
         ("중2 영어학원", canonical(PARENT, "중2영어학원")),
         ("중3 수학학원", canonical(PARENT, "중3수학학원")),
         ("중3 영어학원", canonical(PARENT, "중3영어학원")),
+        ("고1 영어학원", canonical(PARENT, "고1영어학원")),
+        ("고1 수학학원", canonical(PARENT, "고1수학학원")),
     ]
     schema = collection_schema(title, description, url, [("홈", f"{DOMAIN}/"), (title, url)], items)
     return f'''{head_html(title, description, url, f"{DOMAIN}/assets/generated/academy-hero-v2.webp", schema, "../", "website")}
@@ -1277,6 +1279,8 @@ def category_page() -> str:
         <a class="subject-category-card" href="중2영어학원/index.html"><span>중학교 2학년</span><strong>중2 영어학원</strong><p>교과서·문법·독해·어휘와 서술형 준비 기준을 지역별로 확인합니다.</p><b>371개 지역 보기 →</b></a>
         <a class="subject-category-card" href="중3수학학원/index.html"><span>중학교 3학년</span><strong>중3 수학학원</strong><p>내신·서술형·누적 공백과 고교 진입 전 수학 준비 기준을 지역별로 확인합니다.</p><b>371개 지역 보기 →</b></a>
         <a class="subject-category-card" href="중3영어학원/index.html"><span>중학교 3학년</span><strong>중3 영어학원</strong><p>교과서 내신, 누적 어휘·문법·독해와 고교 진입 전 영어 준비 기준을 지역별로 확인합니다.</p><b>371개 지역 보기 →</b></a>
+        <a class="subject-category-card" href="고1영어학원/index.html"><span>고등학교 1학년</span><strong>고1 영어학원</strong><p>고교 첫 내신 적응, 모의고사, 어휘·구문·독해와 서술형·시간 관리 기준을 지역별로 확인합니다.</p><b>371개 지역 보기 →</b></a>
+        <a class="subject-category-card" href="고1수학학원/index.html"><span>고등학교 1학년</span><strong>고1 수학학원</strong><p>고교 첫 내신 적응, 공통수학 개념 연결, 풀이·서술형·오답·모의평가와 시간 관리 기준을 지역별로 확인합니다.</p><b>371개 지역 보기 →</b></a>
       </div>
     </section>
   </main>
