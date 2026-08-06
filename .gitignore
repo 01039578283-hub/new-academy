@@ -5,6 +5,8 @@ yarn-debug.log*
 yarn-error.log*
 *.tmp
 *.bak
+__pycache__/
+*.py[cod]
 __generate_*.py
 
 .vercel

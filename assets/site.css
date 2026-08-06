@@ -2011,3 +2011,411 @@ h3 {
     width: 100%;
   }
 }
+
+/* Subject-first academy directory */
+.top-nav {
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.top-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.subject-category-section,
+.subject-directory,
+.subject-hub-faq,
+.subject-local-facts {
+  margin-top: 34px;
+}
+
+.subject-category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.subject-category-card {
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: clamp(22px, 4vw, 34px);
+  border: 1px solid rgba(125, 247, 212, 0.28);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 92% 8%, rgba(125, 247, 212, 0.18), transparent 12rem),
+    linear-gradient(145deg, rgba(17, 34, 62, 0.96), rgba(8, 22, 40, 0.92));
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.subject-category-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--mint);
+}
+
+.subject-category-card span,
+.subject-category-card b {
+  color: var(--mint);
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+}
+
+.subject-category-card strong {
+  font-size: clamp(1.55rem, 3vw, 2.15rem);
+  letter-spacing: -0.045em;
+}
+
+.subject-category-card p {
+  margin: 0;
+  color: var(--soft);
+}
+
+.subject-search-box {
+  margin: 24px 0 30px;
+  padding: 18px;
+  display: grid;
+  grid-template-columns: auto minmax(220px, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.subject-search-box label {
+  font-weight: 900;
+}
+
+.subject-search-box input {
+  width: 100%;
+  min-height: 50px;
+  padding: 0 16px;
+  color: var(--ink);
+  border: 1px solid rgba(164, 196, 255, 0.24);
+  border-radius: 15px;
+  outline: none;
+  background: rgba(6, 17, 31, 0.82);
+  font: inherit;
+}
+
+.subject-search-box input:focus {
+  border-color: var(--mint);
+  box-shadow: 0 0 0 4px rgba(125, 247, 212, 0.12);
+}
+
+.subject-search-box p {
+  margin: 0;
+  color: var(--mint);
+  font-size: 0.86rem;
+  font-weight: 850;
+  white-space: nowrap;
+}
+
+.subject-region-list {
+  display: grid;
+  gap: 14px;
+}
+
+.subject-region-group {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: rgba(7, 20, 38, 0.74);
+}
+
+.subject-region-group[hidden],
+.subject-district-group[hidden],
+.subject-town-card[hidden] {
+  display: none !important;
+}
+
+.subject-region-group > summary {
+  min-height: 72px;
+  padding: 18px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  cursor: pointer;
+  list-style: none;
+  font-size: 1.15rem;
+  font-weight: 950;
+}
+
+.subject-region-group > summary::-webkit-details-marker {
+  display: none;
+}
+
+.subject-region-group > summary::after {
+  content: "+";
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  color: #06111f;
+  border-radius: 50%;
+  background: var(--mint);
+}
+
+.subject-region-group[open] > summary::after {
+  content: "−";
+}
+
+.subject-region-group > summary b {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.subject-region-body {
+  padding: 0 18px 20px;
+  display: grid;
+  gap: 18px;
+}
+
+.subject-district-group {
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.subject-district-group h3 {
+  margin-bottom: 12px;
+  font-size: 1.05rem;
+}
+
+.subject-district-group h3 small {
+  margin-left: 6px;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.subject-town-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.subject-town-card {
+  min-height: 78px;
+  padding: 14px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+  border: 1px solid rgba(164, 196, 255, 0.16);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.045);
+  transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.subject-town-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(125, 247, 212, 0.62);
+  background: rgba(125, 247, 212, 0.09);
+}
+
+.subject-town-card strong {
+  font-size: 1rem;
+}
+
+.subject-town-card span {
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+.subject-detail-hero .stat-pill strong {
+  font-size: clamp(1.35rem, 4vw, 2.4rem);
+}
+
+.subject-media {
+  margin-top: 28px;
+}
+
+.subject-answer-panel {
+  margin-top: 30px;
+}
+
+.manuscript-panel {
+  overflow: hidden;
+}
+
+.subject-fact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.subject-fact-grid article,
+.subject-school-panel,
+.subject-grade-panel,
+.subject-parent-note {
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.subject-fact-grid span {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--mint);
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+}
+
+.subject-fact-grid strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1.05rem;
+}
+
+.subject-fact-grid p,
+.subject-parent-note p {
+  margin: 0;
+  color: var(--soft);
+}
+
+.subject-school-panel,
+.subject-grade-panel {
+  margin-top: 14px;
+}
+
+.subject-school-panel h3,
+.subject-grade-panel h3 {
+  margin-bottom: 12px;
+}
+
+.subject-school-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.subject-school-tags span {
+  padding: 8px 12px;
+  color: var(--soft);
+  border: 1px solid rgba(125, 247, 212, 0.22);
+  border-radius: 999px;
+  background: rgba(125, 247, 212, 0.07);
+  font-size: 0.84rem;
+  font-weight: 800;
+}
+
+.subject-grade-panel .btn {
+  margin-top: 16px;
+}
+
+.subject-empty-note {
+  margin: 0;
+  color: var(--muted);
+}
+
+.subject-parent-note + .subject-parent-note {
+  margin-top: 10px;
+}
+
+.subject-parent-note::before {
+  content: "상담 관점";
+  display: block;
+  margin-bottom: 8px;
+  color: var(--mint);
+  font-size: 0.72rem;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 900px) {
+  .subject-category-grid,
+  .subject-fact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .subject-town-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .subject-search-box {
+    grid-template-columns: 1fr;
+  }
+
+  .subject-search-box p {
+    white-space: normal;
+  }
+}
+
+@media (max-width: 560px) {
+  .top-nav {
+    justify-content: flex-start;
+    overscroll-behavior-inline: contain;
+  }
+
+  .top-nav a {
+    flex: 0 0 auto;
+    min-width: max-content;
+    padding-inline: 13px;
+  }
+
+  .subject-category-card {
+    min-height: 210px;
+    border-radius: 22px;
+  }
+
+  .subject-directory,
+  .subject-local-facts,
+  .subject-hub-faq {
+    padding: 20px;
+    border-radius: 24px;
+  }
+
+  .subject-search-box {
+    padding: 14px;
+    border-radius: 18px;
+  }
+
+  .subject-region-group {
+    border-radius: 19px;
+  }
+
+  .subject-region-group > summary {
+    min-height: 64px;
+    padding: 15px;
+  }
+
+  .subject-region-body {
+    padding: 0 12px 14px;
+  }
+
+  .subject-town-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .subject-town-card {
+    min-height: 72px;
+    padding: 12px;
+    border-radius: 14px;
+  }
+
+  .subject-town-card strong {
+    font-size: 0.94rem;
+  }
+
+  .subject-town-card span {
+    font-size: 0.7rem;
+  }
+
+  .subject-fact-grid article,
+  .subject-school-panel,
+  .subject-grade-panel,
+  .subject-parent-note {
+    padding: 16px;
+    border-radius: 17px;
+  }
+}
