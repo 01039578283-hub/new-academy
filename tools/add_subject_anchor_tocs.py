@@ -4,8 +4,10 @@
 Only regional detail pages directly below the eight ``과목별학원`` category
 folders are targeted. Category hubs and the top-level subject hub remain
 untouched. Existing H2 IDs and visible H2 text are reused, with one stable ID
-added to the lead manuscript heading. Visible copy, metadata, images, and
-JSON-LD are not rewritten.
+added to the lead manuscript heading. Visible copy, metadata, image content,
+and JSON-LD are not rewritten. Intrinsic dimensions are added to the two
+visible local images so lazy loading cannot move an anchor target after a
+visitor clicks the table of contents.
 
 Run this idempotent postprocessor again after regenerating subject pages.
 """
@@ -18,6 +20,7 @@ import re
 import sys
 from collections import Counter
 from dataclasses import dataclass
+from functools import lru_cache
 from pathlib import Path
 
 
@@ -90,6 +93,29 @@ TOC_LINK_RE = re.compile(
     r'<span class="subject-page-toc-text">(?P<label>.*?)</span>\s*</a>',
     re.IGNORECASE | re.DOTALL,
 )
+IMG_RE = re.compile(r"<img\b[^>]*>", re.IGNORECASE)
+SRC_RE = re.compile(r'\bsrc\s*=\s*(["\'])(?P<src>[^"\']+)\1', re.IGNORECASE)
+WIDTH_RE = re.compile(r'\bwidth\s*=\s*(["\'])(?P<value>\d+)\1', re.IGNORECASE)
+HEIGHT_RE = re.compile(r'\bheight\s*=\s*(["\'])(?P<value>\d+)\1', re.IGNORECASE)
+MEDIA_PREFIXES = (
+    "../../../assets/centers/common/",
+    "../../../assets/maps/",
+)
+JPEG_SOF_MARKERS = {
+    0xC0,
+    0xC1,
+    0xC2,
+    0xC3,
+    0xC5,
+    0xC6,
+    0xC7,
+    0xC9,
+    0xCA,
+    0xCB,
+    0xCD,
+    0xCE,
+    0xCF,
+}
 
 
 @dataclass(frozen=True)
@@ -110,6 +136,97 @@ def detect_newline(source: str) -> str:
             raise ValueError("Mixed newline styles")
         return "\r\n"
     return "\n"
+
+
+@lru_cache(maxsize=None)
+def image_dimensions(path: Path) -> tuple[int, int]:
+    data = path.read_bytes()
+    if data.startswith(b"\x89PNG\r\n\x1a\n"):
+        if len(data) < 24:
+            raise ValueError(f"PNG dimensions not found: {path.relative_to(ROOT)}")
+        width = int.from_bytes(data[16:20], "big")
+        height = int.from_bytes(data[20:24], "big")
+        if width <= 0 or height <= 0:
+            raise ValueError(f"Invalid PNG dimensions: {path.relative_to(ROOT)}")
+        return width, height
+    if not data.startswith(b"\xff\xd8"):
+        raise ValueError(f"Unsupported image format: {path.relative_to(ROOT)}")
+    offset = 2
+    while offset < len(data):
+        while offset < len(data) and data[offset] != 0xFF:
+            offset += 1
+        while offset < len(data) and data[offset] == 0xFF:
+            offset += 1
+        if offset >= len(data):
+            break
+        marker = data[offset]
+        offset += 1
+        if marker in {0x01, 0xD8, 0xD9} or 0xD0 <= marker <= 0xD7:
+            continue
+        if offset + 2 > len(data):
+            break
+        segment_length = int.from_bytes(data[offset : offset + 2], "big")
+        if segment_length < 2 or offset + segment_length > len(data):
+            break
+        if marker in JPEG_SOF_MARKERS:
+            if segment_length < 7:
+                break
+            height = int.from_bytes(data[offset + 3 : offset + 5], "big")
+            width = int.from_bytes(data[offset + 5 : offset + 7], "big")
+            if width <= 0 or height <= 0:
+                break
+            return width, height
+        offset += segment_length
+    raise ValueError(f"JPEG dimensions not found: {path.relative_to(ROOT)}")
+
+
+def media_asset_path(src: str) -> Path | None:
+    if not src.startswith(MEDIA_PREFIXES):
+        return None
+    relative = src.removeprefix("../../../")
+    path = ROOT / Path(relative)
+    if not path.is_file():
+        raise ValueError(f"Local image is missing: {relative}")
+    return path
+
+
+def ensure_media_dimensions(source: str) -> str:
+    replacements: list[tuple[int, int, str]] = []
+    matched = 0
+    for image in IMG_RE.finditer(source):
+        tag = image.group(0)
+        src_match = SRC_RE.search(tag)
+        if not src_match:
+            continue
+        asset = media_asset_path(src_match.group("src"))
+        if asset is None:
+            continue
+        matched += 1
+        width, height = image_dimensions(asset)
+        width_match = WIDTH_RE.search(tag)
+        height_match = HEIGHT_RE.search(tag)
+        if width_match or height_match:
+            actual = (
+                int(width_match.group("value")) if width_match else None,
+                int(height_match.group("value")) if height_match else None,
+            )
+            if actual != (width, height):
+                raise ValueError(
+                    f"Intrinsic dimensions for {src_match.group('src')} are "
+                    f"{actual}, expected {(width, height)}"
+                )
+            continue
+        closing = " />" if tag.endswith("/>") else ">"
+        trim = 2 if tag.endswith("/>") else 1
+        replacement = (
+            tag[:-trim] + f' width="{width}" height="{height}"' + closing
+        )
+        replacements.append((image.start(), image.end(), replacement))
+    if matched != 2:
+        raise ValueError(f"Visible local image count is {matched}, expected 2")
+    for start, end, replacement in reversed(replacements):
+        source = source[:start] + replacement + source[end:]
+    return source
 
 
 def detail_pages() -> list[Path]:
@@ -257,6 +374,7 @@ def render_page(original: str) -> tuple[str, int]:
     source = TOC_BLOCK_RE.sub("", original, count=1)
     newline = detect_newline(source)
     source = ensure_style_link(source, newline)
+    source = ensure_media_dimensions(source)
     source = ensure_learning_guide_target(source)
     targets = select_targets(source)
     answer_sections = list(ANSWER_SECTION_RE.finditer(source))
