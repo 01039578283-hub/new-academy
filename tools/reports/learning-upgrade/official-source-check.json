@@ -1,0 +1,128 @@
+{
+  "verifiedAtUtc": "2026-09-11T15:52:35.955221+00:00",
+  "pages": [
+    {
+      "url": "https://www.wawacenter.com/brand/wawacenter",
+      "status": 200,
+      "sha256": "f2b480289c0f8c87c37895c865b43f0270a69f721ab4e5d181ae567cb4e5fb8f"
+    },
+    {
+      "url": "https://www.wawacenter.com/intro/coachingSystem",
+      "status": 200,
+      "sha256": "a9ad7a039405ec0943582a5c56acc888c770be1cd33e701d9d71f432cb24584b"
+    },
+    {
+      "url": "https://www.wawacenter.com/intro/AISystem",
+      "status": 200,
+      "sha256": "1da273759c958fc248bc58adff43b69ce25758a8f949ca0d82dc56ab9a5fddf4"
+    }
+  ],
+  "assets": [
+    {
+      "file": "brand-learning.png",
+      "source": "https://www.wawacenter.com/assets/img/Main_CD_wawa.png",
+      "localHashMatches": true,
+      "linkedFromOfficialPage": true,
+      "remoteSha256": "7a3a8813a8d10cb80c59131d2e56f8fffed6ee7664ad846ac36af3c523c8043a",
+      "originalBytesMatch": true,
+      "passed": true
+    },
+    {
+      "file": "learning-space.png",
+      "source": "https://www.wawacenter.com/assets/img/system_03.png",
+      "localHashMatches": true,
+      "linkedFromOfficialPage": true,
+      "remoteSha256": "1a1a07040f2dd073f1e4bbf1ce4686809b822a3b586d814ebe6b0515220dc348",
+      "originalBytesMatch": true,
+      "passed": true
+    },
+    {
+      "file": "teacher-coaching.png",
+      "source": "https://www.wawacenter.com/assets/img/system_04.png",
+      "localHashMatches": true,
+      "linkedFromOfficialPage": true,
+      "remoteSha256": "6c3e9f344f641df301afc7758ef22d26a01b8577173b7b563cd8b29af1f0b24c",
+      "originalBytesMatch": true,
+      "passed": true
+    },
+    {
+      "file": "four-c.png",
+      "source": "https://www.wawacenter.com/assets/img/system_05.png",
+      "localHashMatches": true,
+      "linkedFromOfficialPage": true,
+      "remoteSha256": "2fc46d9c9ab87684d6671f0622885628a0801f981da89aedbdf1663f06324897",
+      "originalBytesMatch": true,
+      "passed": true
+    },
+    {
+      "file": "learning-planner.png",
+      "source": "https://www.wawacenter.com/assets/img/system_06_01.png",
+      "localHashMatches": true,
+      "linkedFromOfficialPage": true,
+      "remoteSha256": "6f34fd1f4acbd98215b2af5b967d2d0033a5dcaf9fa52ba90c2e4c474d39275f",
+      "originalBytesMatch": true,
+      "passed": true
+    },
+    {
+      "file": "ai-english.png",
+      "source": "https://www.wawacenter.com/assets/img/ais_step02.png",
+      "localHashMatches": true,
+      "linkedFromOfficialPage": true,
+      "remoteSha256": "9b42c432e8582ebbf3fba7384163d3190d32cccbe04c08bb4625be75f500e6ab",
+      "originalBytesMatch": true,
+      "passed": true
+    },
+    {
+      "file": "ai-math.png",
+      "source": "https://www.wawacenter.com/assets/img/ais_math_content02.png",
+      "localHashMatches": true,
+      "linkedFromOfficialPage": true,
+      "remoteSha256": "7cde3b0a9c26c977a03c158733c3b5c3ec8cda67c58820a653fd459bc8d0e743",
+      "originalBytesMatch": true,
+      "passed": true
+    },
+    {
+      "file": "ai-korean.png",
+      "source": "https://www.wawacenter.com/assets/img/ais_kor_content03.png",
+      "localHashMatches": true,
+      "linkedFromOfficialPage": true,
+      "remoteSha256": "79b07391ccfa14c70bb35ee3ff6eb3eb5e842b9f7bd58c06071b3ee0e0ea3c3e",
+      "originalBytesMatch": true,
+      "passed": true
+    },
+    {
+      "file": "ai-reading.png",
+      "source": "https://www.wawacenter.com/assets/img/ais_read_portfolio.png",
+      "localHashMatches": true,
+      "linkedFromOfficialPage": true,
+      "remoteSha256": "ee4a77bef0d90b630992f61896f698d0f4775bab2feb804e761630415912d915",
+      "originalBytesMatch": true,
+      "passed": true
+    },
+    {
+      "file": "video-student.jpg",
+      "source": "https://www.youtube.com/watch?v=avpJfW7eIV0",
+      "localHashMatches": true,
+      "linkedFromOfficialPage": true,
+      "thumbnailBytes": 11570,
+      "passed": true
+    },
+    {
+      "file": "video-coaching.jpg",
+      "source": "https://www.youtube.com/watch?v=f_skFu40U04",
+      "localHashMatches": true,
+      "linkedFromOfficialPage": true,
+      "thumbnailBytes": 11070,
+      "passed": true
+    },
+    {
+      "file": "video-exam.jpg",
+      "source": "https://www.youtube.com/watch?v=UIXUaBZdNXU",
+      "localHashMatches": true,
+      "linkedFromOfficialPage": true,
+      "thumbnailBytes": 8743,
+      "passed": true
+    }
+  ],
+  "passed": true
+}

@@ -1,0 +1,4821 @@
+{
+  "baseline": "cde2db79073bddb85cc1441d3de2a636a8b4c72d",
+  "pages": [
+    {
+      "path": "index.html",
+      "mode": "home",
+      "title": "와와센터 | 영어·수학·국어 학습코칭과 지역별 학원 안내",
+      "h1": "영어·수학·국어 학습코칭, 막힌 지점부터 풀어갑니다",
+      "characters": 3038,
+      "faqs": 5,
+      "internalLinks": 38
+    },
+    {
+      "path": "학습가이드/index.html",
+      "mode": "guide",
+      "title": "학습가이드 | 시험 준비·플래너·오답 기록과 학부모 상담",
+      "h1": "계획·오답·시험 준비, 짧은 기록부터 시작하세요",
+      "characters": 2602,
+      "faqs": 4,
+      "internalLinks": 14
+    },
+    {
+      "path": "상담문의/index.html",
+      "mode": "contact",
+      "title": "학습 상담문의 | 학년·지역·과목별 준비와 확인 사항",
+      "h1": "학습 상담을 준비하고 필요한 내용을 문의하세요",
+      "characters": 1445,
+      "faqs": 4,
+      "internalLinks": 10
+    },
+    {
+      "path": "학습코칭/index.html",
+      "mode": "coaching",
+      "title": "와와 학습코칭·AI 학습 | 4C 관리와 과목별 활용 안내",
+      "h1": "학습코칭과 AI, 어떻게 공부에 활용하나요?",
+      "characters": 3598,
+      "faqs": 5,
+      "internalLinks": 21
+    },
+    {
+      "path": "전국학원/index.html",
+      "mode": "hub",
+      "title": "전국학원 | 와와센터",
+      "h1": "전국학원 찾기",
+      "characters": 6889,
+      "faqs": 7,
+      "internalLinks": 397
+    },
+    {
+      "path": "과목별학원/index.html",
+      "mode": "hub",
+      "title": "과목별학원 | 와와센터",
+      "h1": "과목별학원",
+      "characters": 3499,
+      "faqs": 4,
+      "internalLinks": 28
+    },
+    {
+      "path": "과목별학원/고1영어학원/index.html",
+      "mode": "hub",
+      "title": "고1 영어학원 지역별 안내 | 와와센터",
+      "h1": "고1 영어학원",
+      "characters": 10027,
+      "faqs": 7,
+      "internalLinks": 384
+    },
+    {
+      "path": "과목별학원/고1수학학원/index.html",
+      "mode": "hub",
+      "title": "고1 수학학원 지역별 안내 | 와와센터",
+      "h1": "고1 수학학원",
+      "characters": 10048,
+      "faqs": 7,
+      "internalLinks": 384
+    },
+    {
+      "path": "과목별학원/고2영어학원/index.html",
+      "mode": "hub",
+      "title": "고2 영어학원 지역별 안내 | 와와센터",
+      "h1": "고2 영어학원",
+      "characters": 10047,
+      "faqs": 7,
+      "internalLinks": 384
+    },
+    {
+      "path": "과목별학원/고2수학학원/index.html",
+      "mode": "hub",
+      "title": "고2 수학학원 지역별 안내 | 와와센터",
+      "h1": "고2 수학학원",
+      "characters": 10100,
+      "faqs": 7,
+      "internalLinks": 384
+    },
+    {
+      "path": "과목별학원/중2영어학원/index.html",
+      "mode": "hub",
+      "title": "중2 영어학원 지역별 안내 | 와와센터",
+      "h1": "중2 영어학원",
+      "characters": 10078,
+      "faqs": 7,
+      "internalLinks": 384
+    },
+    {
+      "path": "과목별학원/중2수학학원/index.html",
+      "mode": "hub",
+      "title": "중2 수학학원 지역별 안내 | 와와센터",
+      "h1": "중2 수학학원",
+      "characters": 10036,
+      "faqs": 7,
+      "internalLinks": 384
+    },
+    {
+      "path": "과목별학원/중3영어학원/index.html",
+      "mode": "hub",
+      "title": "중3 영어학원 지역별 안내 | 와와센터",
+      "h1": "중3 영어학원",
+      "characters": 10165,
+      "faqs": 7,
+      "internalLinks": 384
+    },
+    {
+      "path": "과목별학원/중3수학학원/index.html",
+      "mode": "hub",
+      "title": "중3 수학학원 지역별 안내 | 와와센터",
+      "h1": "중3 수학학원",
+      "characters": 10087,
+      "faqs": 7,
+      "internalLinks": 384
+    },
+    {
+      "path": "전국학원/강원/index.html",
+      "mode": "region",
+      "title": "강원 학원 | 와와센터",
+      "h1": "강원 학원 찾기",
+      "characters": 1195,
+      "faqs": 2,
+      "internalLinks": 27
+    },
+    {
+      "path": "전국학원/경기/index.html",
+      "mode": "region",
+      "title": "경기 학원 | 와와센터",
+      "h1": "경기 학원 찾기",
+      "characters": 3794,
+      "faqs": 2,
+      "internalLinks": 219
+    },
+    {
+      "path": "전국학원/경상/index.html",
+      "mode": "region",
+      "title": "경상 학원 | 와와센터",
+      "h1": "경상 학원 찾기",
+      "characters": 1363,
+      "faqs": 2,
+      "internalLinks": 37
+    },
+    {
+      "path": "전국학원/광주/index.html",
+      "mode": "region",
+      "title": "광주 학원 | 와와센터",
+      "h1": "광주 학원 찾기",
+      "characters": 1225,
+      "faqs": 2,
+      "internalLinks": 31
+    },
+    {
+      "path": "전국학원/대구/index.html",
+      "mode": "region",
+      "title": "대구 학원 | 와와센터",
+      "h1": "대구 학원 찾기",
+      "characters": 1597,
+      "faqs": 2,
+      "internalLinks": 57
+    },
+    {
+      "path": "전국학원/대전/index.html",
+      "mode": "region",
+      "title": "대전 학원 | 와와센터",
+      "h1": "대전 학원 찾기",
+      "characters": 1330,
+      "faqs": 2,
+      "internalLinks": 36
+    },
+    {
+      "path": "전국학원/부산/index.html",
+      "mode": "region",
+      "title": "부산 학원 | 와와센터",
+      "h1": "부산 학원 찾기",
+      "characters": 1180,
+      "faqs": 2,
+      "internalLinks": 25
+    },
+    {
+      "path": "전국학원/서울/index.html",
+      "mode": "region",
+      "title": "서울 학원 | 와와센터",
+      "h1": "서울 학원 찾기",
+      "characters": 2198,
+      "faqs": 2,
+      "internalLinks": 82
+    },
+    {
+      "path": "전국학원/울산/index.html",
+      "mode": "region",
+      "title": "울산 학원 | 와와센터",
+      "h1": "울산 학원 찾기",
+      "characters": 1165,
+      "faqs": 2,
+      "internalLinks": 25
+    },
+    {
+      "path": "전국학원/인천/index.html",
+      "mode": "region",
+      "title": "인천 학원 | 와와센터",
+      "h1": "인천 학원 찾기",
+      "characters": 1303,
+      "faqs": 2,
+      "internalLinks": 33
+    },
+    {
+      "path": "전국학원/전라/index.html",
+      "mode": "region",
+      "title": "전라 학원 | 와와센터",
+      "h1": "전라 학원 찾기",
+      "characters": 1100,
+      "faqs": 2,
+      "internalLinks": 20
+    },
+    {
+      "path": "전국학원/제주/index.html",
+      "mode": "region",
+      "title": "제주 학원 | 와와센터",
+      "h1": "제주 학원 찾기",
+      "characters": 947,
+      "faqs": 2,
+      "internalLinks": 13
+    },
+    {
+      "path": "전국학원/충청/index.html",
+      "mode": "region",
+      "title": "충청 학원 | 와와센터",
+      "h1": "충청 학원 찾기",
+      "characters": 1518,
+      "faqs": 2,
+      "internalLinks": 47
+    }
+  ],
+  "totalPages": 27,
+  "preservedHtml": 7125,
+  "visibleFaq": 111,
+  "uniqueInternalDestinations": 4035,
+  "checks": 1067,
+  "passed": 1067,
+  "failures": [],
+  "details": [
+    {
+      "check": "HEAD unchanged and correct repository",
+      "passed": true
+    },
+    {
+      "check": "No changes staged for deployment",
+      "passed": true
+    },
+    {
+      "check": "Tracked changes are strictly in scope",
+      "passed": true
+    },
+    {
+      "check": "Original HTML inventory",
+      "passed": true
+    },
+    {
+      "check": "All 7125 non-target HTML unchanged",
+      "passed": true
+    },
+    {
+      "check": "Shared CSS and JS untouched",
+      "passed": true
+    },
+    {
+      "check": "Private editorial tools excluded from deployment",
+      "passed": true
+    },
+    {
+      "check": "Legacy image files unchanged",
+      "passed": true
+    },
+    {
+      "check": "index.html: one H1 and title",
+      "passed": true
+    },
+    {
+      "check": "index.html: renamed grouping has correct Korean particles",
+      "passed": true
+    },
+    {
+      "check": "index.html: one canonical and description",
+      "passed": true
+    },
+    {
+      "check": "index.html: canonical and OG URL agree",
+      "passed": true
+    },
+    {
+      "check": "index.html: title and social title agree",
+      "passed": true
+    },
+    {
+      "check": "index.html: description and social description agree",
+      "passed": true
+    },
+    {
+      "check": "index.html: indexable",
+      "passed": true
+    },
+    {
+      "check": "index.html: unique HTML IDs",
+      "passed": true
+    },
+    {
+      "check": "index.html: no nested anchors or headings",
+      "passed": true
+    },
+    {
+      "check": "index.html: six static menu destinations",
+      "passed": true
+    },
+    {
+      "check": "index.html: scoped mobile stylesheet once",
+      "passed": true
+    },
+    {
+      "check": "index.html: no heavy video embed",
+      "passed": true
+    },
+    {
+      "check": "index.html: unique top-level schema entities",
+      "passed": true
+    },
+    {
+      "check": "index.html: WebPage metadata matches body",
+      "passed": true
+    },
+    {
+      "check": "index.html: hasPart study-start",
+      "passed": true
+    },
+    {
+      "check": "index.html: hasPart subject-paths",
+      "passed": true
+    },
+    {
+      "check": "index.html: hasPart coaching-outline",
+      "passed": true
+    },
+    {
+      "check": "index.html: hasPart learning-space",
+      "passed": true
+    },
+    {
+      "check": "index.html: hasPart official-videos",
+      "passed": true
+    },
+    {
+      "check": "index.html: hasPart region-paths",
+      "passed": true
+    },
+    {
+      "check": "index.html: hasPart faq",
+      "passed": true
+    },
+    {
+      "check": "index.html: FAQ display/schema exact match",
+      "passed": true
+    },
+    {
+      "check": "index.html: nonempty FAQ",
+      "passed": true
+    },
+    {
+      "check": "index.html: no unsupported base opening hours",
+      "passed": true
+    },
+    {
+      "check": "index.html: all internal links and fragments resolve",
+      "passed": true
+    },
+    {
+      "check": "index.html: local asset assets/site.css",
+      "passed": true
+    },
+    {
+      "check": "index.html: local asset assets/learning-upgrade.css",
+      "passed": true
+    },
+    {
+      "check": "index.html: local asset assets/official-learning/teacher-coaching.png",
+      "passed": true
+    },
+    {
+      "check": "index.html: official image dimensions and ALT",
+      "passed": true
+    },
+    {
+      "check": "index.html: image not hidden",
+      "passed": true
+    },
+    {
+      "check": "index.html: local asset assets/official-learning/learning-space.png",
+      "passed": true
+    },
+    {
+      "check": "index.html: official image dimensions and ALT",
+      "passed": true
+    },
+    {
+      "check": "index.html: image not hidden",
+      "passed": true
+    },
+    {
+      "check": "index.html: local asset assets/official-learning/video-student.jpg",
+      "passed": true
+    },
+    {
+      "check": "index.html: official image dimensions and ALT",
+      "passed": true
+    },
+    {
+      "check": "index.html: image not hidden",
+      "passed": true
+    },
+    {
+      "check": "index.html: local asset assets/official-learning/video-coaching.jpg",
+      "passed": true
+    },
+    {
+      "check": "index.html: official image dimensions and ALT",
+      "passed": true
+    },
+    {
+      "check": "index.html: image not hidden",
+      "passed": true
+    },
+    {
+      "check": "index.html: local asset assets/official-learning/video-exam.jpg",
+      "passed": true
+    },
+    {
+      "check": "index.html: official image dimensions and ALT",
+      "passed": true
+    },
+    {
+      "check": "index.html: image not hidden",
+      "passed": true
+    },
+    {
+      "check": "index.html: local asset assets/site.js",
+      "passed": true
+    },
+    {
+      "check": "index.html: canonical preserved",
+      "passed": true
+    },
+    {
+      "check": "index.html: OG image preserved",
+      "passed": true
+    },
+    {
+      "check": "index.html: verification tags preserved",
+      "passed": true
+    },
+    {
+      "check": "index.html: contact button destinations preserved",
+      "passed": true
+    },
+    {
+      "check": "학습가이드/index.html: one H1 and title",
+      "passed": true
+    },
+    {
+      "check": "학습가이드/index.html: renamed grouping has correct Korean particles",
+      "passed": true
+    },
+    {
+      "check": "학습가이드/index.html: one canonical and description",
+      "passed": true
+    },
+    {
+      "check": "학습가이드/index.html: canonical and OG URL agree",
+      "passed": true
+    },
+    {
+      "check": "학습가이드/index.html: title and social title agree",
+      "passed": true
+    },
+    {
+      "check": "학습가이드/index.html: description and social description agree",
+      "passed": true
+    },
+    {
+      "check": "학습가이드/index.html: indexable",
+      "passed": true
+    },
+    {
+      "check": "학습가이드/index.html: unique HTML IDs",
+      "passed": true
+    },
+    {
+      "check": "학습가이드/index.html: no nested anchors or headings",
+      "passed": true
+    },
+    {
+      "check": "학습가이드/index.html: six static menu destinations",
+      "passed": true
+    },
+    {
+      "check": "학습가이드/index.html: scoped mobile stylesheet once",
+      "passed": true
+    },
+    {
+      "check": "학습가이드/index.html: no heavy video embed",
+      "passed": true
+    },
+    {
+      "check": "학습가이드/index.html: unique top-level schema entities",
+      "passed": true
+    },
+    {
+      "check": "학습가이드/index.html: WebPage metadata matches body",
+      "passed": true
+    },
+    {
+      "check": "학습가이드/index.html: hasPart exam",
+      "passed": true
+    },
+    {
+      "check": "학습가이드/index.html: hasPart planner",
+      "passed": true
+    },
+    {
+      "check": "학습가이드/index.html: hasPart wrong",
+      "passed": true
+    },
+    {
+      "check": "학습가이드/index.html: hasPart parents",
+      "passed": true
+    },
+    {
+      "check": "학습가이드/index.html: hasPart grade-check",
+      "passed": true
+    },
+    {
+      "check": "학습가이드/index.html: hasPart faq",
+      "passed": true
+    },
+    {
+      "check": "학습가이드/index.html: FAQ display/schema exact match",
+      "passed": true
+    },
+    {
+      "check": "학습가이드/index.html: nonempty FAQ",
+      "passed": true
+    },
+    {
+      "check": "학습가이드/index.html: no unsupported base opening hours",
+      "passed": true
+    },
+    {
+      "check": "학습가이드/index.html: all internal links and fragments resolve",
+      "passed": true
+    },
+    {
+      "check": "학습가이드/index.html: local asset assets/site.css",
+      "passed": true
+    },
+    {
+      "check": "학습가이드/index.html: local asset assets/learning-upgrade.css",
+      "passed": true
+    },
+    {
+      "check": "학습가이드/index.html: local asset assets/official-learning/brand-learning.png",
+      "passed": true
+    },
+    {
+      "check": "학습가이드/index.html: official image dimensions and ALT",
+      "passed": true
+    },
+    {
+      "check": "학습가이드/index.html: image not hidden",
+      "passed": true
+    },
+    {
+      "check": "학습가이드/index.html: local asset assets/site.js",
+      "passed": true
+    },
+    {
+      "check": "학습가이드/index.html: canonical preserved",
+      "passed": true
+    },
+    {
+      "check": "학습가이드/index.html: OG image preserved",
+      "passed": true
+    },
+    {
+      "check": "학습가이드/index.html: verification tags preserved",
+      "passed": true
+    },
+    {
+      "check": "학습가이드/index.html: contact button destinations preserved",
+      "passed": true
+    },
+    {
+      "check": "상담문의/index.html: one H1 and title",
+      "passed": true
+    },
+    {
+      "check": "상담문의/index.html: renamed grouping has correct Korean particles",
+      "passed": true
+    },
+    {
+      "check": "상담문의/index.html: one canonical and description",
+      "passed": true
+    },
+    {
+      "check": "상담문의/index.html: canonical and OG URL agree",
+      "passed": true
+    },
+    {
+      "check": "상담문의/index.html: title and social title agree",
+      "passed": true
+    },
+    {
+      "check": "상담문의/index.html: description and social description agree",
+      "passed": true
+    },
+    {
+      "check": "상담문의/index.html: indexable",
+      "passed": true
+    },
+    {
+      "check": "상담문의/index.html: unique HTML IDs",
+      "passed": true
+    },
+    {
+      "check": "상담문의/index.html: no nested anchors or headings",
+      "passed": true
+    },
+    {
+      "check": "상담문의/index.html: six static menu destinations",
+      "passed": true
+    },
+    {
+      "check": "상담문의/index.html: scoped mobile stylesheet once",
+      "passed": true
+    },
+    {
+      "check": "상담문의/index.html: no heavy video embed",
+      "passed": true
+    },
+    {
+      "check": "상담문의/index.html: unique top-level schema entities",
+      "passed": true
+    },
+    {
+      "check": "상담문의/index.html: WebPage metadata matches body",
+      "passed": true
+    },
+    {
+      "check": "상담문의/index.html: hasPart prepare",
+      "passed": true
+    },
+    {
+      "check": "상담문의/index.html: hasPart ask-center",
+      "passed": true
+    },
+    {
+      "check": "상담문의/index.html: hasPart faq",
+      "passed": true
+    },
+    {
+      "check": "상담문의/index.html: FAQ display/schema exact match",
+      "passed": true
+    },
+    {
+      "check": "상담문의/index.html: nonempty FAQ",
+      "passed": true
+    },
+    {
+      "check": "상담문의/index.html: no unsupported base opening hours",
+      "passed": true
+    },
+    {
+      "check": "상담문의/index.html: all internal links and fragments resolve",
+      "passed": true
+    },
+    {
+      "check": "상담문의/index.html: local asset assets/site.css",
+      "passed": true
+    },
+    {
+      "check": "상담문의/index.html: local asset assets/learning-upgrade.css",
+      "passed": true
+    },
+    {
+      "check": "상담문의/index.html: local asset assets/site.js",
+      "passed": true
+    },
+    {
+      "check": "상담문의/index.html: canonical preserved",
+      "passed": true
+    },
+    {
+      "check": "상담문의/index.html: OG image preserved",
+      "passed": true
+    },
+    {
+      "check": "상담문의/index.html: verification tags preserved",
+      "passed": true
+    },
+    {
+      "check": "상담문의/index.html: contact button destinations preserved",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: one H1 and title",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: renamed grouping has correct Korean particles",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: one canonical and description",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: canonical and OG URL agree",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: title and social title agree",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: description and social description agree",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: indexable",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: unique HTML IDs",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: no nested anchors or headings",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: six static menu destinations",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: scoped mobile stylesheet once",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: no heavy video embed",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: unique top-level schema entities",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: WebPage metadata matches body",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: hasPart four-c",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: hasPart daily-care",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: hasPart ai-learning",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: hasPart ai-english",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: hasPart ai-math",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: hasPart ai-korean",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: hasPart ai-reading",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: hasPart use-results",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: hasPart faq",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: FAQ display/schema exact match",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: nonempty FAQ",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: no unsupported base opening hours",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: all internal links and fragments resolve",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: local asset assets/site.css",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: local asset assets/learning-upgrade.css",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: local asset assets/official-learning/four-c.png",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: official image dimensions and ALT",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: image not hidden",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: local asset assets/official-learning/learning-planner.png",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: official image dimensions and ALT",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: image not hidden",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: local asset assets/official-learning/ai-english.png",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: official image dimensions and ALT",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: image not hidden",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: local asset assets/official-learning/ai-math.png",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: official image dimensions and ALT",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: image not hidden",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: local asset assets/official-learning/ai-korean.png",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: official image dimensions and ALT",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: image not hidden",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: local asset assets/official-learning/ai-reading.png",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: official image dimensions and ALT",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: image not hidden",
+      "passed": true
+    },
+    {
+      "check": "학습코칭/index.html: local asset assets/site.js",
+      "passed": true
+    },
+    {
+      "check": "전국학원/index.html: one H1 and title",
+      "passed": true
+    },
+    {
+      "check": "전국학원/index.html: renamed grouping has correct Korean particles",
+      "passed": true
+    },
+    {
+      "check": "전국학원/index.html: one canonical and description",
+      "passed": true
+    },
+    {
+      "check": "전국학원/index.html: canonical and OG URL agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/index.html: title and social title agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/index.html: description and social description agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/index.html: indexable",
+      "passed": true
+    },
+    {
+      "check": "전국학원/index.html: unique HTML IDs",
+      "passed": true
+    },
+    {
+      "check": "전국학원/index.html: no nested anchors or headings",
+      "passed": true
+    },
+    {
+      "check": "전국학원/index.html: six static menu destinations",
+      "passed": true
+    },
+    {
+      "check": "전국학원/index.html: scoped mobile stylesheet once",
+      "passed": true
+    },
+    {
+      "check": "전국학원/index.html: no heavy video embed",
+      "passed": true
+    },
+    {
+      "check": "전국학원/index.html: unique top-level schema entities",
+      "passed": true
+    },
+    {
+      "check": "전국학원/index.html: WebPage metadata matches body",
+      "passed": true
+    },
+    {
+      "check": "전국학원/index.html: hasPart hub-coaching",
+      "passed": true
+    },
+    {
+      "check": "전국학원/index.html: hasPart towns",
+      "passed": true
+    },
+    {
+      "check": "전국학원/index.html: hasPart pro-national-place-and-student",
+      "passed": true
+    },
+    {
+      "check": "전국학원/index.html: hasPart pro-national-consultation-evidence",
+      "passed": true
+    },
+    {
+      "check": "전국학원/index.html: hasPart pro-national-action-after-advice",
+      "passed": true
+    },
+    {
+      "check": "전국학원/index.html: hasPart hub-centers",
+      "passed": true
+    },
+    {
+      "check": "전국학원/index.html: hasPart faq",
+      "passed": true
+    },
+    {
+      "check": "전국학원/index.html: FAQ display/schema exact match",
+      "passed": true
+    },
+    {
+      "check": "전국학원/index.html: nonempty FAQ",
+      "passed": true
+    },
+    {
+      "check": "전국학원/index.html: no unsupported base opening hours",
+      "passed": true
+    },
+    {
+      "check": "전국학원/index.html: all internal links and fragments resolve",
+      "passed": true
+    },
+    {
+      "check": "전국학원/index.html: local asset assets/site.css",
+      "passed": true
+    },
+    {
+      "check": "전국학원/index.html: local asset assets/hub-guide.css",
+      "passed": true
+    },
+    {
+      "check": "전국학원/index.html: local asset assets/learning-upgrade.css",
+      "passed": true
+    },
+    {
+      "check": "전국학원/index.html: local asset assets/hub-classroom-1.webp",
+      "passed": true
+    },
+    {
+      "check": "전국학원/index.html: local asset assets/hub-classroom-2.webp",
+      "passed": true
+    },
+    {
+      "check": "전국학원/index.html: local asset assets/site.js",
+      "passed": true
+    },
+    {
+      "check": "전국학원/index.html: canonical preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/index.html: OG image preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/index.html: verification tags preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/index.html: contact button destinations preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/index.html: H1 and title preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/index.html: original visible FAQ retained",
+      "passed": true
+    },
+    {
+      "check": "전국학원/index.html: preserve .all-town-directory",
+      "passed": true
+    },
+    {
+      "check": "전국학원/index.html: preserve .studio-hub-content",
+      "passed": true
+    },
+    {
+      "check": "전국학원/index.html: real center entities preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/index.html: one H1 and title",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/index.html: renamed grouping has correct Korean particles",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/index.html: one canonical and description",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/index.html: canonical and OG URL agree",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/index.html: title and social title agree",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/index.html: description and social description agree",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/index.html: indexable",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/index.html: unique HTML IDs",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/index.html: no nested anchors or headings",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/index.html: six static menu destinations",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/index.html: scoped mobile stylesheet once",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/index.html: no heavy video embed",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/index.html: unique top-level schema entities",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/index.html: WebPage metadata matches body",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/index.html: hasPart hub-coaching",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/index.html: hasPart subjects-task-before-choice",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/index.html: hasPart subjects-evidence-for-advice",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/index.html: hasPart subjects-parent-review-note",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/index.html: hasPart hub-centers",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/index.html: hasPart faq",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/index.html: FAQ display/schema exact match",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/index.html: nonempty FAQ",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/index.html: no unsupported base opening hours",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/index.html: all internal links and fragments resolve",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/index.html: local asset assets/site.css",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/index.html: local asset assets/hub-guide.css",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/index.html: local asset assets/learning-upgrade.css",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/index.html: local asset assets/hub-classroom-1.webp",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/index.html: local asset assets/hub-classroom-2.webp",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/index.html: local asset assets/site.js",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/index.html: canonical preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/index.html: OG image preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/index.html: verification tags preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/index.html: contact button destinations preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/index.html: H1 and title preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/index.html: original visible FAQ retained",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/index.html: preserve .subject-category-section",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/index.html: preserve .studio-hub-content",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/index.html: real center entities preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1영어학원/index.html: one H1 and title",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1영어학원/index.html: renamed grouping has correct Korean particles",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1영어학원/index.html: one canonical and description",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1영어학원/index.html: canonical and OG URL agree",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1영어학원/index.html: title and social title agree",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1영어학원/index.html: description and social description agree",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1영어학원/index.html: indexable",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1영어학원/index.html: unique HTML IDs",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1영어학원/index.html: no nested anchors or headings",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1영어학원/index.html: six static menu destinations",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1영어학원/index.html: scoped mobile stylesheet once",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1영어학원/index.html: no heavy video embed",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1영어학원/index.html: unique top-level schema entities",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1영어학원/index.html: WebPage metadata matches body",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1영어학원/index.html: hasPart hub-coaching",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1영어학원/index.html: hasPart g10-english-new-material",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1영어학원/index.html: hasPart g10-english-question-to-answer",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1영어학원/index.html: hasPart g10-english-correction-memory",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1영어학원/index.html: hasPart hub-centers",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1영어학원/index.html: hasPart faq",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1영어학원/index.html: FAQ display/schema exact match",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1영어학원/index.html: nonempty FAQ",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1영어학원/index.html: no unsupported base opening hours",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1영어학원/index.html: all internal links and fragments resolve",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1영어학원/index.html: local asset assets/site.css",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1영어학원/index.html: local asset assets/hub-guide.css",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1영어학원/index.html: local asset assets/learning-upgrade.css",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1영어학원/index.html: local asset assets/hub-classroom-1.webp",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1영어학원/index.html: local asset assets/hub-classroom-2.webp",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1영어학원/index.html: local asset assets/site.js",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1영어학원/index.html: canonical preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1영어학원/index.html: OG image preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1영어학원/index.html: verification tags preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1영어학원/index.html: contact button destinations preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1영어학원/index.html: H1 and title preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1영어학원/index.html: original visible FAQ retained",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1영어학원/index.html: preserve .subject-directory",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1영어학원/index.html: preserve .studio-hub-content",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1영어학원/index.html: real center entities preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1수학학원/index.html: one H1 and title",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1수학학원/index.html: renamed grouping has correct Korean particles",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1수학학원/index.html: one canonical and description",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1수학학원/index.html: canonical and OG URL agree",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1수학학원/index.html: title and social title agree",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1수학학원/index.html: description and social description agree",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1수학학원/index.html: indexable",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1수학학원/index.html: unique HTML IDs",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1수학학원/index.html: no nested anchors or headings",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1수학학원/index.html: six static menu destinations",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1수학학원/index.html: scoped mobile stylesheet once",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1수학학원/index.html: no heavy video embed",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1수학학원/index.html: unique top-level schema entities",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1수학학원/index.html: WebPage metadata matches body",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1수학학원/index.html: hasPart hub-coaching",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1수학학원/index.html: hasPart g10-math-school-material",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1수학학원/index.html: hasPart g10-math-complete-answer",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1수학학원/index.html: hasPart g10-math-review-handoff",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1수학학원/index.html: hasPart hub-centers",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1수학학원/index.html: hasPart faq",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1수학학원/index.html: FAQ display/schema exact match",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1수학학원/index.html: nonempty FAQ",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1수학학원/index.html: no unsupported base opening hours",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1수학학원/index.html: all internal links and fragments resolve",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1수학학원/index.html: local asset assets/site.css",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1수학학원/index.html: local asset assets/hub-guide.css",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1수학학원/index.html: local asset assets/learning-upgrade.css",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1수학학원/index.html: local asset assets/hub-classroom-1.webp",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1수학학원/index.html: local asset assets/hub-classroom-2.webp",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1수학학원/index.html: local asset assets/site.js",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1수학학원/index.html: canonical preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1수학학원/index.html: OG image preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1수학학원/index.html: verification tags preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1수학학원/index.html: contact button destinations preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1수학학원/index.html: H1 and title preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1수학학원/index.html: original visible FAQ retained",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1수학학원/index.html: preserve .subject-directory",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1수학학원/index.html: preserve .studio-hub-content",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고1수학학원/index.html: real center entities preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2영어학원/index.html: one H1 and title",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2영어학원/index.html: renamed grouping has correct Korean particles",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2영어학원/index.html: one canonical and description",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2영어학원/index.html: canonical and OG URL agree",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2영어학원/index.html: title and social title agree",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2영어학원/index.html: description and social description agree",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2영어학원/index.html: indexable",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2영어학원/index.html: unique HTML IDs",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2영어학원/index.html: no nested anchors or headings",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2영어학원/index.html: six static menu destinations",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2영어학원/index.html: scoped mobile stylesheet once",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2영어학원/index.html: no heavy video embed",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2영어학원/index.html: unique top-level schema entities",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2영어학원/index.html: WebPage metadata matches body",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2영어학원/index.html: hasPart hub-coaching",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2영어학원/index.html: hasPart g11-english-purpose-and-range",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2영어학원/index.html: hasPart g11-english-claim-scope",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2영어학원/index.html: hasPart g11-english-apply-interpretation",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2영어학원/index.html: hasPart hub-centers",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2영어학원/index.html: hasPart faq",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2영어학원/index.html: FAQ display/schema exact match",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2영어학원/index.html: nonempty FAQ",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2영어학원/index.html: no unsupported base opening hours",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2영어학원/index.html: all internal links and fragments resolve",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2영어학원/index.html: local asset assets/site.css",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2영어학원/index.html: local asset assets/hub-guide.css",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2영어학원/index.html: local asset assets/learning-upgrade.css",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2영어학원/index.html: local asset assets/hub-classroom-1.webp",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2영어학원/index.html: local asset assets/hub-classroom-2.webp",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2영어학원/index.html: local asset assets/site.js",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2영어학원/index.html: canonical preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2영어학원/index.html: OG image preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2영어학원/index.html: verification tags preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2영어학원/index.html: contact button destinations preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2영어학원/index.html: H1 and title preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2영어학원/index.html: original visible FAQ retained",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2영어학원/index.html: preserve .subject-directory",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2영어학원/index.html: preserve .studio-hub-content",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2영어학원/index.html: real center entities preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2수학학원/index.html: one H1 and title",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2수학학원/index.html: renamed grouping has correct Korean particles",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2수학학원/index.html: one canonical and description",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2수학학원/index.html: canonical and OG URL agree",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2수학학원/index.html: title and social title agree",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2수학학원/index.html: description and social description agree",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2수학학원/index.html: indexable",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2수학학원/index.html: unique HTML IDs",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2수학학원/index.html: no nested anchors or headings",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2수학학원/index.html: six static menu destinations",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2수학학원/index.html: scoped mobile stylesheet once",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2수학학원/index.html: no heavy video embed",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2수학학원/index.html: unique top-level schema entities",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2수학학원/index.html: WebPage metadata matches body",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2수학학원/index.html: hasPart hub-coaching",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2수학학원/index.html: hasPart g11-math-course-boundary",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2수학학원/index.html: hasPart g11-math-combined-conditions",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2수학학원/index.html: hasPart g11-math-change-and-justify",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2수학학원/index.html: hasPart hub-centers",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2수학학원/index.html: hasPart faq",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2수학학원/index.html: FAQ display/schema exact match",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2수학학원/index.html: nonempty FAQ",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2수학학원/index.html: no unsupported base opening hours",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2수학학원/index.html: all internal links and fragments resolve",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2수학학원/index.html: local asset assets/site.css",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2수학학원/index.html: local asset assets/hub-guide.css",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2수학학원/index.html: local asset assets/learning-upgrade.css",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2수학학원/index.html: local asset assets/hub-classroom-1.webp",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2수학학원/index.html: local asset assets/hub-classroom-2.webp",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2수학학원/index.html: local asset assets/site.js",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2수학학원/index.html: canonical preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2수학학원/index.html: OG image preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2수학학원/index.html: verification tags preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2수학학원/index.html: contact button destinations preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2수학학원/index.html: H1 and title preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2수학학원/index.html: original visible FAQ retained",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2수학학원/index.html: preserve .subject-directory",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2수학학원/index.html: preserve .studio-hub-content",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/고2수학학원/index.html: real center entities preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2영어학원/index.html: one H1 and title",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2영어학원/index.html: renamed grouping has correct Korean particles",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2영어학원/index.html: one canonical and description",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2영어학원/index.html: canonical and OG URL agree",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2영어학원/index.html: title and social title agree",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2영어학원/index.html: description and social description agree",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2영어학원/index.html: indexable",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2영어학원/index.html: unique HTML IDs",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2영어학원/index.html: no nested anchors or headings",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2영어학원/index.html: six static menu destinations",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2영어학원/index.html: scoped mobile stylesheet once",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2영어학원/index.html: no heavy video embed",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2영어학원/index.html: unique top-level schema entities",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2영어학원/index.html: WebPage metadata matches body",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2영어학원/index.html: hasPart hub-coaching",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2영어학원/index.html: hasPart pro-m2-english-class-notes",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2영어학원/index.html: hasPart pro-m2-english-recognize-produce",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2영어학원/index.html: hasPart pro-m2-english-useful-error-note",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2영어학원/index.html: hasPart hub-centers",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2영어학원/index.html: hasPart faq",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2영어학원/index.html: FAQ display/schema exact match",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2영어학원/index.html: nonempty FAQ",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2영어학원/index.html: no unsupported base opening hours",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2영어학원/index.html: all internal links and fragments resolve",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2영어학원/index.html: local asset assets/site.css",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2영어학원/index.html: local asset assets/hub-guide.css",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2영어학원/index.html: local asset assets/learning-upgrade.css",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2영어학원/index.html: local asset assets/hub-classroom-1.webp",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2영어학원/index.html: local asset assets/hub-classroom-2.webp",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2영어학원/index.html: local asset assets/site.js",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2영어학원/index.html: canonical preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2영어학원/index.html: OG image preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2영어학원/index.html: verification tags preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2영어학원/index.html: contact button destinations preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2영어학원/index.html: H1 and title preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2영어학원/index.html: original visible FAQ retained",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2영어학원/index.html: preserve .subject-directory",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2영어학원/index.html: preserve .studio-hub-content",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2영어학원/index.html: real center entities preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2수학학원/index.html: one H1 and title",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2수학학원/index.html: renamed grouping has correct Korean particles",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2수학학원/index.html: one canonical and description",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2수학학원/index.html: canonical and OG URL agree",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2수학학원/index.html: title and social title agree",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2수학학원/index.html: description and social description agree",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2수학학원/index.html: indexable",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2수학학원/index.html: unique HTML IDs",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2수학학원/index.html: no nested anchors or headings",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2수학학원/index.html: six static menu destinations",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2수학학원/index.html: scoped mobile stylesheet once",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2수학학원/index.html: no heavy video embed",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2수학학원/index.html: unique top-level schema entities",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2수학학원/index.html: WebPage metadata matches body",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2수학학원/index.html: hasPart hub-coaching",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2수학학원/index.html: hasPart pro-m2-math-school-example",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2수학학원/index.html: hasPart pro-m2-math-explain-then-use",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2수학학원/index.html: hasPart pro-m2-math-next-review",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2수학학원/index.html: hasPart hub-centers",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2수학학원/index.html: hasPart faq",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2수학학원/index.html: FAQ display/schema exact match",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2수학학원/index.html: nonempty FAQ",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2수학학원/index.html: no unsupported base opening hours",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2수학학원/index.html: all internal links and fragments resolve",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2수학학원/index.html: local asset assets/site.css",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2수학학원/index.html: local asset assets/hub-guide.css",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2수학학원/index.html: local asset assets/learning-upgrade.css",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2수학학원/index.html: local asset assets/hub-classroom-1.webp",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2수학학원/index.html: local asset assets/hub-classroom-2.webp",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2수학학원/index.html: local asset assets/site.js",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2수학학원/index.html: canonical preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2수학학원/index.html: OG image preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2수학학원/index.html: verification tags preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2수학학원/index.html: contact button destinations preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2수학학원/index.html: H1 and title preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2수학학원/index.html: original visible FAQ retained",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2수학학원/index.html: preserve .subject-directory",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2수학학원/index.html: preserve .studio-hub-content",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중2수학학원/index.html: real center entities preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3영어학원/index.html: one H1 and title",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3영어학원/index.html: renamed grouping has correct Korean particles",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3영어학원/index.html: one canonical and description",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3영어학원/index.html: canonical and OG URL agree",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3영어학원/index.html: title and social title agree",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3영어학원/index.html: description and social description agree",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3영어학원/index.html: indexable",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3영어학원/index.html: unique HTML IDs",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3영어학원/index.html: no nested anchors or headings",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3영어학원/index.html: six static menu destinations",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3영어학원/index.html: scoped mobile stylesheet once",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3영어학원/index.html: no heavy video embed",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3영어학원/index.html: unique top-level schema entities",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3영어학원/index.html: WebPage metadata matches body",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3영어학원/index.html: hasPart hub-coaching",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3영어학원/index.html: hasPart pro-m3-english-retained-knowledge",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3영어학원/index.html: hasPart pro-m3-english-information-source",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3영어학원/index.html: hasPart pro-m3-english-review-continuity",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3영어학원/index.html: hasPart hub-centers",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3영어학원/index.html: hasPart faq",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3영어학원/index.html: FAQ display/schema exact match",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3영어학원/index.html: nonempty FAQ",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3영어학원/index.html: no unsupported base opening hours",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3영어학원/index.html: all internal links and fragments resolve",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3영어학원/index.html: local asset assets/site.css",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3영어학원/index.html: local asset assets/hub-guide.css",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3영어학원/index.html: local asset assets/learning-upgrade.css",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3영어학원/index.html: local asset assets/hub-classroom-1.webp",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3영어학원/index.html: local asset assets/hub-classroom-2.webp",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3영어학원/index.html: local asset assets/site.js",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3영어학원/index.html: canonical preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3영어학원/index.html: OG image preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3영어학원/index.html: verification tags preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3영어학원/index.html: contact button destinations preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3영어학원/index.html: H1 and title preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3영어학원/index.html: original visible FAQ retained",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3영어학원/index.html: preserve .subject-directory",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3영어학원/index.html: preserve .studio-hub-content",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3영어학원/index.html: real center entities preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3수학학원/index.html: one H1 and title",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3수학학원/index.html: renamed grouping has correct Korean particles",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3수학학원/index.html: one canonical and description",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3수학학원/index.html: canonical and OG URL agree",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3수학학원/index.html: title and social title agree",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3수학학원/index.html: description and social description agree",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3수학학원/index.html: indexable",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3수학학원/index.html: unique HTML IDs",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3수학학원/index.html: no nested anchors or headings",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3수학학원/index.html: six static menu destinations",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3수학학원/index.html: scoped mobile stylesheet once",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3수학학원/index.html: no heavy video embed",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3수학학원/index.html: unique top-level schema entities",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3수학학원/index.html: WebPage metadata matches body",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3수학학원/index.html: hasPart hub-coaching",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3수학학원/index.html: hasPart pro-m3-math-recurring-gap",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3수학학원/index.html: hasPart pro-m3-math-result-check",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3수학학원/index.html: hasPart pro-m3-math-next-school-readiness",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3수학학원/index.html: hasPart hub-centers",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3수학학원/index.html: hasPart faq",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3수학학원/index.html: FAQ display/schema exact match",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3수학학원/index.html: nonempty FAQ",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3수학학원/index.html: no unsupported base opening hours",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3수학학원/index.html: all internal links and fragments resolve",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3수학학원/index.html: local asset assets/site.css",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3수학학원/index.html: local asset assets/hub-guide.css",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3수학학원/index.html: local asset assets/learning-upgrade.css",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3수학학원/index.html: local asset assets/hub-classroom-1.webp",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3수학학원/index.html: local asset assets/hub-classroom-2.webp",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3수학학원/index.html: local asset assets/site.js",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3수학학원/index.html: canonical preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3수학학원/index.html: OG image preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3수학학원/index.html: verification tags preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3수학학원/index.html: contact button destinations preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3수학학원/index.html: H1 and title preserved",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3수학학원/index.html: original visible FAQ retained",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3수학학원/index.html: preserve .subject-directory",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3수학학원/index.html: preserve .studio-hub-content",
+      "passed": true
+    },
+    {
+      "check": "과목별학원/중3수학학원/index.html: real center entities preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/강원/index.html: one H1 and title",
+      "passed": true
+    },
+    {
+      "check": "전국학원/강원/index.html: renamed grouping has correct Korean particles",
+      "passed": true
+    },
+    {
+      "check": "전국학원/강원/index.html: one canonical and description",
+      "passed": true
+    },
+    {
+      "check": "전국학원/강원/index.html: canonical and OG URL agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/강원/index.html: title and social title agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/강원/index.html: description and social description agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/강원/index.html: indexable",
+      "passed": true
+    },
+    {
+      "check": "전국학원/강원/index.html: unique HTML IDs",
+      "passed": true
+    },
+    {
+      "check": "전국학원/강원/index.html: no nested anchors or headings",
+      "passed": true
+    },
+    {
+      "check": "전국학원/강원/index.html: six static menu destinations",
+      "passed": true
+    },
+    {
+      "check": "전국학원/강원/index.html: scoped mobile stylesheet once",
+      "passed": true
+    },
+    {
+      "check": "전국학원/강원/index.html: no heavy video embed",
+      "passed": true
+    },
+    {
+      "check": "전국학원/강원/index.html: unique top-level schema entities",
+      "passed": true
+    },
+    {
+      "check": "전국학원/강원/index.html: WebPage metadata matches body",
+      "passed": true
+    },
+    {
+      "check": "전국학원/강원/index.html: hasPart hub-coaching",
+      "passed": true
+    },
+    {
+      "check": "전국학원/강원/index.html: hasPart region-list",
+      "passed": true
+    },
+    {
+      "check": "전국학원/강원/index.html: hasPart region-towns",
+      "passed": true
+    },
+    {
+      "check": "전국학원/강원/index.html: hasPart faq",
+      "passed": true
+    },
+    {
+      "check": "전국학원/강원/index.html: FAQ display/schema exact match",
+      "passed": true
+    },
+    {
+      "check": "전국학원/강원/index.html: nonempty FAQ",
+      "passed": true
+    },
+    {
+      "check": "전국학원/강원/index.html: no unsupported base opening hours",
+      "passed": true
+    },
+    {
+      "check": "전국학원/강원/index.html: all internal links and fragments resolve",
+      "passed": true
+    },
+    {
+      "check": "전국학원/강원/index.html: local asset assets/site.css",
+      "passed": true
+    },
+    {
+      "check": "전국학원/강원/index.html: local asset assets/learning-upgrade.css",
+      "passed": true
+    },
+    {
+      "check": "전국학원/강원/index.html: local asset assets/site.js",
+      "passed": true
+    },
+    {
+      "check": "전국학원/강원/index.html: canonical preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/강원/index.html: OG image preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/강원/index.html: verification tags preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/강원/index.html: contact button destinations preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/강원/index.html: H1 and title preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/강원/index.html: original visible FAQ retained",
+      "passed": true
+    },
+    {
+      "check": "전국학원/강원/index.html: preserve .all-town-directory",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경기/index.html: one H1 and title",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경기/index.html: renamed grouping has correct Korean particles",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경기/index.html: one canonical and description",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경기/index.html: canonical and OG URL agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경기/index.html: title and social title agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경기/index.html: description and social description agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경기/index.html: indexable",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경기/index.html: unique HTML IDs",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경기/index.html: no nested anchors or headings",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경기/index.html: six static menu destinations",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경기/index.html: scoped mobile stylesheet once",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경기/index.html: no heavy video embed",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경기/index.html: unique top-level schema entities",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경기/index.html: WebPage metadata matches body",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경기/index.html: hasPart hub-coaching",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경기/index.html: hasPart region-list",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경기/index.html: hasPart region-towns",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경기/index.html: hasPart faq",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경기/index.html: FAQ display/schema exact match",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경기/index.html: nonempty FAQ",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경기/index.html: no unsupported base opening hours",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경기/index.html: all internal links and fragments resolve",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경기/index.html: local asset assets/site.css",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경기/index.html: local asset assets/learning-upgrade.css",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경기/index.html: local asset assets/site.js",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경기/index.html: canonical preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경기/index.html: OG image preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경기/index.html: verification tags preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경기/index.html: contact button destinations preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경기/index.html: H1 and title preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경기/index.html: original visible FAQ retained",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경기/index.html: preserve .all-town-directory",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경상/index.html: one H1 and title",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경상/index.html: renamed grouping has correct Korean particles",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경상/index.html: one canonical and description",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경상/index.html: canonical and OG URL agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경상/index.html: title and social title agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경상/index.html: description and social description agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경상/index.html: indexable",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경상/index.html: unique HTML IDs",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경상/index.html: no nested anchors or headings",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경상/index.html: six static menu destinations",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경상/index.html: scoped mobile stylesheet once",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경상/index.html: no heavy video embed",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경상/index.html: unique top-level schema entities",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경상/index.html: WebPage metadata matches body",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경상/index.html: hasPart hub-coaching",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경상/index.html: hasPart region-list",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경상/index.html: hasPart region-towns",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경상/index.html: hasPart faq",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경상/index.html: FAQ display/schema exact match",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경상/index.html: nonempty FAQ",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경상/index.html: no unsupported base opening hours",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경상/index.html: all internal links and fragments resolve",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경상/index.html: local asset assets/site.css",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경상/index.html: local asset assets/learning-upgrade.css",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경상/index.html: local asset assets/site.js",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경상/index.html: canonical preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경상/index.html: OG image preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경상/index.html: verification tags preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경상/index.html: contact button destinations preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경상/index.html: H1 and title preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경상/index.html: original visible FAQ retained",
+      "passed": true
+    },
+    {
+      "check": "전국학원/경상/index.html: preserve .all-town-directory",
+      "passed": true
+    },
+    {
+      "check": "전국학원/광주/index.html: one H1 and title",
+      "passed": true
+    },
+    {
+      "check": "전국학원/광주/index.html: renamed grouping has correct Korean particles",
+      "passed": true
+    },
+    {
+      "check": "전국학원/광주/index.html: one canonical and description",
+      "passed": true
+    },
+    {
+      "check": "전국학원/광주/index.html: canonical and OG URL agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/광주/index.html: title and social title agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/광주/index.html: description and social description agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/광주/index.html: indexable",
+      "passed": true
+    },
+    {
+      "check": "전국학원/광주/index.html: unique HTML IDs",
+      "passed": true
+    },
+    {
+      "check": "전국학원/광주/index.html: no nested anchors or headings",
+      "passed": true
+    },
+    {
+      "check": "전국학원/광주/index.html: six static menu destinations",
+      "passed": true
+    },
+    {
+      "check": "전국학원/광주/index.html: scoped mobile stylesheet once",
+      "passed": true
+    },
+    {
+      "check": "전국학원/광주/index.html: no heavy video embed",
+      "passed": true
+    },
+    {
+      "check": "전국학원/광주/index.html: unique top-level schema entities",
+      "passed": true
+    },
+    {
+      "check": "전국학원/광주/index.html: WebPage metadata matches body",
+      "passed": true
+    },
+    {
+      "check": "전국학원/광주/index.html: hasPart hub-coaching",
+      "passed": true
+    },
+    {
+      "check": "전국학원/광주/index.html: hasPart region-list",
+      "passed": true
+    },
+    {
+      "check": "전국학원/광주/index.html: hasPart region-towns",
+      "passed": true
+    },
+    {
+      "check": "전국학원/광주/index.html: hasPart faq",
+      "passed": true
+    },
+    {
+      "check": "전국학원/광주/index.html: FAQ display/schema exact match",
+      "passed": true
+    },
+    {
+      "check": "전국학원/광주/index.html: nonempty FAQ",
+      "passed": true
+    },
+    {
+      "check": "전국학원/광주/index.html: no unsupported base opening hours",
+      "passed": true
+    },
+    {
+      "check": "전국학원/광주/index.html: all internal links and fragments resolve",
+      "passed": true
+    },
+    {
+      "check": "전국학원/광주/index.html: local asset assets/site.css",
+      "passed": true
+    },
+    {
+      "check": "전국학원/광주/index.html: local asset assets/learning-upgrade.css",
+      "passed": true
+    },
+    {
+      "check": "전국학원/광주/index.html: local asset assets/site.js",
+      "passed": true
+    },
+    {
+      "check": "전국학원/광주/index.html: canonical preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/광주/index.html: OG image preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/광주/index.html: verification tags preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/광주/index.html: contact button destinations preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/광주/index.html: H1 and title preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/광주/index.html: original visible FAQ retained",
+      "passed": true
+    },
+    {
+      "check": "전국학원/광주/index.html: preserve .all-town-directory",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대구/index.html: one H1 and title",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대구/index.html: renamed grouping has correct Korean particles",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대구/index.html: one canonical and description",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대구/index.html: canonical and OG URL agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대구/index.html: title and social title agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대구/index.html: description and social description agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대구/index.html: indexable",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대구/index.html: unique HTML IDs",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대구/index.html: no nested anchors or headings",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대구/index.html: six static menu destinations",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대구/index.html: scoped mobile stylesheet once",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대구/index.html: no heavy video embed",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대구/index.html: unique top-level schema entities",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대구/index.html: WebPage metadata matches body",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대구/index.html: hasPart hub-coaching",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대구/index.html: hasPart region-list",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대구/index.html: hasPart region-towns",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대구/index.html: hasPart faq",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대구/index.html: FAQ display/schema exact match",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대구/index.html: nonempty FAQ",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대구/index.html: no unsupported base opening hours",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대구/index.html: all internal links and fragments resolve",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대구/index.html: local asset assets/site.css",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대구/index.html: local asset assets/learning-upgrade.css",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대구/index.html: local asset assets/site.js",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대구/index.html: canonical preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대구/index.html: OG image preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대구/index.html: verification tags preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대구/index.html: contact button destinations preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대구/index.html: H1 and title preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대구/index.html: original visible FAQ retained",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대구/index.html: preserve .all-town-directory",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대전/index.html: one H1 and title",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대전/index.html: renamed grouping has correct Korean particles",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대전/index.html: one canonical and description",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대전/index.html: canonical and OG URL agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대전/index.html: title and social title agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대전/index.html: description and social description agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대전/index.html: indexable",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대전/index.html: unique HTML IDs",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대전/index.html: no nested anchors or headings",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대전/index.html: six static menu destinations",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대전/index.html: scoped mobile stylesheet once",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대전/index.html: no heavy video embed",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대전/index.html: unique top-level schema entities",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대전/index.html: WebPage metadata matches body",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대전/index.html: hasPart hub-coaching",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대전/index.html: hasPart region-list",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대전/index.html: hasPart region-towns",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대전/index.html: hasPart faq",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대전/index.html: FAQ display/schema exact match",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대전/index.html: nonempty FAQ",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대전/index.html: no unsupported base opening hours",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대전/index.html: all internal links and fragments resolve",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대전/index.html: local asset assets/site.css",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대전/index.html: local asset assets/learning-upgrade.css",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대전/index.html: local asset assets/site.js",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대전/index.html: canonical preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대전/index.html: OG image preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대전/index.html: verification tags preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대전/index.html: contact button destinations preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대전/index.html: H1 and title preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대전/index.html: original visible FAQ retained",
+      "passed": true
+    },
+    {
+      "check": "전국학원/대전/index.html: preserve .all-town-directory",
+      "passed": true
+    },
+    {
+      "check": "전국학원/부산/index.html: one H1 and title",
+      "passed": true
+    },
+    {
+      "check": "전국학원/부산/index.html: renamed grouping has correct Korean particles",
+      "passed": true
+    },
+    {
+      "check": "전국학원/부산/index.html: one canonical and description",
+      "passed": true
+    },
+    {
+      "check": "전국학원/부산/index.html: canonical and OG URL agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/부산/index.html: title and social title agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/부산/index.html: description and social description agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/부산/index.html: indexable",
+      "passed": true
+    },
+    {
+      "check": "전국학원/부산/index.html: unique HTML IDs",
+      "passed": true
+    },
+    {
+      "check": "전국학원/부산/index.html: no nested anchors or headings",
+      "passed": true
+    },
+    {
+      "check": "전국학원/부산/index.html: six static menu destinations",
+      "passed": true
+    },
+    {
+      "check": "전국학원/부산/index.html: scoped mobile stylesheet once",
+      "passed": true
+    },
+    {
+      "check": "전국학원/부산/index.html: no heavy video embed",
+      "passed": true
+    },
+    {
+      "check": "전국학원/부산/index.html: unique top-level schema entities",
+      "passed": true
+    },
+    {
+      "check": "전국학원/부산/index.html: WebPage metadata matches body",
+      "passed": true
+    },
+    {
+      "check": "전국학원/부산/index.html: hasPart hub-coaching",
+      "passed": true
+    },
+    {
+      "check": "전국학원/부산/index.html: hasPart region-list",
+      "passed": true
+    },
+    {
+      "check": "전국학원/부산/index.html: hasPart region-towns",
+      "passed": true
+    },
+    {
+      "check": "전국학원/부산/index.html: hasPart faq",
+      "passed": true
+    },
+    {
+      "check": "전국학원/부산/index.html: FAQ display/schema exact match",
+      "passed": true
+    },
+    {
+      "check": "전국학원/부산/index.html: nonempty FAQ",
+      "passed": true
+    },
+    {
+      "check": "전국학원/부산/index.html: no unsupported base opening hours",
+      "passed": true
+    },
+    {
+      "check": "전국학원/부산/index.html: all internal links and fragments resolve",
+      "passed": true
+    },
+    {
+      "check": "전국학원/부산/index.html: local asset assets/site.css",
+      "passed": true
+    },
+    {
+      "check": "전국학원/부산/index.html: local asset assets/learning-upgrade.css",
+      "passed": true
+    },
+    {
+      "check": "전국학원/부산/index.html: local asset assets/site.js",
+      "passed": true
+    },
+    {
+      "check": "전국학원/부산/index.html: canonical preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/부산/index.html: OG image preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/부산/index.html: verification tags preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/부산/index.html: contact button destinations preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/부산/index.html: H1 and title preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/부산/index.html: original visible FAQ retained",
+      "passed": true
+    },
+    {
+      "check": "전국학원/부산/index.html: preserve .all-town-directory",
+      "passed": true
+    },
+    {
+      "check": "전국학원/서울/index.html: one H1 and title",
+      "passed": true
+    },
+    {
+      "check": "전국학원/서울/index.html: renamed grouping has correct Korean particles",
+      "passed": true
+    },
+    {
+      "check": "전국학원/서울/index.html: one canonical and description",
+      "passed": true
+    },
+    {
+      "check": "전국학원/서울/index.html: canonical and OG URL agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/서울/index.html: title and social title agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/서울/index.html: description and social description agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/서울/index.html: indexable",
+      "passed": true
+    },
+    {
+      "check": "전국학원/서울/index.html: unique HTML IDs",
+      "passed": true
+    },
+    {
+      "check": "전국학원/서울/index.html: no nested anchors or headings",
+      "passed": true
+    },
+    {
+      "check": "전국학원/서울/index.html: six static menu destinations",
+      "passed": true
+    },
+    {
+      "check": "전국학원/서울/index.html: scoped mobile stylesheet once",
+      "passed": true
+    },
+    {
+      "check": "전국학원/서울/index.html: no heavy video embed",
+      "passed": true
+    },
+    {
+      "check": "전국학원/서울/index.html: unique top-level schema entities",
+      "passed": true
+    },
+    {
+      "check": "전국학원/서울/index.html: WebPage metadata matches body",
+      "passed": true
+    },
+    {
+      "check": "전국학원/서울/index.html: hasPart hub-coaching",
+      "passed": true
+    },
+    {
+      "check": "전국학원/서울/index.html: hasPart region-list",
+      "passed": true
+    },
+    {
+      "check": "전국학원/서울/index.html: hasPart region-towns",
+      "passed": true
+    },
+    {
+      "check": "전국학원/서울/index.html: hasPart faq",
+      "passed": true
+    },
+    {
+      "check": "전국학원/서울/index.html: FAQ display/schema exact match",
+      "passed": true
+    },
+    {
+      "check": "전국학원/서울/index.html: nonempty FAQ",
+      "passed": true
+    },
+    {
+      "check": "전국학원/서울/index.html: no unsupported base opening hours",
+      "passed": true
+    },
+    {
+      "check": "전국학원/서울/index.html: all internal links and fragments resolve",
+      "passed": true
+    },
+    {
+      "check": "전국학원/서울/index.html: local asset assets/site.css",
+      "passed": true
+    },
+    {
+      "check": "전국학원/서울/index.html: local asset assets/learning-upgrade.css",
+      "passed": true
+    },
+    {
+      "check": "전국학원/서울/index.html: local asset assets/site.js",
+      "passed": true
+    },
+    {
+      "check": "전국학원/서울/index.html: canonical preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/서울/index.html: OG image preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/서울/index.html: verification tags preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/서울/index.html: contact button destinations preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/서울/index.html: H1 and title preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/서울/index.html: original visible FAQ retained",
+      "passed": true
+    },
+    {
+      "check": "전국학원/서울/index.html: preserve .all-town-directory",
+      "passed": true
+    },
+    {
+      "check": "전국학원/울산/index.html: one H1 and title",
+      "passed": true
+    },
+    {
+      "check": "전국학원/울산/index.html: renamed grouping has correct Korean particles",
+      "passed": true
+    },
+    {
+      "check": "전국학원/울산/index.html: one canonical and description",
+      "passed": true
+    },
+    {
+      "check": "전국학원/울산/index.html: canonical and OG URL agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/울산/index.html: title and social title agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/울산/index.html: description and social description agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/울산/index.html: indexable",
+      "passed": true
+    },
+    {
+      "check": "전국학원/울산/index.html: unique HTML IDs",
+      "passed": true
+    },
+    {
+      "check": "전국학원/울산/index.html: no nested anchors or headings",
+      "passed": true
+    },
+    {
+      "check": "전국학원/울산/index.html: six static menu destinations",
+      "passed": true
+    },
+    {
+      "check": "전국학원/울산/index.html: scoped mobile stylesheet once",
+      "passed": true
+    },
+    {
+      "check": "전국학원/울산/index.html: no heavy video embed",
+      "passed": true
+    },
+    {
+      "check": "전국학원/울산/index.html: unique top-level schema entities",
+      "passed": true
+    },
+    {
+      "check": "전국학원/울산/index.html: WebPage metadata matches body",
+      "passed": true
+    },
+    {
+      "check": "전국학원/울산/index.html: hasPart hub-coaching",
+      "passed": true
+    },
+    {
+      "check": "전국학원/울산/index.html: hasPart region-list",
+      "passed": true
+    },
+    {
+      "check": "전국학원/울산/index.html: hasPart region-towns",
+      "passed": true
+    },
+    {
+      "check": "전국학원/울산/index.html: hasPart faq",
+      "passed": true
+    },
+    {
+      "check": "전국학원/울산/index.html: FAQ display/schema exact match",
+      "passed": true
+    },
+    {
+      "check": "전국학원/울산/index.html: nonempty FAQ",
+      "passed": true
+    },
+    {
+      "check": "전국학원/울산/index.html: no unsupported base opening hours",
+      "passed": true
+    },
+    {
+      "check": "전국학원/울산/index.html: all internal links and fragments resolve",
+      "passed": true
+    },
+    {
+      "check": "전국학원/울산/index.html: local asset assets/site.css",
+      "passed": true
+    },
+    {
+      "check": "전국학원/울산/index.html: local asset assets/learning-upgrade.css",
+      "passed": true
+    },
+    {
+      "check": "전국학원/울산/index.html: local asset assets/site.js",
+      "passed": true
+    },
+    {
+      "check": "전국학원/울산/index.html: canonical preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/울산/index.html: OG image preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/울산/index.html: verification tags preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/울산/index.html: contact button destinations preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/울산/index.html: H1 and title preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/울산/index.html: original visible FAQ retained",
+      "passed": true
+    },
+    {
+      "check": "전국학원/울산/index.html: preserve .all-town-directory",
+      "passed": true
+    },
+    {
+      "check": "전국학원/인천/index.html: one H1 and title",
+      "passed": true
+    },
+    {
+      "check": "전국학원/인천/index.html: renamed grouping has correct Korean particles",
+      "passed": true
+    },
+    {
+      "check": "전국학원/인천/index.html: one canonical and description",
+      "passed": true
+    },
+    {
+      "check": "전국학원/인천/index.html: canonical and OG URL agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/인천/index.html: title and social title agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/인천/index.html: description and social description agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/인천/index.html: indexable",
+      "passed": true
+    },
+    {
+      "check": "전국학원/인천/index.html: unique HTML IDs",
+      "passed": true
+    },
+    {
+      "check": "전국학원/인천/index.html: no nested anchors or headings",
+      "passed": true
+    },
+    {
+      "check": "전국학원/인천/index.html: six static menu destinations",
+      "passed": true
+    },
+    {
+      "check": "전국학원/인천/index.html: scoped mobile stylesheet once",
+      "passed": true
+    },
+    {
+      "check": "전국학원/인천/index.html: no heavy video embed",
+      "passed": true
+    },
+    {
+      "check": "전국학원/인천/index.html: unique top-level schema entities",
+      "passed": true
+    },
+    {
+      "check": "전국학원/인천/index.html: WebPage metadata matches body",
+      "passed": true
+    },
+    {
+      "check": "전국학원/인천/index.html: hasPart hub-coaching",
+      "passed": true
+    },
+    {
+      "check": "전국학원/인천/index.html: hasPart region-list",
+      "passed": true
+    },
+    {
+      "check": "전국학원/인천/index.html: hasPart region-towns",
+      "passed": true
+    },
+    {
+      "check": "전국학원/인천/index.html: hasPart faq",
+      "passed": true
+    },
+    {
+      "check": "전국학원/인천/index.html: FAQ display/schema exact match",
+      "passed": true
+    },
+    {
+      "check": "전국학원/인천/index.html: nonempty FAQ",
+      "passed": true
+    },
+    {
+      "check": "전국학원/인천/index.html: no unsupported base opening hours",
+      "passed": true
+    },
+    {
+      "check": "전국학원/인천/index.html: all internal links and fragments resolve",
+      "passed": true
+    },
+    {
+      "check": "전국학원/인천/index.html: local asset assets/site.css",
+      "passed": true
+    },
+    {
+      "check": "전국학원/인천/index.html: local asset assets/learning-upgrade.css",
+      "passed": true
+    },
+    {
+      "check": "전국학원/인천/index.html: local asset assets/site.js",
+      "passed": true
+    },
+    {
+      "check": "전국학원/인천/index.html: canonical preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/인천/index.html: OG image preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/인천/index.html: verification tags preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/인천/index.html: contact button destinations preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/인천/index.html: H1 and title preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/인천/index.html: original visible FAQ retained",
+      "passed": true
+    },
+    {
+      "check": "전국학원/인천/index.html: preserve .all-town-directory",
+      "passed": true
+    },
+    {
+      "check": "전국학원/전라/index.html: one H1 and title",
+      "passed": true
+    },
+    {
+      "check": "전국학원/전라/index.html: renamed grouping has correct Korean particles",
+      "passed": true
+    },
+    {
+      "check": "전국학원/전라/index.html: one canonical and description",
+      "passed": true
+    },
+    {
+      "check": "전국학원/전라/index.html: canonical and OG URL agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/전라/index.html: title and social title agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/전라/index.html: description and social description agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/전라/index.html: indexable",
+      "passed": true
+    },
+    {
+      "check": "전국학원/전라/index.html: unique HTML IDs",
+      "passed": true
+    },
+    {
+      "check": "전국학원/전라/index.html: no nested anchors or headings",
+      "passed": true
+    },
+    {
+      "check": "전국학원/전라/index.html: six static menu destinations",
+      "passed": true
+    },
+    {
+      "check": "전국학원/전라/index.html: scoped mobile stylesheet once",
+      "passed": true
+    },
+    {
+      "check": "전국학원/전라/index.html: no heavy video embed",
+      "passed": true
+    },
+    {
+      "check": "전국학원/전라/index.html: unique top-level schema entities",
+      "passed": true
+    },
+    {
+      "check": "전국학원/전라/index.html: WebPage metadata matches body",
+      "passed": true
+    },
+    {
+      "check": "전국학원/전라/index.html: hasPart hub-coaching",
+      "passed": true
+    },
+    {
+      "check": "전국학원/전라/index.html: hasPart region-list",
+      "passed": true
+    },
+    {
+      "check": "전국학원/전라/index.html: hasPart region-towns",
+      "passed": true
+    },
+    {
+      "check": "전국학원/전라/index.html: hasPart faq",
+      "passed": true
+    },
+    {
+      "check": "전국학원/전라/index.html: FAQ display/schema exact match",
+      "passed": true
+    },
+    {
+      "check": "전국학원/전라/index.html: nonempty FAQ",
+      "passed": true
+    },
+    {
+      "check": "전국학원/전라/index.html: no unsupported base opening hours",
+      "passed": true
+    },
+    {
+      "check": "전국학원/전라/index.html: all internal links and fragments resolve",
+      "passed": true
+    },
+    {
+      "check": "전국학원/전라/index.html: local asset assets/site.css",
+      "passed": true
+    },
+    {
+      "check": "전국학원/전라/index.html: local asset assets/learning-upgrade.css",
+      "passed": true
+    },
+    {
+      "check": "전국학원/전라/index.html: local asset assets/site.js",
+      "passed": true
+    },
+    {
+      "check": "전국학원/전라/index.html: canonical preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/전라/index.html: OG image preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/전라/index.html: verification tags preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/전라/index.html: contact button destinations preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/전라/index.html: H1 and title preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/전라/index.html: original visible FAQ retained",
+      "passed": true
+    },
+    {
+      "check": "전국학원/전라/index.html: preserve .all-town-directory",
+      "passed": true
+    },
+    {
+      "check": "전국학원/제주/index.html: one H1 and title",
+      "passed": true
+    },
+    {
+      "check": "전국학원/제주/index.html: renamed grouping has correct Korean particles",
+      "passed": true
+    },
+    {
+      "check": "전국학원/제주/index.html: one canonical and description",
+      "passed": true
+    },
+    {
+      "check": "전국학원/제주/index.html: canonical and OG URL agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/제주/index.html: title and social title agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/제주/index.html: description and social description agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/제주/index.html: indexable",
+      "passed": true
+    },
+    {
+      "check": "전국학원/제주/index.html: unique HTML IDs",
+      "passed": true
+    },
+    {
+      "check": "전국학원/제주/index.html: no nested anchors or headings",
+      "passed": true
+    },
+    {
+      "check": "전국학원/제주/index.html: six static menu destinations",
+      "passed": true
+    },
+    {
+      "check": "전국학원/제주/index.html: scoped mobile stylesheet once",
+      "passed": true
+    },
+    {
+      "check": "전국학원/제주/index.html: no heavy video embed",
+      "passed": true
+    },
+    {
+      "check": "전국학원/제주/index.html: unique top-level schema entities",
+      "passed": true
+    },
+    {
+      "check": "전국학원/제주/index.html: WebPage metadata matches body",
+      "passed": true
+    },
+    {
+      "check": "전국학원/제주/index.html: hasPart hub-coaching",
+      "passed": true
+    },
+    {
+      "check": "전국학원/제주/index.html: hasPart region-list",
+      "passed": true
+    },
+    {
+      "check": "전국학원/제주/index.html: hasPart region-towns",
+      "passed": true
+    },
+    {
+      "check": "전국학원/제주/index.html: hasPart faq",
+      "passed": true
+    },
+    {
+      "check": "전국학원/제주/index.html: FAQ display/schema exact match",
+      "passed": true
+    },
+    {
+      "check": "전국학원/제주/index.html: nonempty FAQ",
+      "passed": true
+    },
+    {
+      "check": "전국학원/제주/index.html: no unsupported base opening hours",
+      "passed": true
+    },
+    {
+      "check": "전국학원/제주/index.html: all internal links and fragments resolve",
+      "passed": true
+    },
+    {
+      "check": "전국학원/제주/index.html: local asset assets/site.css",
+      "passed": true
+    },
+    {
+      "check": "전국학원/제주/index.html: local asset assets/learning-upgrade.css",
+      "passed": true
+    },
+    {
+      "check": "전국학원/제주/index.html: local asset assets/site.js",
+      "passed": true
+    },
+    {
+      "check": "전국학원/제주/index.html: canonical preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/제주/index.html: OG image preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/제주/index.html: verification tags preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/제주/index.html: contact button destinations preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/제주/index.html: H1 and title preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/제주/index.html: original visible FAQ retained",
+      "passed": true
+    },
+    {
+      "check": "전국학원/제주/index.html: preserve .all-town-directory",
+      "passed": true
+    },
+    {
+      "check": "전국학원/충청/index.html: one H1 and title",
+      "passed": true
+    },
+    {
+      "check": "전국학원/충청/index.html: renamed grouping has correct Korean particles",
+      "passed": true
+    },
+    {
+      "check": "전국학원/충청/index.html: one canonical and description",
+      "passed": true
+    },
+    {
+      "check": "전국학원/충청/index.html: canonical and OG URL agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/충청/index.html: title and social title agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/충청/index.html: description and social description agree",
+      "passed": true
+    },
+    {
+      "check": "전국학원/충청/index.html: indexable",
+      "passed": true
+    },
+    {
+      "check": "전국학원/충청/index.html: unique HTML IDs",
+      "passed": true
+    },
+    {
+      "check": "전국학원/충청/index.html: no nested anchors or headings",
+      "passed": true
+    },
+    {
+      "check": "전국학원/충청/index.html: six static menu destinations",
+      "passed": true
+    },
+    {
+      "check": "전국학원/충청/index.html: scoped mobile stylesheet once",
+      "passed": true
+    },
+    {
+      "check": "전국학원/충청/index.html: no heavy video embed",
+      "passed": true
+    },
+    {
+      "check": "전국학원/충청/index.html: unique top-level schema entities",
+      "passed": true
+    },
+    {
+      "check": "전국학원/충청/index.html: WebPage metadata matches body",
+      "passed": true
+    },
+    {
+      "check": "전국학원/충청/index.html: hasPart hub-coaching",
+      "passed": true
+    },
+    {
+      "check": "전국학원/충청/index.html: hasPart region-list",
+      "passed": true
+    },
+    {
+      "check": "전국학원/충청/index.html: hasPart region-towns",
+      "passed": true
+    },
+    {
+      "check": "전국학원/충청/index.html: hasPart faq",
+      "passed": true
+    },
+    {
+      "check": "전국학원/충청/index.html: FAQ display/schema exact match",
+      "passed": true
+    },
+    {
+      "check": "전국학원/충청/index.html: nonempty FAQ",
+      "passed": true
+    },
+    {
+      "check": "전국학원/충청/index.html: no unsupported base opening hours",
+      "passed": true
+    },
+    {
+      "check": "전국학원/충청/index.html: all internal links and fragments resolve",
+      "passed": true
+    },
+    {
+      "check": "전국학원/충청/index.html: local asset assets/site.css",
+      "passed": true
+    },
+    {
+      "check": "전국학원/충청/index.html: local asset assets/learning-upgrade.css",
+      "passed": true
+    },
+    {
+      "check": "전국학원/충청/index.html: local asset assets/site.js",
+      "passed": true
+    },
+    {
+      "check": "전국학원/충청/index.html: canonical preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/충청/index.html: OG image preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/충청/index.html: verification tags preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/충청/index.html: contact button destinations preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/충청/index.html: H1 and title preserved",
+      "passed": true
+    },
+    {
+      "check": "전국학원/충청/index.html: original visible FAQ retained",
+      "passed": true
+    },
+    {
+      "check": "전국학원/충청/index.html: preserve .all-town-directory",
+      "passed": true
+    },
+    {
+      "check": "All overview titles distinct",
+      "passed": true
+    },
+    {
+      "check": "All descriptions distinct",
+      "passed": true
+    },
+    {
+      "check": "111 visible FAQ answers verified",
+      "passed": true
+    },
+    {
+      "check": "Preserve old learning guide anchor: exam",
+      "passed": true
+    },
+    {
+      "check": "Preserve old learning guide anchor: planner",
+      "passed": true
+    },
+    {
+      "check": "Preserve old learning guide anchor: wrong",
+      "passed": true
+    },
+    {
+      "check": "Preserve old learning guide anchor: parents",
+      "passed": true
+    },
+    {
+      "check": "Original image hash: brand-learning.png",
+      "passed": true
+    },
+    {
+      "check": "Image used: brand-learning.png",
+      "passed": true
+    },
+    {
+      "check": "Original image hash: learning-space.png",
+      "passed": true
+    },
+    {
+      "check": "Image used: learning-space.png",
+      "passed": true
+    },
+    {
+      "check": "Original image hash: teacher-coaching.png",
+      "passed": true
+    },
+    {
+      "check": "Image used: teacher-coaching.png",
+      "passed": true
+    },
+    {
+      "check": "Original image hash: four-c.png",
+      "passed": true
+    },
+    {
+      "check": "Image used: four-c.png",
+      "passed": true
+    },
+    {
+      "check": "Original image hash: learning-planner.png",
+      "passed": true
+    },
+    {
+      "check": "Image used: learning-planner.png",
+      "passed": true
+    },
+    {
+      "check": "Original image hash: ai-english.png",
+      "passed": true
+    },
+    {
+      "check": "Image used: ai-english.png",
+      "passed": true
+    },
+    {
+      "check": "Original image hash: ai-math.png",
+      "passed": true
+    },
+    {
+      "check": "Image used: ai-math.png",
+      "passed": true
+    },
+    {
+      "check": "Original image hash: ai-korean.png",
+      "passed": true
+    },
+    {
+      "check": "Image used: ai-korean.png",
+      "passed": true
+    },
+    {
+      "check": "Original image hash: ai-reading.png",
+      "passed": true
+    },
+    {
+      "check": "Image used: ai-reading.png",
+      "passed": true
+    },
+    {
+      "check": "Original image hash: video-student.jpg",
+      "passed": true
+    },
+    {
+      "check": "Image used: video-student.jpg",
+      "passed": true
+    },
+    {
+      "check": "Original image hash: video-coaching.jpg",
+      "passed": true
+    },
+    {
+      "check": "Image used: video-coaching.jpg",
+      "passed": true
+    },
+    {
+      "check": "Original image hash: video-exam.jpg",
+      "passed": true
+    },
+    {
+      "check": "Image used: video-exam.jpg",
+      "passed": true
+    },
+    {
+      "check": "Official source recheck passed",
+      "passed": true
+    },
+    {
+      "check": "Sitemap old URLs/order preserved; new pillar only appended",
+      "passed": true
+    },
+    {
+      "check": "RSS old items/order preserved; new pillar appended",
+      "passed": true
+    },
+    {
+      "check": "RSS title/description 과목별학원/index.html",
+      "passed": true
+    },
+    {
+      "check": "RSS title/description 과목별학원/고2영어학원/index.html",
+      "passed": true
+    },
+    {
+      "check": "RSS title/description 과목별학원/고2수학학원/index.html",
+      "passed": true
+    },
+    {
+      "check": "RSS title/description 과목별학원/고1수학학원/index.html",
+      "passed": true
+    },
+    {
+      "check": "RSS title/description 과목별학원/고1영어학원/index.html",
+      "passed": true
+    },
+    {
+      "check": "RSS title/description 과목별학원/중3영어학원/index.html",
+      "passed": true
+    },
+    {
+      "check": "RSS title/description 과목별학원/중3수학학원/index.html",
+      "passed": true
+    },
+    {
+      "check": "RSS title/description 과목별학원/중2영어학원/index.html",
+      "passed": true
+    },
+    {
+      "check": "RSS title/description 과목별학원/중2수학학원/index.html",
+      "passed": true
+    },
+    {
+      "check": "RSS title/description 학습가이드/index.html",
+      "passed": true
+    },
+    {
+      "check": "RSS title/description 전국학원/index.html",
+      "passed": true
+    },
+    {
+      "check": "RSS title/description 학습코칭/index.html",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP assets/hub-classroom-1.webp",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP assets/hub-classroom-2.webp",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP assets/hub-guide.css",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP assets/learning-upgrade.css",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP assets/official-learning/ai-english.png",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP assets/official-learning/ai-korean.png",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP assets/official-learning/ai-math.png",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP assets/official-learning/ai-reading.png",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP assets/official-learning/brand-learning.png",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP assets/official-learning/four-c.png",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP assets/official-learning/learning-planner.png",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP assets/official-learning/learning-space.png",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP assets/official-learning/teacher-coaching.png",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP assets/official-learning/video-coaching.jpg",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP assets/official-learning/video-exam.jpg",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP assets/official-learning/video-student.jpg",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP assets/site.css",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP assets/site.js",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP index.html",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP llms.txt",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP robots.txt",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP rss.xml",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP sitemap.xml",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP 과목별학원/index.html",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP 과목별학원/고1수학학원/index.html",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP 과목별학원/고1영어학원/index.html",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP 과목별학원/고2수학학원/index.html",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP 과목별학원/고2영어학원/index.html",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP 과목별학원/중2수학학원/index.html",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP 과목별학원/중2영어학원/index.html",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP 과목별학원/중3수학학원/index.html",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP 과목별학원/중3영어학원/index.html",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP 상담문의/index.html",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP 전국학원/index.html",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP 전국학원/강원/index.html",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP 전국학원/경기/index.html",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP 전국학원/경상/index.html",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP 전국학원/광주/index.html",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP 전국학원/대구/index.html",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP 전국학원/대전/index.html",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP 전국학원/부산/index.html",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP 전국학원/서울/index.html",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP 전국학원/울산/index.html",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP 전국학원/인천/index.html",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP 전국학원/전라/index.html",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP 전국학원/제주/index.html",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP 전국학원/충청/index.html",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP 학습가이드/index.html",
+      "passed": true
+    },
+    {
+      "check": "Local HTTP 학습코칭/index.html",
+      "passed": true
+    }
+  ],
+  "http": [
+    {
+      "path": "assets/hub-classroom-1.webp",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "assets/hub-classroom-2.webp",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "assets/hub-guide.css",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "assets/learning-upgrade.css",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "assets/official-learning/ai-english.png",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "assets/official-learning/ai-korean.png",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "assets/official-learning/ai-math.png",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "assets/official-learning/ai-reading.png",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "assets/official-learning/brand-learning.png",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "assets/official-learning/four-c.png",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "assets/official-learning/learning-planner.png",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "assets/official-learning/learning-space.png",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "assets/official-learning/teacher-coaching.png",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "assets/official-learning/video-coaching.jpg",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "assets/official-learning/video-exam.jpg",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "assets/official-learning/video-student.jpg",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "assets/site.css",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "assets/site.js",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "index.html",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "llms.txt",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "robots.txt",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "rss.xml",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "sitemap.xml",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "과목별학원/index.html",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "과목별학원/고1수학학원/index.html",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "과목별학원/고1영어학원/index.html",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "과목별학원/고2수학학원/index.html",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "과목별학원/고2영어학원/index.html",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "과목별학원/중2수학학원/index.html",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "과목별학원/중2영어학원/index.html",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "과목별학원/중3수학학원/index.html",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "과목별학원/중3영어학원/index.html",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "상담문의/index.html",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "전국학원/index.html",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "전국학원/강원/index.html",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "전국학원/경기/index.html",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "전국학원/경상/index.html",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "전국학원/광주/index.html",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "전국학원/대구/index.html",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "전국학원/대전/index.html",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "전국학원/부산/index.html",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "전국학원/서울/index.html",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "전국학원/울산/index.html",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "전국학원/인천/index.html",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "전국학원/전라/index.html",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "전국학원/제주/index.html",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "전국학원/충청/index.html",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "학습가이드/index.html",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    },
+    {
+      "path": "학습코칭/index.html",
+      "status": 200,
+      "matchesLocal": true,
+      "passed": true
+    }
+  ]
+}
