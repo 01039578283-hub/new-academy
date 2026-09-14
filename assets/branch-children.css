@@ -1,0 +1,38 @@
+/* Locality articles extend the existing branch theme without altering legacy pages. */
+body.branch-directory .bc-article-toc { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; padding:0; list-style:none; }
+body.branch-directory .bc-article-toc a { display:flex; align-items:center; min-height:48px; padding:12px 16px; border:1px solid var(--line); border-radius:12px; color:var(--mint); font-size:16px; line-height:1.7; text-decoration:none; background:#0b1a2d; }
+body.branch-directory .bc-article-toc a:hover { border-color:var(--mint); }
+body.branch-directory .bc-shortcuts { display:flex; flex-wrap:wrap; gap:10px; margin:20px 0; }
+body.branch-directory .bc-shortcuts a { min-height:48px; display:flex; align-items:center; justify-content:center; padding:10px 16px; border:1px solid var(--line); border-radius:12px; color:var(--mint); font-size:16px; }
+body.branch-directory .bc-shortcuts a:first-child { color:#071526; background:var(--mint); font-weight:750; }
+body.branch-directory .bc-reading { max-width:920px; margin-inline:auto; }
+body.branch-directory .bc-reading p { color:var(--soft); font-size:17px; line-height:1.95; margin:0 0 18px; word-break:keep-all; overflow-wrap:anywhere; }
+body.branch-directory .bc-reading p:last-child { margin-bottom:0; }
+body.branch-directory .bc-reading h2 { margin-bottom:24px; font-size:clamp(24px,2.6vw,32px); line-height:1.5; word-break:keep-all; }
+body.branch-directory .bc-primary-media { max-width:720px; margin:28px auto; }
+body.branch-directory .bc-primary-media > img[data-media="representative"] { display:none; }
+body.branch-directory .bc-primary-media figure.bd-media { margin:18px auto; }
+body.branch-directory .bc-primary-media img[data-media="body"] { width:100%; height:auto!important; max-height:none!important; object-fit:contain; }
+body.branch-directory .bc-context { padding:18px 20px; border-left:3px solid var(--mint); background:#0d2035; color:var(--soft); line-height:1.9; }
+body.branch-directory .bc-topic-links { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; padding:0; margin:18px 0; list-style:none; }
+body.branch-directory .bc-topic-links a { display:flex; align-items:center; min-height:52px; height:100%; padding:12px 16px; border:1px solid var(--line); border-radius:12px; color:var(--mint); font-size:16px; line-height:1.75; background:#0a1a2d; text-decoration:none; }
+body.branch-directory .bc-topic-links a:hover { border-color:var(--mint); }
+body.branch-directory .bc-locality-group { padding-block:12px 18px; border-bottom:1px solid var(--line); }
+body.branch-directory .bc-locality-group:last-child { border-bottom:0; padding-bottom:0; }
+body.branch-directory .bc-locality-group h3 { font-size:21px; margin:12px 0; }
+body.branch-directory .bc-locality-group .bc-topic-links { margin-bottom:0; }
+body.branch-directory .bc-info-links { display:flex; flex-wrap:wrap; gap:8px 20px; }
+body.branch-directory .bc-info-links a { min-height:46px; display:inline-flex; align-items:center; color:var(--mint); text-decoration:underline; text-underline-offset:4px; }
+@media(max-width:800px) {
+  body.branch-directory .bc-topic-links { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media(max-width:600px) {
+  body.branch-directory .bc-article-toc { grid-template-columns:1fr; }
+  body.branch-directory .bc-reading p { font-size:16px; line-height:1.95; }
+  body.branch-directory .bc-reading h2 { font-size:24px; line-height:1.5; }
+  body.branch-directory .bc-shortcuts { display:grid; grid-template-columns:1fr; }
+  body.branch-directory .bc-primary-media { margin-block:24px; }
+  body.branch-directory .bc-context { padding:15px 16px; font-size:16px; }
+  body.branch-directory .bc-topic-links { grid-template-columns:1fr; }
+  body.branch-directory .bc-topic-links a { min-height:50px; padding:12px 15px; }
+}
