@@ -82,3 +82,11 @@ document.addEventListener("DOMContentLoaded", () => {
     search.addEventListener("input", updateDirectory);
   }
 });
+
+// Branch directory navigation for existing regional detail pages.
+document.addEventListener("DOMContentLoaded", () => {
+  const nav = document.querySelector(".top-nav");
+  if (nav && !Array.from(nav.querySelectorAll("a")).some(a => a.textContent.trim() === "지점안내")) {
+    const link = document.createElement("a"); link.href = "/지점안내/"; link.textContent = "지점안내"; nav.append(link);
+  }
+});
