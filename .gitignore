@@ -11,3 +11,9 @@ __generate_*.py
 
 .vercel
 .env*
+
+# Isolated public release: never commit derived output or private inputs.
+.public-release/
+node_modules/
+.env*
+tools/data/

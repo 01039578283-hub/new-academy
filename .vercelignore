@@ -1,5 +1,13 @@
-*.py
-__pycache__/
-PROJECT_HANDOFF.md
-CHAT_HISTORY_*.md
+.git/
+.public-release/
+.env*
+node_modules/
 tools/
+reports/
+outputs/
+work/
+tmp/
+*.xlsx
+*.xls
+*.csv
+*.zip
