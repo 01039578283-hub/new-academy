@@ -1,0 +1,49 @@
+/* Loaded only by the homepage. All navigation works without JavaScript. */
+.home-content .pl-jump { grid-template-columns:repeat(4,minmax(0,1fr)); }
+.home-content .hc-directory { margin-top:52px; }
+.home-content .hc-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
+.home-content .hc-card { display:flex; flex-direction:column; padding:26px; border:1px solid var(--line); border-radius:20px; background:linear-gradient(145deg,#12253b,#0b1a2d); }
+.home-content .hc-card h3 { margin:0 0 12px; font-size:23px; line-height:1.45; letter-spacing:-.025em; overflow-wrap:anywhere; }
+.home-content .hc-question { margin:0 0 12px; color:var(--mint); font-weight:700; font-size:15px; line-height:1.7; }
+.home-content .hc-description { margin:0 0 24px; color:var(--soft); font-size:16px; line-height:1.8; }
+.home-content .hc-card-link { display:flex; align-items:center; justify-content:space-between; gap:12px; min-height:48px; margin-top:auto; padding:12px 14px; border:1px solid #7df7d442; border-radius:12px; background:#7df7d409; color:var(--mint); font-size:15px; font-weight:750; line-height:1.6; overflow-wrap:anywhere; }
+.home-content .hc-card-link span,.home-content .hc-grade-link span { flex-shrink:0; }
+.home-content .hc-card-link:hover,.home-content .hc-grade-link:hover { border-color:var(--mint); background:#173047; }
+.home-content .hc-grade-start { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.15fr); align-items:center; gap:32px; margin-top:22px; padding:27px; border:1px solid #7df7d42e; border-radius:20px; background:linear-gradient(120deg,#7df7d40b,#bda6ff0b); }
+.home-content .hc-grade-start h3 { margin:0 0 10px; font-size:21px; }
+.home-content .hc-grade-start p { margin:0; color:var(--soft); font-size:15px; }
+.home-content .hc-grade-start nav { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+.home-content .hc-grade-link { display:flex; align-items:center; justify-content:space-between; gap:10px; min-height:48px; padding:12px 14px; border:1px solid var(--line); border-radius:12px; background:#10243a; color:var(--mint); font-size:15px; font-weight:700; line-height:1.6; }
+.home-content .hc-reading-head { display:flex; align-items:flex-end; justify-content:space-between; gap:32px; margin-bottom:28px; }
+.home-content .hc-reading-head .pl-section-head { max-width:740px; margin-bottom:0; }
+.home-content .hc-all-links { display:flex; flex-direction:column; align-items:flex-start; gap:5px; flex-shrink:0; }
+.home-content .hc-all-links a { display:flex; align-items:center; gap:12px; min-height:44px; padding:8px 0; color:var(--mint); font-size:15px; font-weight:750; line-height:1.6; }
+.home-content .hc-all-links a:hover { text-decoration:underline; text-underline-offset:4px; }
+.home-content .hc-reading-card h3 { font-size:21px; line-height:1.6; }
+.home-content .hc-audience { margin:0 0 12px; color:var(--mint); font-size:13px; font-weight:750; line-height:1.6; }
+.home-content .pl-faq-list a { color:var(--mint); text-decoration:underline; text-underline-offset:4px; }
+@media(min-width:701px) and (max-width:1400px) {
+ .home-content .hc-grid,.home-content .hc-grade-start,.home-content .hc-reading-head { margin-right:84px; }
+ .home-content .pl-jump { padding-right:84px; }
+ .home-content .site-footer { padding-right:108px; }
+}
+@media(max-width:980px) {
+ .home-content .hc-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+ .home-content .hc-grade-start { grid-template-columns:1fr; gap:22px; }
+ .home-content .hc-reading-head { align-items:flex-start; flex-direction:column; gap:14px; }
+ .home-content .hc-all-links { flex-direction:row; flex-wrap:wrap; gap:10px 26px; }
+}
+@media(max-width:700px) {
+ .home-content .pl-jump { grid-template-columns:repeat(2,minmax(0,1fr)); }
+ .home-content .hc-directory { margin-top:40px; }
+ .home-content .hc-card { padding:22px 19px; border-radius:18px; }
+ .home-content .hc-card h3 { font-size:22px; }
+ .home-content .hc-reading-card h3 { font-size:20px; }
+ .home-content .hc-grade-start { padding:22px 19px; gap:18px; border-radius:18px; }
+ .home-content .hc-grade-start p { font-size:15px; }
+ .home-content .hc-card-link,.home-content .hc-grade-link { font-size:14px; }
+}
+@media(max-width:560px) {
+ .home-content .hc-grid,.home-content .hc-grade-start nav { grid-template-columns:1fr; }
+ .home-content .hc-description { margin-bottom:18px; }
+}

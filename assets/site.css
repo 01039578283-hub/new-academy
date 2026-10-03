@@ -2419,3 +2419,32 @@ h3 {
     border-radius: 17px;
   }
 }
+
+/* teacher-entry:start */
+.teacher-entry{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:25px;align-items:center;margin-top:30px;margin-bottom:30px;padding:26px 30px;background:#102c38;border:1px solid #426b76;border-radius:20px;color:#eff8ff}
+.teacher-entry .teacher-entry-kicker{font-size:12px;font-weight:800;letter-spacing:.06em;color:#9be8d7;margin:0 0 8px}
+.teacher-entry h2{font-size:clamp(21px,2vw,28px);line-height:1.45;margin:0 0 12px;letter-spacing:-.035em}
+.teacher-entry p{font-size:15px;line-height:1.8;color:#c1d8e0;margin:0;max-width:700px}
+.teacher-entry>a{display:inline-flex;gap:9px;align-items:center;border-radius:10px;padding:12px 17px;min-height:47px;font-size:14px;line-height:1.6;font-weight:700;background:#8be5d2;color:#09232f;max-width:100%;overflow-wrap:anywhere}
+.teacher-entry>a:focus-visible{outline:3px solid #fff;outline-offset:3px}
+@media(max-width:850px){.teacher-entry{grid-template-columns:1fr;gap:18px;padding:23px}.teacher-entry>a{justify-self:start}}
+@media(min-width:901px) and (max-width:1120px){.site-header .top-nav:not(.bc-desktop-nav){min-width:0;overflow-x:auto;justify-content:flex-start;flex-wrap:nowrap}.site-header .top-nav:not(.bc-desktop-nav) a{flex:0 0 auto;white-space:nowrap}}
+/* teacher-entry:end */
+
+/* education-entry:start */
+.education-entry{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:27px;margin-top:30px;margin-bottom:30px;padding:28px 30px;border:1px solid #395768;background:#102432;color:#e9f4fa;border-radius:20px}
+.education-entry>div>p{font-size:12px;font-weight:800;color:#8bdfcf;margin:0 0 11px}
+.education-entry h2{font-size:clamp(21px,2vw,27px);line-height:1.5;letter-spacing:-.035em;margin:0 0 17px}
+.education-entry .education-all{display:inline-flex;align-items:center;min-height:44px;padding:10px 16px;background:#8de0ce;color:#0c2530;border-radius:9px;font-size:14px;font-weight:800;line-height:1.6}
+.education-entry-links{display:grid;gap:9px;align-content:center}
+.education-entry-links a{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:13px 17px;min-height:48px;border:1px solid #3c596c;border-radius:10px;color:#c6e5ef;background:#142e3e;font-size:14px;line-height:1.8;overflow-wrap:anywhere}
+.education-entry a:focus-visible{outline:3px solid #c2ffee;outline-offset:3px}
+@media(max-width:850px){.education-entry{grid-template-columns:1fr;gap:19px;padding:23px}.education-entry-links a{padding:13px 15px}}
+@media(min-width:901px){.site-header .top-nav:not(.bc-desktop-nav){min-width:0;overflow-x:auto;justify-content:flex-start;flex-wrap:nowrap}.site-header .top-nav:not(.bc-desktop-nav) a{flex:0 0 auto;white-space:nowrap}}
+/* education-entry:end */
+
+/* curriculum-entry:start */
+.curriculum-entry{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:27px;margin-top:30px;margin-bottom:30px;padding:28px 30px;border:1px solid #53707d;background:#142d3a;color:#e9f4fa;border-radius:20px}
+.curriculum-entry>div>p:first-child{font-size:12px;font-weight:800;color:#9ce3d1;margin:0 0 11px}.curriculum-entry h2{font-size:clamp(21px,2vw,27px);line-height:1.5;letter-spacing:-.035em;margin:0 0 15px}.curriculum-entry-description{font-size:14px;line-height:1.9;color:#bdd7e2;margin:0 0 18px}.curriculum-entry .curriculum-all{display:inline-flex;align-items:center;min-height:44px;padding:10px 16px;background:#9ee3d1;color:#0c2530;border-radius:9px;font-size:14px;font-weight:800;line-height:1.6}.curriculum-entry-links{display:grid;gap:9px;align-content:center}.curriculum-entry-links a{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:13px 17px;min-height:48px;border:1px solid #45677b;border-radius:10px;color:#cde9ed;background:#183848;font-size:14px;line-height:1.8;overflow-wrap:anywhere}.curriculum-entry a:focus-visible{outline:3px solid #c2ffee;outline-offset:3px}
+@media(max-width:850px){.curriculum-entry{grid-template-columns:1fr;gap:19px;padding:23px}.curriculum-entry-links a{padding:13px 15px}}
+/* curriculum-entry:end */
