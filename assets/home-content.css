@@ -34,6 +34,7 @@
  .home-content .hc-all-links { flex-direction:row; flex-wrap:wrap; gap:10px 26px; }
 }
 @media(max-width:700px) {
+ .home-content .floating-actions { position:static; margin:24px 16px 40px; }
  .home-content .pl-jump { grid-template-columns:repeat(2,minmax(0,1fr)); }
  .home-content .hc-directory { margin-top:40px; }
  .home-content .hc-card { padding:22px 19px; border-radius:18px; }
