@@ -1,0 +1,23 @@
+.readable-image-link{display:block;position:relative;cursor:zoom-in;border-radius:14px;overflow:hidden;background:#fff}
+.readable-image-link img{display:block;width:100%;height:auto!important;max-height:none!important;object-fit:contain}
+.readable-image-link:focus-visible{outline:3px solid #e15d28;outline-offset:4px}
+.readable-image-note{font-size:14px;line-height:1.7;color:#52626b;margin:10px 0 18px}
+.local-visit-summary{padding:24px;border:1px solid #dce6df;border-radius:20px;background:#f4faf6;margin-bottom:24px}
+.local-visit-summary h2{font-size:23px;margin:0 0 16px;line-height:1.4}
+.local-visit-facts{display:grid;grid-template-columns:100px minmax(0,1fr);gap:10px 18px;margin:0 0 20px}
+.local-visit-facts dt{font-weight:700}.local-visit-facts dd{margin:0;line-height:1.7;overflow-wrap:anywhere}
+.local-visit-links{display:flex;flex-wrap:wrap;gap:10px}.local-visit-links a{padding:10px 15px;border:1px solid #ccdbd2;border-radius:12px;background:white;color:#234d38;font-weight:700;text-decoration:none}
+.school-material-plan{border-top:1px solid #dce6df;padding-top:20px;margin-top:24px;line-height:1.85}.school-material-plan ol{padding-left:24px}.school-material-plan a{color:#21633e;text-decoration:underline}
+.profile-focus-list{padding-left:20px;line-height:1.8}
+.readable-media-dialog{width:calc(100vw - 24px);max-width:1200px;height:calc(100dvh - 24px);max-height:calc(100dvh - 24px);padding:0;border:0;border-radius:16px;background:#f6f7f6;color:#172d24}
+.readable-media-dialog::backdrop{background:rgba(6,18,13,.8)}
+.readable-media-tools{display:flex;align-items:center;flex-wrap:wrap;gap:8px;padding:12px;background:#fff;border-bottom:1px solid #ddd}
+.readable-media-tools button,.readable-media-tools a{border:1px solid #b7c9bf;border-radius:8px;background:#fff;color:#183c29;padding:9px 12px;font:inherit;font-size:14px;text-decoration:none;cursor:pointer}
+.readable-media-tools button:last-child{margin-left:auto}.readable-media-title{margin:0;padding:8px 14px;font-size:14px}
+.readable-media-viewport{overflow:auto;height:calc(100% - 132px);overscroll-behavior:contain;touch-action:pan-x pan-y pinch-zoom;background:#e9edea}
+.readable-media-viewport img{display:block;max-width:none!important;max-height:none!important;height:auto!important;margin:0 auto;object-fit:contain}
+.readable-media-status{font-size:13px;padding:7px 14px;margin:0}
+body.media-dialog-open{overflow:hidden}
+@media(max-width:600px){.local-visit-summary{padding:20px 16px}.local-visit-facts{grid-template-columns:1fr;gap:3px}.local-visit-facts dd{margin-bottom:12px}.readable-media-dialog{width:calc(100vw - 12px);height:calc(100dvh - 12px)}.readable-media-tools{gap:6px;padding:8px}.readable-media-tools button,.readable-media-tools a{font-size:12px;padding:8px}.readable-media-viewport{height:calc(100% - 158px)}}
+
+.teacher-entry .profile-focus-list{grid-column:1/-1;margin:14px 0 0}.local-visit-summary a{overflow-wrap:anywhere}

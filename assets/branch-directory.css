@@ -92,7 +92,7 @@ body.branch-directory .bd-gallery { display: grid; grid-template-columns: repeat
 body.branch-directory .bd-gallery figure,
 body.branch-directory figure.bd-media { margin: 0; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: #0b1829; }
 body.branch-directory .bd-gallery img,
-body.branch-directory .bd-media img { display: block; position: static; width: 100%; max-width: 100%; height: auto !important; max-height: none !important; aspect-ratio: auto; object-fit: contain; opacity: 1; }
+body.branch-directory .bd-media img { display: block; position: static; width: 100%; max-width: 100%; height: auto !important; max-height: none !important;  object-fit: contain; opacity: 1; }
 body.branch-directory .bd-media { max-width: 720px; margin-block: 24px; margin-inline: auto; }
 body.branch-directory .bd-map-panel { position: relative; overflow: clip; width: 100%; }
 body.branch-directory .bd-map-panel img { position: absolute; inset: 0 auto auto 0; width: 100%; height: auto; }
@@ -209,3 +209,5 @@ html:has(body.branch-directory) { scroll-behavior: auto; }
   body.branch-directory *::before,
   body.branch-directory *::after { animation: none !important; transition: none !important; }
 }
+
+body.branch-directory .bd-map-panel > .readable-image-link{position:absolute;inset:0;}
