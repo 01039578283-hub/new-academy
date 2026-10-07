@@ -1,0 +1,9 @@
+{
+  "domain": "전문수업.com",
+  "outputDirectory": ".public-release",
+  "previousBuildCommand": "node release-public-build.mjs && node wawa-analytics-build.mjs wawa-06 .public-release && node seo-descriptions.mjs --root=.public-release",
+  "assets": {
+    "assets/site-favicon.png": "379d0b468a4251aac2dfc63e2aa9e844c95dd24f8d557c53205d9cf2a0793a0b",
+    "assets/site-apple-touch-icon.png": "916879e3585944fc69e78fe10999d5c9b87755be68a18a53817c21d1df9a865c"
+  }
+}

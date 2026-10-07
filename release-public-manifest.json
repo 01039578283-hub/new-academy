@@ -3,6 +3,8 @@
   "createdAt": "2026-10-06T00:00:00+09:00",
   "sitemapPages": 9988,
   "files": {
+    "assets/site-favicon.png": "379d0b468a4251aac2dfc63e2aa9e844c95dd24f8d557c53205d9cf2a0793a0b",
+    "assets/site-apple-touch-icon.png": "916879e3585944fc69e78fe10999d5c9b87755be68a18a53817c21d1df9a865c",
     "assets/branch-children.css": "ec59d80deb13a757d45c1b53ea9ad869087767159272aa3dafea079446624c7e",
     "assets/branch-children/representative/008b99c79130ed8f9660c7ac.gif": "008b99c79130ed8f9660c7acc0acab5d8d2d86337fd379940e350b2be5a1863c",
     "assets/branch-children/representative/0177fde942aa3aab8fc21e4f.gif": "0177fde942aa3aab8fc21e4f3eeb2dfbaec416d0aa744d238976a11a92cc54c1",
